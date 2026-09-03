@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Profile | Scopusixteen Publishing</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f6fa;
+    color: #10213b;
+}
+
+
+/* HEADER */
+
+.header {
+    background: #061a3b;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.back-btn {
+    color: white;
+    text-decoration: none;
+    border: 1px solid #65d7df;
+    padding: 9px 15px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.back-btn:hover {
+    background: #10aeb9;
+}
+
+
+/* PAGE */
+
+.page {
+    max-width: 1050px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+/* TITLE */
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.page-title h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.page-title p {
+    color: #65748a;
+}
+
+
+/* PROFILE HERO */
+
+.profile-hero {
+    background: linear-gradient(
+        135deg,
+        #061a3b,
+        #092e5f
+    );
+
+    color: white;
+
+    border-radius: 12px;
+
+    padding: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin-bottom: 25px;
+}
+
+
+/* AVATAR */
+
+.avatar {
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+
+    background: #10b8c3;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    color: white;
+
+    flex-shrink: 0;
+}
+
+
+.profile-hero h2 {
+    font-family: Georgia, serif;
+    font-size: 27px;
+    margin-bottom: 5px;
+}
+
+.profile-hero p {
+    color: #c9d7e8;
+    font-size: 14px;
+}
+
+
+/* STATUS */
+
+.account-status {
+    margin-top: 12px;
+}
+
+.status-badge {
+    display: inline-block;
+    background: #eaf8ef;
+    color: #237a43;
+    padding: 5px 11px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+/* GRID */
+
+.profile-layout {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+
+    gap: 25px;
+}
+
+
+/* CARD */
+
+.card {
+    background: white;
+
+    border: 1px solid #dce3ed;
+
+    border-radius: 10px;
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+}
+
+.card h2 {
+    font-family: Georgia, serif;
+
+    font-size: 21px;
+
+    margin-bottom: 20px;
+}
+
+
+/* INFORMATION */
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+.info-item {
+    background: #f8fafc;
+
+    padding: 15px;
+
+    border-radius: 7px;
+}
+
+.info-item strong {
+    display: block;
+
+    color: #7b899c;
+
+    font-size: 10px;
+
+    margin-bottom: 6px;
+
+    letter-spacing: .5px;
+}
+
+.info-item span {
+    font-size: 14px;
+
+    word-break: break-word;
+}
+
+
+/* EDIT */
+
+.edit-btn {
+    margin-top: 20px;
+
+    background: #09254c;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background: #10aeb9;
+}
+
+
+/* ACCOUNT CARD */
+
+.account-item {
+    padding: 14px 0;
+
+    border-bottom: 1px solid #edf1f5;
+}
+
+.account-item:last-child {
+    border-bottom: none;
+}
+
+.account-item strong {
+    display: block;
+
+    font-size: 11px;
+
+    color: #7b899c;
+
+    margin-bottom: 4px;
+}
+
+.account-item span {
+    font-size: 14px;
+}
+
+
+/* QUICK LINKS */
+
+.quick-link {
+    display: block;
+
+    text-decoration: none;
+
+    background: #f8fafc;
+
+    color: #10213b;
+
+    padding: 13px;
+
+    border-radius: 6px;
+
+    margin-bottom: 8px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+.quick-link:hover {
+    background: #eefafb;
+
+    color: #078b95;
+}
+
+
+/* EDIT FORM */
+
+.edit-form {
+    display: none;
+}
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+.form-group label {
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #cbd6e2;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #10aeb9;
+}
+
+.save-btn {
+    background: #09254c;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #eef2f7;
+
+    color: #10213b;
+
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-left: 8px;
+}
+
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+
+    color: #7b899c;
+
+    font-size: 12px;
+
+    padding: 30px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px) {
+
+    .profile-layout {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .header {
+        padding: 15px 5%;
+    }
+
+    .page {
+        margin: 25px auto;
+    }
+
+    .profile-hero {
+        padding: 25px;
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+
+    <a
+            href="index.html"
+            class="back-btn">
+
+            Home
+
+        </a>
+
+</header>
+
+
+
+<!-- PAGE -->
+
+<main class="page">
+
+
+    <div class="page-title">
+
+        <h1>
+            My Profile
+        </h1>
+
+        <p>
+            Manage your Scopusixteen Publishing
+            author account.
+        </p>
+
+    </div>
+
+
+
+    <!-- PROFILE HERO -->
+
+    <section class="profile-hero">
+
+
+        <div
+            class="avatar"
+            id="avatar">
+
+            A
+
+        </div>
+
+
+        <div>
+
+            <h2 id="profileFullName">
+                Author
+            </h2>
+
+            <p id="profileEmail">
+                —
+            </p>
+
+
+            <div class="account-status">
+
+                <span class="status-badge">
+                    ● Active Author Account
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- MAIN GRID -->
+
+    <div class="profile-layout">
+
+
+        <!-- LEFT -->
+
+        <div>
+
+
+            <!-- PERSONAL INFORMATION -->
+
+            <section class="card">
+
+
+                <h2>
+                    Author Information
+                </h2>
+
+
+                <div
+                    class="info-grid"
+                    id="profileInformation">
+
+
+                    <div class="info-item">
+
+                        <strong>
+                            FULL NAME
+                        </strong>
+
+                        <span id="fullName">
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <strong>
+                            EMAIL ADDRESS
+                        </strong>
+
+                        <span id="email">
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <strong>
+                            INSTITUTION
+                        </strong>
+
+                        <span id="institution">
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <strong>
+                            COUNTRY
+                        </strong>
+
+                        <span id="country">
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <strong>
+                            ORCID iD
+                        </strong>
+
+                        <span id="orcid">
+                            Not provided
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    class="edit-btn"
+                    onclick="showEditForm()">
+
+                    Edit Profile
+
+                </button>
+
+
+            </section>
+
+
+
+            <!-- EDIT FORM -->
+
+            <section
+                class="card edit-form"
+                id="editForm">
+
+
+                <h2>
+                    Edit Profile
+                </h2>
+
+
+                <div class="form-group">
+
+                    <label>
+                        First Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editFirstName">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Last Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editLastName">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Institution
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editInstitution">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Country
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editCountry">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        ORCID iD
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editOrcid"
+                        placeholder="0000-0000-0000-0000">
+
+                </div>
+
+
+                <button
+                    class="save-btn"
+                    onclick="saveProfile()">
+
+                    Save Changes
+
+                </button>
+
+
+                <button
+                    class="cancel-btn"
+                    onclick="hideEditForm()">
+
+                    Cancel
+
+                </button>
+
+
+            </section>
+
+
+        </div>
+
+
+
+        <!-- RIGHT -->
+
+        <div>
+
+
+            <!-- ACCOUNT -->
+
+            <section class="card">
+
+                <h2>
+                    Account
+                </h2>
+
+
+                <div class="account-item">
+
+                    <strong>
+                        ACCOUNT STATUS
+                    </strong>
+
+                    <span>
+                        Active
+                    </span>
+
+                </div>
+
+
+                <div class="account-item">
+
+                    <strong>
+                        ACCOUNT TYPE
+                    </strong>
+
+                    <span>
+                        Author
+                    </span>
+
+                </div>
+
+
+                <div class="account-item">
+
+                    <strong>
+                        PLATFORM
+                    </strong>
+
+                    <span>
+                        Scopusixteen Publishing
+                    </span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- QUICK LINKS -->
+
+            <section class="card">
+
+                <h2>
+                    Quick Links
+                </h2>
+
+
+                <a
+                    href="author-dashboard.html"
+                    class="quick-link">
+
+                    🏠 Dashboard
+
+                </a>
+
+
+                <a
+                    href="submit-manuscript.html"
+                    class="quick-link">
+
+                    📝 Submit Manuscript
+
+                </a>
+
+
+                <a
+                    href="my-manuscripts.html"
+                    class="quick-link">
+
+                    📚 My Manuscripts
+
+                </a>
+
+
+                <a
+                    href="track-submission.html"
+                    class="quick-link">
+
+                    📊 Track Submission
+
+                </a>
+
+
+                <a
+                    href="payment.html"
+                    class="quick-link">
+
+                    💳 Payment Center
+
+                </a>
+
+            </section>
+
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+
+<footer class="footer">
+
+    © 2026 Scopusixteen Publishing.
+    All rights reserved.
+
+</footer>
+
+
+
+<script>
+
+/* =========================
+   LOAD PROFILE
+========================= */
+
+function loadProfile() {
+
+    const savedUser =
+        localStorage.getItem(
+            "scopusixteenUser"
+        );
+
+
+    if (!savedUser) {
+        return;
+    }
+
+
+    try {
+
+        const user =
+            JSON.parse(savedUser);
+
+
+        const firstName =
+            user.firstName || "";
+
+        const lastName =
+            user.lastName || "";
+
+
+        const fullName =
+            (firstName + " " + lastName)
+            .trim();
+
+
+        document.getElementById(
+            "profileFullName"
+        ).textContent =
+            fullName || "Author";
+
+
+        document.getElementById(
+            "profileEmail"
+        ).textContent =
+            user.email || "—";
+
+
+        document.getElementById(
+            "fullName"
+        ).textContent =
+            fullName || "—";
+
+
+        document.getElementById(
+            "email"
+        ).textContent =
+            user.email || "—";
+
+
+        document.getElementById(
+            "institution"
+        ).textContent =
+            user.institution || "—";
+
+
+        document.getElementById(
+            "country"
+        ).textContent =
+            user.country || "—";
+
+
+        document.getElementById(
+            "orcid"
+        ).textContent =
+            user.orcid || "Not provided";
+
+
+        /* AVATAR */
+
+        let initials = "A";
+
+
+        if (firstName) {
+
+            initials =
+                firstName.charAt(0)
+                .toUpperCase();
+
+        }
+
+
+        if (lastName) {
+
+            initials +=
+                lastName.charAt(0)
+                .toUpperCase();
+
+        }
+
+
+        document.getElementById(
+            "avatar"
+        ).textContent =
+            initials;
+
+
+        /* EDIT FIELDS */
+
+        document.getElementById(
+            "editFirstName"
+        ).value =
+            firstName;
+
+
+        document.getElementById(
+            "editLastName"
+        ).value =
+            lastName;
+
+
+        document.getElementById(
+            "editInstitution"
+        ).value =
+            user.institution || "";
+
+
+        document.getElementById(
+            "editCountry"
+        ).value =
+            user.country || "";
+
+
+        document.getElementById(
+            "editOrcid"
+        ).value =
+            user.orcid || "";
+
+
+    } catch (error) {
+
+        console.error(
+            "Unable to load profile.",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================
+   SHOW EDIT FORM
+========================= */
+
+function showEditForm() {
+
+    document.getElementById(
+        "editForm"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "editForm"
+    ).scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================
+   HIDE EDIT FORM
+========================= */
+
+function hideEditForm() {
+
+    document.getElementById(
+        "editForm"
+    ).style.display =
+        "none";
+
+}
+
+
+/* =========================
+   SAVE PROFILE
+========================= */
+
+function saveProfile() {
+
+    const savedUser =
+        localStorage.getItem(
+            "scopusixteenUser"
+        );
+
+
+    if (!savedUser) {
+
+        alert(
+            "Author account information was not found."
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        const user =
+            JSON.parse(savedUser);
+
+
+        user.firstName =
+            document.getElementById(
+                "editFirstName"
+            ).value.trim();
+
+
+        user.lastName =
+            document.getElementById(
+                "editLastName"
+            ).value.trim();
+
+
+        user.institution =
+            document.getElementById(
+                "editInstitution"
+            ).value.trim();
+
+
+        user.country =
+            document.getElementById(
+                "editCountry"
+            ).value.trim();
+
+
+        user.orcid =
+            document.getElementById(
+                "editOrcid"
+            ).value.trim();
+
+
+        localStorage.setItem(
+            "scopusixteenUser",
+            JSON.stringify(user)
+        );
+
+
+        alert(
+            "Your profile has been updated successfully."
+        );
+
+
+        loadProfile();
+
+        hideEditForm();
+
+
+    } catch (error) {
+
+        alert(
+            "Unable to save profile."
+        );
+
+    }
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadProfile();
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>

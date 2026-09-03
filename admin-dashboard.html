@@ -1,0 +1,6064 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Author Dashboard | Scopusixteen Publishing</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f6fa;
+    color: #10213b;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    height: 72px;
+    background: #061a3b;
+    color: white;
+    padding: 0 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 9px;
+    letter-spacing: 4px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.author-name-header {
+    font-size: 12px;
+    color: #c9d7e8;
+}
+
+.logout-btn {
+    border: 1px solid #65d7df;
+    background: transparent;
+    color: white;
+    padding: 8px 13px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.logout-btn:hover {
+    background: #10aeb9;
+}
+
+
+/* =========================
+   LAYOUT
+========================= */
+
+.layout {
+    display: flex;
+    min-height: calc(100vh - 72px);
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 245px;
+    background: #09254c;
+    color: white;
+    padding: 25px 15px;
+    flex-shrink: 0;
+}
+
+.sidebar-title {
+    color: #7bdfe5;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    padding: 0 12px 12px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px;
+    margin-bottom: 4px;
+    border-radius: 6px;
+    color: #cbd8e8;
+    font-size: 13px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: #10aeb9;
+    color: white;
+}
+
+.sidebar-divider {
+    height: 1px;
+    background: #274266;
+    margin: 18px 5px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    flex: 1;
+    padding: 30px 4%;
+    min-width: 0;
+}
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.page-title h1 {
+    font-family: Georgia, serif;
+    font-size: 31px;
+    margin-bottom: 6px;
+}
+
+.page-title p {
+    color: #65748a;
+    font-size: 13px;
+}
+
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome-card {
+    background: linear-gradient(
+        135deg,
+        #061a3b,
+        #0b376c
+    );
+
+    color: white;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 25px;
+}
+
+.welcome-card h2 {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    margin-bottom: 7px;
+}
+
+.welcome-card p {
+    color: #c9d7e8;
+    font-size: 13px;
+}
+
+
+/* =========================
+   STATISTICS
+========================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 20px;
+}
+
+.stat-label {
+    color: #7b899c;
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.stat-number {
+    color: #09254c;
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.stat-info {
+    color: #078b95;
+    font-size: 10px;
+    margin-top: 6px;
+}
+
+
+/* =========================
+   CONTENT GRID
+========================= */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 22px;
+    margin-bottom: 22px;
+}
+
+.card h2 {
+    font-family: Georgia, serif;
+    font-size: 21px;
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   MANUSCRIPTS
+========================= */
+
+.manuscript {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #edf1f5;
+}
+
+.manuscript:last-child {
+    border-bottom: none;
+}
+
+.manuscript-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.manuscript-meta {
+    color: #7b899c;
+    font-size: 11px;
+}
+
+.no-manuscripts {
+    background: #f8fafc;
+    border-radius: 7px;
+    padding: 20px;
+    text-align: center;
+    color: #7b899c;
+    font-size: 12px;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.status-pending {
+    background: #fff3d8;
+    color: #a96800;
+}
+
+.status-review {
+    background: #e7f0ff;
+    color: #285ea8;
+}
+
+.status-accepted {
+    background: #e8f8ee;
+    color: #237a43;
+}
+
+.status-rejected {
+    background: #fdeaea;
+    color: #a63232;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.primary-btn {
+    display: inline-block;
+    border: none;
+    background: #09254c;
+    color: white;
+    padding: 11px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.primary-btn:hover {
+    background: #10aeb9;
+}
+
+.outline-btn {
+    display: inline-block;
+    background: white;
+    color: #09254c;
+    border: 1px solid #b9c7d7;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.outline-btn:hover {
+    background: #eefafb;
+    color: #078b95;
+}
+
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.quick-action {
+    display: block;
+    padding: 13px;
+    background: #f7f9fc;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.quick-action:hover {
+    background: #eefafb;
+    color: #078b95;
+}
+
+
+/* =========================
+   PROFILE SUMMARY
+========================= */
+
+.profile-summary {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #10b8c3;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.profile-summary h3 {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.profile-summary p {
+    color: #7b899c;
+    font-size: 11px;
+}
+
+.profile-info {
+    border-top: 1px solid #edf1f5;
+    padding-top: 14px;
+}
+
+.profile-info-item {
+    margin-bottom: 12px;
+}
+
+.profile-info-item strong {
+    display: block;
+    color: #7b899c;
+    font-size: 9px;
+    margin-bottom: 3px;
+}
+
+.profile-info-item span {
+    font-size: 12px;
+}
+
+
+/* =========================
+   ACCOUNT STATUS
+========================= */
+
+.account-status {
+    background: #eefaf2;
+    color: #237a43;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+    color: #8a98aa;
+    font-size: 11px;
+    padding: 25px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1000px) {
+
+    .sidebar {
+        width: 195px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:700px) {
+
+    .header {
+        padding: 0 15px;
+    }
+
+    .author-name-header {
+        display: none;
+    }
+
+    .layout {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        overflow-x: auto;
+        gap: 5px;
+    }
+
+    .sidebar-title,
+    .sidebar-divider {
+        display: none;
+    }
+
+    .sidebar a {
+        white-space: nowrap;
+        margin: 0;
+    }
+
+    .main {
+        padding: 20px 15px;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-number {
+        font-size: 23px;
+    }
+
+    .manuscript {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .welcome-card {
+        padding: 22px;
+    }
+
+    .page-title h1 {
+        font-size: 26px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <span
+            class="author-name-header"
+            id="headerAuthorName">
+
+            Author
+
+        </span>
+
+
+        <button
+            class="logout-btn"
+            onclick="logoutAuthor()">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     LAYOUT
+========================= -->
+
+<div class="layout">
+
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+
+    <div class="sidebar-title">
+        AUTHOR PORTAL
+    </div>
+
+
+    <a
+        href="author-dashboard.html"
+        class="active">
+
+        🏠 Dashboard
+
+    </a>
+
+
+    <a
+        href="submit-manuscript.html">
+
+        📝 Submit Manuscript
+
+    </a>
+
+
+    <a
+        href="my-manuscripts.html">
+
+        📚 My Manuscripts
+
+    </a>
+
+
+    <a
+        href="track-submission.html">
+
+        📊 Track Submission
+
+    </a>
+
+
+    <a
+        href="message.html">
+
+        ✉️ Messages
+
+    </a>
+
+
+    <a
+        href="payment.html">
+
+        💳 Payment Center
+
+    </a>
+
+
+    <a
+        href="profile.html">
+
+        👤 My Profile
+
+    </a>
+
+
+    <div class="sidebar-divider"></div>
+
+
+    <a
+        href="index.html">
+
+        ← Back to Website
+
+    </a>
+
+</aside>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="main">
+
+
+    <!-- PAGE TITLE -->
+
+    <div class="page-title">
+
+        <h1>
+            Author Dashboard
+        </h1>
+
+        <p>
+            Manage your manuscripts, submissions,
+            payments and author profile.
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         WELCOME
+    ========================= -->
+
+    <section class="welcome-card">
+
+        <h2>
+            Welcome, <span id="welcomeName">Author</span>
+        </h2>
+
+        <p>
+            Welcome to your Scopusixteen Publishing
+            Author Portal. From here you can submit
+            manuscripts and monitor your submissions.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         STATISTICS
+    ========================= -->
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                TOTAL MANUSCRIPTS
+            </div>
+
+            <div
+                class="stat-number"
+                id="totalManuscripts">
+
+                0
+
+            </div>
+
+            <div class="stat-info">
+                Your submissions
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                UNDER REVIEW
+            </div>
+
+            <div
+                class="stat-number"
+                id="underReview">
+
+                0
+
+            </div>
+
+            <div class="stat-info">
+                Currently being reviewed
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                ACCEPTED
+            </div>
+
+            <div
+                class="stat-number"
+                id="acceptedManuscripts">
+
+                0
+
+            </div>
+
+            <div class="stat-info">
+                Accepted manuscripts
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                PENDING
+
+            </div>
+
+            <div
+                class="stat-number"
+                id="pendingManuscripts">
+
+                0
+
+            </div>
+
+            <div class="stat-info">
+                Awaiting editorial action
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         CONTENT GRID
+    ========================= -->
+
+    <div class="content-grid">
+
+
+        <!-- =========================
+             LEFT
+        ========================= -->
+
+        <div>
+
+
+            <!-- RECENT MANUSCRIPTS -->
+
+            <section class="card">
+
+                <h2>
+                    Recent Manuscripts
+                </h2>
+
+
+                <div id="manuscriptList">
+
+                    <div class="no-manuscripts">
+
+                        You have not submitted any manuscripts yet.
+
+                        <br><br>
+
+                        <a
+                            href="submit-manuscript.html"
+                            class="primary-btn">
+
+                            Submit Your First Manuscript
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <br>
+
+
+                <a
+                    href="my-manuscripts.html"
+                    class="outline-btn">
+
+                    View All Manuscripts →
+
+                </a>
+
+            </section>
+
+
+
+            <!-- ACCOUNT -->
+
+            <section class="card">
+
+                <h2>
+                    Account Information
+                </h2>
+
+
+                <div class="profile-summary">
+
+                    <div
+                        class="avatar"
+                        id="avatar">
+
+                        A
+
+                    </div>
+
+
+                    <div>
+
+                        <h3 id="profileName">
+                            Author
+                        </h3>
+
+                        <p id="profileEmail">
+                            —
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-info">
+
+
+                    <div class="profile-info-item">
+
+                        <strong>
+                            INSTITUTION
+                        </strong>
+
+                        <span id="profileInstitution">
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-info-item">
+
+                        <strong>
+                            COUNTRY
+                        </strong>
+
+                        <span id="profileCountry">
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-info-item">
+
+                        <strong>
+                            ORCID iD
+                        </strong>
+
+                        <span id="profileOrcid">
+                            Not provided
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <br>
+
+
+                <a
+                    href="profile.html"
+                    class="outline-btn">
+
+                    Manage Profile
+
+                </a>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- =========================
+             RIGHT
+        ========================= -->
+
+        <div>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <section class="card">
+
+                <h2>
+                    Quick Actions
+                </h2>
+
+
+                <a
+                    href="submit-manuscript.html"
+                    class="quick-action">
+
+                    📝 Submit Manuscript
+
+                </a>
+
+
+                <a
+                    href="my-manuscripts.html"
+                    class="quick-action">
+
+                    📚 View My Manuscripts
+
+                </a>
+
+
+                <a
+                    href="track-submission.html"
+                    class="quick-action">
+
+                    📊 Track Submission
+
+                </a>
+
+
+                <a
+                    href="message.html"
+                    class="quick-action">
+
+                    ✉️ Messages
+
+                </a>
+
+
+                <a
+                    href="payment.html"
+                    class="quick-action">
+
+                    💳 Payment Center
+
+                </a>
+
+
+                <a
+                    href="profile.html"
+                    class="quick-action">
+
+                    👤 My Profile
+
+                </a>
+
+            </section>
+
+
+
+            <!-- ACCOUNT STATUS -->
+
+            <section class="card">
+
+                <h2>
+                    Account Status
+                </h2>
+
+
+                <div class="account-status">
+
+                    ● Your author account is active.
+
+                </div>
+
+                <br>
+
+
+                <div class="profile-info-item">
+
+                    <strong>
+                        ACCOUNT TYPE
+                    </strong>
+
+                    <span>
+                        Author
+                    </span>
+
+                </div>
+
+
+                <div class="profile-info-item">
+
+                    <strong>
+                        PLATFORM
+                    </strong>
+
+                    <span>
+                        Scopusixteen Publishing
+                    </span>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </div>
+
+
+</main>
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    © 2026 Scopusixteen Publishing.
+    All rights reserved.
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   SCOPUSIXTEEN AUTHOR DASHBOARD
+===================================================== */
+
+
+/* =========================
+   CHECK LOGIN
+========================= */
+
+function checkAuthorLogin() {
+
+    const loggedIn =
+        localStorage.getItem(
+            "scopusixteenLoggedIn"
+        );
+
+
+    const savedUser =
+        localStorage.getItem(
+            "scopusixteenUser"
+        );
+
+
+    if (
+        loggedIn !== "true" ||
+        !savedUser
+    ) {
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================
+   GET AUTHOR
+========================= */
+
+function getAuthor() {
+
+    const savedUser =
+        localStorage.getItem(
+            "scopusixteenUser"
+        );
+
+
+    if (!savedUser) {
+
+        return null;
+
+    }
+
+
+    try {
+
+        return JSON.parse(
+            savedUser
+        );
+
+    } catch(error) {
+
+        console.error(
+            "Unable to read author account.",
+            error
+        );
+
+        return null;
+
+    }
+
+}
+
+
+/* =========================
+   LOAD AUTHOR PROFILE
+========================= */
+
+function loadAuthorProfile() {
+
+    const author =
+        getAuthor();
+
+
+    if (!author) {
+
+        return;
+
+    }
+
+
+    const firstName =
+        author.firstName || "";
+
+
+    const lastName =
+        author.lastName || "";
+
+
+    const fullName =
+        (
+            firstName +
+            " " +
+            lastName
+        ).trim() || "Author";
+
+
+    /* HEADER */
+
+    document.getElementById(
+        "headerAuthorName"
+    ).textContent =
+        fullName;
+
+
+    /* WELCOME */
+
+    document.getElementById(
+        "welcomeName"
+    ).textContent =
+        firstName || fullName;
+
+
+    /* PROFILE */
+
+    document.getElementById(
+        "profileName"
+    ).textContent =
+        fullName;
+
+
+    document.getElementById(
+        "profileEmail"
+    ).textContent =
+        author.email || "—";
+
+
+    document.getElementById(
+        "profileInstitution"
+    ).textContent =
+        author.institution || "—";
+
+
+    document.getElementById(
+        "profileCountry"
+    ).textContent =
+        author.country || "—";
+
+
+    document.getElementById(
+        "profileOrcid"
+    ).textContent =
+        author.orcid || "Not provided";
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Author Dashboard | Scopusixteen Publishing</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f6fa;
+    color: #10213b;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    height: 72px;
+    background: #061a3b;
+    color: white;
+    padding: 0 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 9px;
+    letter-spacing: 4px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.author-name-header {
+    font-size: 12px;
+    color: #c9d7e8;
+}
+
+.logout-btn {
+    border: 1px solid #65d7df;
+    background: transparent;
+    color: white;
+    padding: 8px 13px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.logout-btn:hover {
+    background: #10aeb9;
+}
+
+
+/* =========================
+   LAYOUT
+========================= */
+
+.layout {
+    display: flex;
+    min-height: calc(100vh - 72px);
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 245px;
+    background: #09254c;
+    color: white;
+    padding: 25px 15px;
+    flex-shrink: 0;
+}
+
+.sidebar-title {
+    color: #7bdfe5;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    padding: 0 12px 12px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px;
+    margin-bottom: 4px;
+    border-radius: 6px;
+    color: #cbd8e8;
+    font-size: 13px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: #10aeb9;
+    color: white;
+}
+
+.sidebar-divider {
+    height: 1px;
+    background: #274266;
+    margin: 18px 5px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    flex: 1;
+    padding: 30px 4%;
+    min-width: 0;
+}
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.page-title h1 {
+    font-family: Georgia, serif;
+    font-size: 31px;
+    margin-bottom: 6px;
+}
+
+.page-title p {
+    color: #65748a;
+    font-size: 13px;
+}
+
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome-card {
+    background: linear-gradient(
+        135deg,
+        #061a3b,
+        #0b376c
+    );
+
+    color: white;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 25px;
+}
+
+.welcome-card h2 {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    margin-bottom: 7px;
+}
+
+.welcome-card p {
+    color: #c9d7e8;
+    font-size: 13px;
+}
+
+
+/* =========================
+   STATISTICS
+========================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 20px;
+}
+
+.stat-label {
+    color: #7b899c;
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.stat-number {
+    color: #09254c;
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.stat-info {
+    color: #078b95;
+    font-size: 10px;
+    margin-top: 6px;
+}
+
+
+/* =========================
+   CONTENT GRID
+========================= */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 22px;
+    margin-bottom: 22px;
+}
+
+.card h2 {
+    font-family: Georgia, serif;
+    font-size: 21px;
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   MANUSCRIPTS
+========================= */
+
+.manuscript {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #edf1f5;
+}
+
+.manuscript:last-child {
+    border-bottom: none;
+}
+
+.manuscript-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.manuscript-meta {
+    color: #7b899c;
+    font-size: 11px;
+}
+
+.no-manuscripts {
+    background: #f8fafc;
+    border-radius: 7px;
+    padding: 20px;
+    text-align: center;
+    color: #7b899c;
+    font-size: 12px;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.status-pending {
+    background: #fff3d8;
+    color: #a96800;
+}
+
+.status-review {
+    background: #e7f0ff;
+    color: #285ea8;
+}
+
+.status-accepted {
+    background: #e8f8ee;
+    color: #237a43;
+}
+
+.status-rejected {
+    background: #fdeaea;
+    color: #a63232;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.primary-btn {
+    display: inline-block;
+    border: none;
+    background: #09254c;
+    color: white;
+    padding: 11px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.primary-btn:hover {
+    background: #10aeb9;
+}
+
+.outline-btn {
+    display: inline-block;
+    background: white;
+    color: #09254c;
+    border: 1px solid #b9c7d7;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.outline-btn:hover {
+    background: #eefafb;
+    color: #078b95;
+}
+
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.quick-action {
+    display: block;
+    padding: 13px;
+    background: #f7f9fc;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.quick-action:hover {
+    background: #eefafb;
+    color: #078b95;
+}
+
+
+/* =========================
+   PROFILE SUMMARY
+========================= */
+
+.profile-summary {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #10b8c3;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.profile-summary h3 {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.profile-summary p {
+    color: #7b899c;
+    font-size: 11px;
+}
+
+.profile-info {
+    border-top: 1px solid #edf1f5;
+    padding-top: 14px;
+}
+
+.profile-info-item {
+    margin-bottom: 12px;
+}
+
+.profile-info-item strong {
+    display: block;
+    color: #7b899c;
+    font-size: 9px;
+    margin-bottom: 3px;
+}
+
+.profile-info-item span {
+    font-size: 12px;
+}
+
+
+/* =========================
+   ACCOUNT STATUS
+========================= */
+
+.account-status {
+    background: #eefaf2;
+    color: #237a43;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+    color: #8a98aa;
+    font-size: 11px;
+    padding: 25px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1000px) {
+
+    .sidebar {
+        width: 195px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:700px) {
+
+    .header {
+        padding: 0 15px;
+    }
+
+    .author-name-header {
+        display: none;
+    }
+
+    .layout {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        overflow-x: auto;
+        gap: 5px;
+    }
+
+    .sidebar-title,
+    .sidebar-divider {
+        display: none;
+    }
+
+    .sidebar a {
+        white-space: nowrap;
+        margin: 0;
+    }
+
+    .main {
+        padding: 20px 15px;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-number {
+        font-size: 23px;
+    }
+
+    .manuscript {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .welcome-card {
+        padding: 22px;
+    }
+
+    .page-title h1 {
+        font-size: 26px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <span
+            class="author-name-header"
+            id="headerAuthorName">
+
+            Author
+
+        </span>
+
+
+        <button
+            class="logout-btn"
+            onclick="logoutAuthor()">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     LAYOUT
+========================= -->
+
+<div class="layout">
+
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+
+    <div class="sidebar-title">
+        AUTHOR PORTAL
+    </div>
+
+
+    <a
+        href="author-dashboard.html"
+        class="active">
+
+        🏠 Dashboard
+
+    </a>
+
+
+    <a
+        href="submit-manuscript.html">
+
+        📝 Submit Manuscript
+
+    </a>
+
+
+    <a
+        href="my-manuscripts.html">
+
+        📚 My Manuscripts
+
+    </a>
+
+
+    <a
+        href="track-submission.html">
+
+        📊 Track Submission
+
+    </a>
+
+
+    <a
+        href="message.html">
+
+        ✉️ Messages
+
+    </a>
+
+
+    <a
+        href="payment.html">
+
+        💳 Payment Center
+
+    </a>
+
+
+    <a
+        href="profile.html">
+
+        👤 My Profile
+
+    </a>
+
+
+    <div class="sidebar-divider"></div>
+
+
+    <a
+        href="index.html">
+
+        ← Back to Website
+
+    </a>
+
+</aside>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="main">
+
+
+    <!-- PAGE TITLE -->
+
+    <div class="page-title">
+
+        <h1>
+            Author Dashboard
+        </h1>
+
+        <p>
+            Manage your manuscripts, submissions,
+            payments and author profile.
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         WELCOME
+    ========================= -->
+
+    <section class="welcome-card">
+
+        <h2>
+            Welcome, <span id="welcomeName">Author</span>
+        </h2>
+
+        <p>
+            Welcome to your Scopusixteen Publishing
+            Author Portal. From here you can submit
+            manuscripts and monitor your submissions.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         STATISTICS
+    ========================= -->
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                TOTAL MANUSCRIPTS
+            </div>
+
+            <div
+                class="stat-number"
+                id="totalManuscripts">
+
+                0
+
+            </div>
+
+            <div class="stat-info">
+                Your submissions
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                UNDER REVIEW
+            </div>
+
+            <div
+                class="stat-number"
+                id="underReview">
+
+                0
+
+            </div>
+
+            <div class="stat-info">
+                Currently being reviewed
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                ACCEPTED
+            </div>
+
+            <div
+                class="stat-number"
+                id="acceptedManuscripts">
+
+                0
+
+            </div>
+
+            <div class="stat-info">
+                Accepted manuscripts
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                PENDING
+
+            </div>
+
+            <div
+                class="stat-number"
+                id="pendingManuscripts">
+
+                0
+
+            </div>
+
+            <div class="stat-info">
+                Awaiting editorial action
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         CONTENT GRID
+    ========================= -->
+
+    <div class="content-grid">
+
+
+        <!-- =========================
+             LEFT
+        ========================= -->
+
+        <div>
+
+
+            <!-- RECENT MANUSCRIPTS -->
+
+            <section class="card">
+
+                <h2>
+                    Recent Manuscripts
+                </h2>
+
+
+                <div id="manuscriptList">
+
+                    <div class="no-manuscripts">
+
+                        You have not submitted any manuscripts yet.
+
+                        <br><br>
+
+                        <a
+                            href="submit-manuscript.html"
+                            class="primary-btn">
+
+                            Submit Your First Manuscript
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <br>
+
+
+                <a
+                    href="my-manuscripts.html"
+                    class="outline-btn">
+
+                    View All Manuscripts →
+
+                </a>
+
+            </section>
+
+
+
+            <!-- ACCOUNT -->
+
+            <section class="card">
+
+                <h2>
+                    Account Information
+                </h2>
+
+
+                <div class="profile-summary">
+
+                    <div
+                        class="avatar"
+                        id="avatar">
+
+                        A
+
+                    </div>
+
+
+                    <div>
+
+                        <h3 id="profileName">
+                            Author
+                        </h3>
+
+                        <p id="profileEmail">
+                            —
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-info">
+
+
+                    <div class="profile-info-item">
+
+                        <strong>
+                            INSTITUTION
+                        </strong>
+
+                        <span id="profileInstitution">
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-info-item">
+
+                        <strong>
+                            COUNTRY
+                        </strong>
+
+                        <span id="profileCountry">
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-info-item">
+
+                        <strong>
+                            ORCID iD
+                        </strong>
+
+                        <span id="profileOrcid">
+                            Not provided
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <br>
+
+
+                <a
+                    href="profile.html"
+                    class="outline-btn">
+
+                    Manage Profile
+
+                </a>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- =========================
+             RIGHT
+        ========================= -->
+
+        <div>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <section class="card">
+
+                <h2>
+                    Quick Actions
+                </h2>
+
+
+                <a
+                    href="submit-manuscript.html"
+                    class="quick-action">
+
+                    📝 Submit Manuscript
+
+                </a>
+
+
+                <a
+                    href="my-manuscripts.html"
+                    class="quick-action">
+
+                    📚 View My Manuscripts
+
+                </a>
+
+
+                <a
+                    href="track-submission.html"
+                    class="quick-action">
+
+                    📊 Track Submission
+
+                </a>
+
+
+                <a
+                    href="message.html"
+                    class="quick-action">
+
+                    ✉️ Messages
+
+                </a>
+
+
+                <a
+                    href="payment.html"
+                    class="quick-action">
+
+                    💳 Payment Center
+
+                </a>
+
+
+                <a
+                    href="profile.html"
+                    class="quick-action">
+
+                    👤 My Profile
+
+                </a>
+
+            </section>
+
+
+
+            <!-- ACCOUNT STATUS -->
+
+            <section class="card">
+
+                <h2>
+                    Account Status
+                </h2>
+
+
+                <div class="account-status">
+
+                    ● Your author account is active.
+
+                </div>
+
+                <br>
+
+
+                <div class="profile-info-item">
+
+                    <strong>
+                        ACCOUNT TYPE
+                    </strong>
+
+                    <span>
+                        Author
+                    </span>
+
+                </div>
+
+
+                <div class="profile-info-item">
+
+                    <strong>
+                        PLATFORM
+                    </strong>
+
+                    <span>
+                        Scopusixteen Publishing
+                    </span>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </div>
+
+
+</main>
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    © 2026 Scopusixteen Publishing.
+    All rights reserved.
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   SCOPUSIXTEEN AUTHOR DASHBOARD
+===================================================== */
+
+
+/* =========================
+   CHECK LOGIN
+========================= */
+
+function checkAuthorLogin() {
+
+    const loggedIn =
+        localStorage.getItem(
+            "scopusixteenLoggedIn"
+        );
+
+
+    const savedUser =
+        localStorage.getItem(
+            "scopusixteenUser"
+        );
+
+
+    if (
+        loggedIn !== "true" ||
+        !savedUser
+    ) {
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================
+   GET AUTHOR
+========================= */
+
+function getAuthor() {
+
+    const savedUser =
+        localStorage.getItem(
+            "scopusixteenUser"
+        );
+
+
+    if (!savedUser) {
+
+        return null;
+
+    }
+
+
+    try {
+
+        return JSON.parse(
+            savedUser
+        );
+
+    } catch(error) {
+
+        console.error(
+            "Unable to read author account.",
+            error
+        );
+
+        return null;
+
+    }
+
+}
+
+
+/* =========================
+   LOAD AUTHOR PROFILE
+========================= */
+
+function loadAuthorProfile() {
+
+    const author =
+        getAuthor();
+
+
+    if (!author) {
+
+        return;
+
+    }
+
+
+    const firstName =
+        author.firstName || "";
+
+
+    const lastName =
+        author.lastName || "";
+
+
+    const fullName =
+        (
+            firstName +
+            " " +
+            lastName
+        ).trim() || "Author";
+
+
+    /* HEADER */
+
+    document.getElementById(
+        "headerAuthorName"
+    ).textContent =
+        fullName;
+
+
+    /* WELCOME */
+
+    document.getElementById(
+        "welcomeName"
+    ).textContent =
+        firstName || fullName;
+
+
+    /* PROFILE */
+
+    document.getElementById(
+        "profileName"
+    ).textContent =
+        fullName;
+
+
+    document.getElementById(
+        "profileEmail"
+    ).textContent =
+        author.email || "—";
+
+
+    document.getElementById(
+        "profileInstitution"
+    ).textContent =
+        author.institution || "—";
+
+
+    document.getElementById(
+        "profileCountry"
+    ).textContent =
+        author.country || "—";
+
+
+    document.getElementById(
+        "profileOrcid"
+    ).textContent =
+        author.orcid || "Not provided";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Administration | Scopusixteen Publishing</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fa;
+    color:#10213b;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    height:72px;
+    background:#061a3b;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+}
+
+.logo-main{
+    font-size:21px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.logo-main span{
+    color:#10b8c3;
+}
+
+.logo-sub{
+    color:#65d7df;
+    font-size:9px;
+    letter-spacing:4px;
+}
+
+.admin-title{
+    font-size:13px;
+    color:#c9d7e8;
+}
+
+
+/* =========================
+   LAYOUT
+========================= */
+
+.layout{
+    display:flex;
+    min-height:calc(100vh - 72px);
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+    width:240px;
+    background:#09254c;
+    color:white;
+    padding:25px 15px;
+    flex-shrink:0;
+}
+
+.sidebar-title{
+    color:#8fa6c3;
+    font-size:10px;
+    font-weight:bold;
+    letter-spacing:1.5px;
+    margin:5px 12px 12px;
+}
+
+.nav-item{
+    display:block;
+    padding:12px 14px;
+    margin-bottom:5px;
+    border-radius:6px;
+    font-size:13px;
+    color:#d7e2ef;
+}
+
+.nav-item:hover,
+.nav-item.active{
+    background:#10aeb9;
+    color:white;
+}
+
+.logout{
+    margin-top:25px;
+    border-top:1px solid #29415f;
+    padding-top:20px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+    flex:1;
+    padding:30px;
+    min-width:0;
+}
+
+.page-heading{
+    margin-bottom:25px;
+}
+
+.page-heading h1{
+    font-family:Georgia,serif;
+    font-size:31px;
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#65748a;
+    font-size:13px;
+}
+
+
+/* =========================
+   STATISTICS
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:25px;
+}
+
+.stat-card{
+    background:white;
+    border:1px solid #dce3ed;
+    border-radius:9px;
+    padding:20px;
+}
+
+.stat-label{
+    color:#7b899c;
+    font-size:11px;
+    font-weight:bold;
+    margin-bottom:9px;
+}
+
+.stat-number{
+    font-size:28px;
+    font-weight:900;
+    color:#09254c;
+}
+
+.stat-info{
+    margin-top:7px;
+    font-size:11px;
+    color:#078b95;
+}
+
+
+/* =========================
+   CONTENT GRID
+========================= */
+
+.content-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:22px;
+}
+
+.card{
+    background:white;
+    border:1px solid #dce3ed;
+    border-radius:9px;
+    padding:22px;
+    margin-bottom:22px;
+}
+
+.card h2{
+    font-family:Georgia,serif;
+    font-size:21px;
+    margin-bottom:18px;
+}
+
+
+/* =========================
+   MANUSCRIPTS
+========================= */
+
+.manuscript{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    padding:15px 0;
+    border-bottom:1px solid #edf1f5;
+}
+
+.manuscript:last-child{
+    border-bottom:none;
+}
+
+.manuscript-title{
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:4px;
+}
+
+.manuscript-author{
+    color:#7b899c;
+    font-size:11px;
+}
+
+.status{
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.pending{
+    background:#fff3d8;
+    color:#a96800;
+}
+
+.review{
+    background:#e7f0ff;
+    color:#285ea8;
+}
+
+.accepted{
+    background:#e8f8ee;
+    color:#237a43;
+}
+
+.rejected{
+    background:#fdeaea;
+    color:#a63232;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.action-btn{
+    border:none;
+    background:#09254c;
+    color:white;
+    padding:10px 15px;
+    border-radius:6px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.action-btn:hover{
+    background:#10aeb9;
+}
+
+.outline-btn{
+    background:white;
+    color:#09254c;
+    border:1px solid #b9c7d7;
+    padding:9px 14px;
+    border-radius:6px;
+    font-size:11px;
+    font-weight:bold;
+}
+
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.quick-action{
+    display:block;
+    padding:13px;
+    background:#f7f9fc;
+    border-radius:6px;
+    margin-bottom:8px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.quick-action:hover{
+    background:#eefafb;
+    color:#078b95;
+}
+
+
+/* =========================
+   ACTIVITY
+========================= */
+
+.activity{
+    display:flex;
+    gap:12px;
+    padding:13px 0;
+    border-bottom:1px solid #edf1f5;
+}
+
+.activity:last-child{
+    border-bottom:none;
+}
+
+.activity-icon{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:#e8f7f8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.activity-text{
+    font-size:12px;
+}
+
+.activity-time{
+    display:block;
+    color:#8a98aa;
+    font-size:10px;
+    margin-top:3px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+    color:#8a98aa;
+    font-size:11px;
+    padding:25px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1000px){
+
+    .sidebar{
+        width:190px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .content-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .header{
+        padding:0 15px;
+    }
+
+    .admin-title{
+        display:none;
+    }
+
+    .layout{
+        display:block;
+    }
+
+    .sidebar{
+        width:100%;
+        padding:10px;
+        display:flex;
+        overflow-x:auto;
+        gap:5px;
+    }
+
+    .sidebar-title,
+    .logout{
+        display:none;
+    }
+
+    .nav-item{
+        white-space:nowrap;
+        margin:0;
+    }
+
+    .main{
+        padding:20px 15px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:450px){
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .manuscript{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+    <div class="admin-title">
+        Administration Panel
+    </div>
+
+</header>
+
+
+<div class="layout">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-title">
+        ADMINISTRATION
+    </div>
+
+    <a href="admin.html" class="nav-item active">
+        🏠 Dashboard
+    </a>
+
+    <a href="admin-manuscripts.html" class="nav-item">
+        📄 Manuscripts
+    </a>
+
+    <a href="admin-authors.html" class="nav-item">
+        👤 Authors
+    </a>
+
+    <a href="admin-reviewers.html" class="nav-item">
+        👨‍🔬 Reviewers
+    </a>
+
+    <a href="admin-journals.html" class="nav-item">
+        📚 Journals
+    </a>
+
+    <a href="admin-payments.html" class="nav-item">
+        💳 Payments
+    </a>
+
+    <a href="message.html" class="nav-item">
+        ✉️ Messages
+    </a>
+
+    <a href="admin-reports.html" class="nav-item">
+        📊 Reports
+    </a>
+
+    <a href="profile.html" class="nav-item">
+        ⚙️ Admin Profile
+    </a>
+
+    <div class="logout">
+
+        <a href="index.html" class="nav-item">
+            ← Back to Website
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+    <div class="page-heading">
+
+        <h1>
+            Administration Dashboard
+        </h1>
+
+        <p>
+            Manage Scopusixteen Publishing operations,
+            submissions, authors, reviewers and payments.
+        </p>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <div class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                TOTAL MANUSCRIPTS
+            </div>
+
+            <div class="stat-number" id="totalManuscripts">
+                0
+            </div>
+
+            <div class="stat-info">
+                All submissions
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                PENDING REVIEW
+            </div>
+
+            <div class="stat-number" id="pendingManuscripts">
+                0
+            </div>
+
+            <div class="stat-info">
+                Awaiting action
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                REGISTERED AUTHORS
+            </div>
+
+            <div class="stat-number" id="totalAuthors">
+                0
+            </div>
+
+            <div class="stat-info">
+                Author accounts
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                PAYMENTS
+            </div>
+
+            <div class="stat-number" id="totalPayments">
+                $0
+            </div>
+
+            <div class="stat-info">
+                Recorded payments
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="content-grid">
+
+
+        <!-- LEFT -->
+
+        <div>
+
+
+            <!-- RECENT MANUSCRIPTS -->
+
+            <section class="card">
+
+                <h2>
+                    Recent Manuscripts
+                </h2>
+
+
+                <div class="manuscript">
+
+                    <div>
+
+                        <div class="manuscript-title">
+                            Machine Learning Approaches for Predicting Protein Structures
+                        </div>
+
+                        <div class="manuscript-author">
+                            A. Jana • Engineering
+                        </div>
+
+                    </div>
+
+                    <span class="status pending">
+                        Pending
+                    </span>
+
+                </div>
+
+
+                <div class="manuscript">
+
+                    <div>
+
+                        <div class="manuscript-title">
+                            Ethical Leadership and Employee Performance
+                        </div>
+
+                        <div class="manuscript-author">
+                            Author • Management
+                        </div>
+
+                    </div>
+
+                    <span class="status review">
+                        Under Review
+                    </span>
+
+                </div>
+
+
+                <div class="manuscript">
+
+                    <div>
+
+                        <div class="manuscript-title">
+                            Climate Change and Vector-Borne Diseases
+                        </div>
+
+                        <div class="manuscript-author">
+                            Researcher • Medical Science
+                        </div>
+
+                    </div>
+
+                    <span class="status accepted">
+                        Accepted
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="outline-btn"
+                    onclick="window.location.href='admin-manuscripts.html'">
+
+                    View All Manuscripts →
+
+                </button>
+
+            </section>
+
+
+            <!-- ACTIVITY -->
+
+            <section class="card">
+
+                <h2>
+                    Recent Activity
+                </h2>
+
+
+                <div class="activity">
+
+                    <div class="activity-icon">
+                        📝
+                    </div>
+
+                    <div class="activity-text">
+
+                        New manuscript submitted.
+
+                        <span class="activity-time">
+                            Today
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <div class="activity-icon">
+                        👤
+                    </div>
+
+                    <div class="activity-text">
+
+                        New author account registered.
+
+                        <span class="activity-time">
+                            Today
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <div class="activity-icon">
+                        💳
+                    </div>
+
+                    <div class="activity-text">
+
+                        Payment record updated.
+
+                        <span class="activity-time">
+                            Yesterday
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <div class="activity-icon">
+                        👨‍🔬
+                    </div>
+
+                    <div class="activity-text">
+
+                        Reviewer assigned to manuscript.
+
+                        <span class="activity-time">
+                            Yesterday
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <section class="card">
+
+                <h2>
+                    Quick Actions
+                </h2>
+
+
+                <a
+                    href="admin-manuscripts.html"
+                    class="quick-action">
+
+                    📄 Manage Manuscripts
+
+                </a>
+
+
+                <a
+                    href="admin-authors.html"
+                    class="quick-action">
+
+                    👤 Manage Authors
+
+                </a>
+
+
+                <a
+                    href="admin-reviewers.html"
+                    class="quick-action">
+
+                    👨‍🔬 Manage Reviewers
+
+                </a>
+
+
+                <a
+                    href="admin-journals.html"
+                    class="quick-action">
+
+                    📚 Manage Journals
+
+                </a>
+
+
+                <a
+                    href="admin-payments.html"
+                    class="quick-action">
+
+                    💳 Manage Payments
+
+                </a>
+
+
+                <a
+                    href="message.html"
+                    class="quick-action">
+
+                    ✉️ Open Messages
+
+                </a>
+
+            </section>
+
+
+            <!-- SYSTEM -->
+
+            <section class="card">
+
+                <h2>
+                    System Status
+                </h2>
+
+
+                <div class="account-item">
+
+                    <strong>
+                        WEBSITE
+                    </strong>
+
+                    <span>
+                        ● Operational
+                    </span>
+
+                </div>
+
+
+                <div class="account-item">
+
+                    <strong>
+                        AUTHOR REGISTRATION
+                    </strong>
+
+                    <span>
+                        ● Enabled
+                    </span>
+
+                </div>
+
+
+                <div class="account-item">
+
+                    <strong>
+                        MANUSCRIPT SUBMISSION
+                    </strong>
+
+                    <span>
+                        ● Enabled
+                    </span>
+
+                </div>
+
+
+                <div class="account-item">
+
+                    <strong>
+                        PAYMENT CENTER
+                    </strong>
+
+                    <span>
+                        ● Enabled
+                    </span>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+</div>
+
+
+<footer class="footer">
+
+    © 2026 Scopusixteen Publishing.
+    Administration Panel.
+
+</footer>
+
+
+<script>
+
+/* =========================
+   LOAD ADMIN STATISTICS
+========================= */
+
+function loadAdminStatistics(){
+
+    /*
+       These values currently use
+       localStorage so the dashboard
+       can work with the prototype.
+
+       Later we can connect this
+       to a real database/backend.
+    */
+
+    let authors = 0;
+
+    const savedUser =
+        localStorage.getItem("scopusixteenUser");
+
+    if(savedUser){
+        authors = 1;
+    }
+
+
+    const manuscripts =
+        JSON.parse(
+            localStorage.getItem(
+                "scopusixteenManuscripts"
+            ) || "[]"
+        );
+
+
+    const payments =
+        JSON.parse(
+            localStorage.getItem(
+                "scopusixteenPayments"
+            ) || "[]"
+        );
+
+
+    document.getElementById(
+        "totalAuthors"
+    ).textContent = authors;
+
+
+    document.getElementById(
+        "totalManuscripts"
+    ).textContent =
+        manuscripts.length;
+
+
+    let pending = 0;
+
+    manuscripts.forEach(function(manuscript){
+
+        if(
+            manuscript.status === "Pending" ||
+            !manuscript.status
+        ){
+            pending++;
+        }
+
+    });
+
+
+    document.getElementById(
+        "pendingManuscripts"
+    ).textContent = pending;
+
+
+    let totalPayment = 0;
+
+    payments.forEach(function(payment){
+
+        const amount =
+            parseFloat(payment.amount);
+
+        if(!isNaN(amount)){
+            totalPayment += amount;
+        }
+
+    });
+
+
+    document.getElementById(
+        "totalPayments"
+    ).textContent =
+        "$" + totalPayment.toFixed(2);
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadAdminStatistics();
+
+    }
+);
+
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Administration | Scopusixteen Publishing</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f6fa;
+    color: #10213b;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    height: 72px;
+    background: #061a3b;
+    color: white;
+    padding: 0 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 9px;
+    letter-spacing: 4px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.admin-label {
+    font-size: 12px;
+    color: #c9d7e8;
+}
+
+.logout-btn {
+    border: 1px solid #65d7df;
+    background: transparent;
+    color: white;
+    padding: 8px 13px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.logout-btn:hover {
+    background: #10aeb9;
+}
+
+
+/* =========================
+   LAYOUT
+========================= */
+
+.layout {
+    display: flex;
+    min-height: calc(100vh - 72px);
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 245px;
+    background: #09254c;
+    color: white;
+    padding: 25px 15px;
+    flex-shrink: 0;
+}
+
+.sidebar-title {
+    color: #7bdfe5;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    padding: 0 12px 12px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px;
+    margin-bottom: 4px;
+    border-radius: 6px;
+    color: #cbd8e8;
+    font-size: 13px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: #10aeb9;
+    color: white;
+}
+
+.sidebar-divider {
+    height: 1px;
+    background: #274266;
+    margin: 18px 5px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    flex: 1;
+    padding: 30px 4%;
+    min-width: 0;
+}
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.page-title h1 {
+    font-family: Georgia, serif;
+    font-size: 31px;
+    margin-bottom: 5px;
+}
+
+.page-title p {
+    color: #65748a;
+    font-size: 13px;
+}
+
+
+/* =========================
+   STAT CARDS
+========================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 22px;
+}
+
+.stat-card small {
+    color: #7b899c;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.stat-card h2 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    margin: 7px 0;
+}
+
+.stat-card p {
+    color: #078b95;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   CONTENT GRID
+========================= */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 22px;
+    margin-bottom: 22px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.card-header h2 {
+    font-family: Georgia, serif;
+    font-size: 21px;
+}
+
+.view-all {
+    color: #078b95;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+th {
+    text-align: left;
+    background: #f7f9fc;
+    color: #6d7c90;
+    font-size: 10px;
+    padding: 12px;
+}
+
+td {
+    padding: 13px 12px;
+    border-top: 1px solid #edf1f5;
+    font-size: 12px;
+}
+
+.status {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 15px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.pending {
+    background: #fff4dc;
+    color: #a96800;
+}
+
+.review {
+    background: #eaf2ff;
+    color: #2863a5;
+}
+
+.accepted {
+    background: #eaf8ef;
+    color: #237a43;
+}
+
+.rejected {
+    background: #fdecec;
+    color: #a53535;
+}
+
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.action {
+    border: 1px solid #dce3ed;
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.action:hover {
+    background: #eefafb;
+    border-color: #10aeb9;
+}
+
+
+/* =========================
+   ACTIVITY
+========================= */
+
+.activity {
+    display: flex;
+    gap: 12px;
+    padding: 13px 0;
+    border-bottom: 1px solid #edf1f5;
+}
+
+.activity:last-child {
+    border-bottom: none;
+}
+
+.activity-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #e9f8fa;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+.activity strong {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.activity p {
+    color: #7b899c;
+    font-size: 11px;
+}
+
+
+/* =========================
+   SYSTEM STATUS
+========================= */
+
+.system-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 0;
+    border-bottom: 1px solid #edf1f5;
+    font-size: 12px;
+}
+
+.system-item:last-child {
+    border-bottom: none;
+}
+
+.online {
+    color: #237a43;
+    font-weight: bold;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+    color: #8a98aa;
+    font-size: 11px;
+    padding: 25px;
+}
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+.mobile-menu {
+    display: none;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 24px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1100px) {
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width:800px) {
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -260px;
+        top: 72px;
+        bottom: 0;
+        z-index: 999;
+        transition: .25s;
+        overflow-y: auto;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .main {
+        width: 100%;
+        padding: 25px 5%;
+    }
+
+    .admin-label {
+        display: none;
+    }
+
+}
+
+@media(max-width:550px) {
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .page-title h1 {
+        font-size: 27px;
+    }
+
+    .header {
+        padding: 0 5%;
+    }
+
+    .logo-main {
+        font-size: 18px;
+    }
+
+    .action-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <span class="admin-label">
+            Administrator
+        </span>
+
+        <button
+            class="logout-btn"
+            onclick="logout()">
+
+            Logout
+
+        </button>
+
+        <button
+            class="mobile-menu"
+            onclick="toggleSidebar()">
+
+            ☰
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<div class="layout">
+
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<aside
+    class="sidebar"
+    id="sidebar">
+
+    <div class="sidebar-title">
+        ADMINISTRATION
+    </div>
+
+
+    <a
+        href="admin-dashboard.html"
+        class="active">
+
+        📊 Dashboard
+
+    </a>
+
+
+    <a
+        href="admin-authors.html">
+
+        👥 Authors
+
+    </a>
+
+
+    <a
+        href="admin-manuscripts.html">
+
+        📝 Manuscripts
+
+    </a>
+
+
+    <a
+        href="admin-review.html">
+
+        🔍 Peer Review
+
+    </a>
+
+
+    <a
+        href="admin-journals.html">
+
+        📚 Journals
+
+    </a>
+
+
+    <a
+        href="admin-payments.html">
+
+        💳 Payments
+
+    </a>
+
+
+    <a
+        href="admin-editors.html">
+
+        👨‍💼 Editors
+
+    </a>
+
+
+    <a
+        href="admin-reviewers.html">
+
+        👨‍🔬 Reviewers
+
+    </a>
+
+
+    <div class="sidebar-divider"></div>
+
+
+    <div class="sidebar-title">
+        COMMUNICATION
+    </div>
+
+
+    <a
+        href="message.html">
+
+        💬 Messages
+
+    </a>
+
+
+    <a
+        href="admin-notifications.html">
+
+        🔔 Notifications
+
+    </a>
+
+
+    <div class="sidebar-divider"></div>
+
+
+    <div class="sidebar-title">
+        SYSTEM
+    </div>
+
+
+    <a
+        href="admin-ai.html">
+
+        🤖 AI Tools
+
+    </a>
+
+
+    <a
+        href="admin-settings.html">
+
+        ⚙️ Settings
+
+    </a>
+
+
+    <a
+        href="index.html">
+
+        🏠 View Website
+
+    </a>
+
+</aside>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="main">
+
+
+    <div class="page-title">
+
+        <h1>
+            Administration Dashboard
+        </h1>
+
+        <p>
+            Manage Scopusixteen Publishing,
+            authors, manuscripts, journals,
+            peer review and payments.
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         STATISTICS
+    ========================= -->
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <small>
+                REGISTERED AUTHORS
+            </small>
+
+            <h2 id="authorCount">
+                0
+            </h2>
+
+            <p>
+                Author accounts
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <small>
+                MANUSCRIPTS
+            </small>
+
+            <h2 id="manuscriptCount">
+                0
+            </h2>
+
+            <p>
+                Total submissions
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <small>
+                PENDING REVIEW
+            </small>
+
+            <h2 id="reviewCount">
+                0
+            </h2>
+
+            <p>
+                Require attention
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <small>
+                PAYMENTS
+            </small>
+
+            <h2 id="paymentCount">
+                0
+            </h2>
+
+            <p>
+                Recorded payments
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         CONTENT
+    ========================= -->
+
+    <div class="content-grid">
+
+
+        <!-- LEFT -->
+
+        <div>
+
+
+            <!-- RECENT MANUSCRIPTS -->
+
+            <section class="card">
+
+                <div class="card-header">
+
+                    <h2>
+                        Recent Manuscripts
+                    </h2>
+
+                    <a
+                        href="admin-manuscripts.html"
+                        class="view-all">
+
+                        View All →
+
+                    </a>
+
+                </div>
+
+
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    MANUSCRIPT
+                                </th>
+
+                                <th>
+                                    AUTHOR
+                                </th>
+
+                                <th>
+                                    JOURNAL
+                                </th>
+
+                                <th>
+                                    STATUS
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="manuscriptTable">
+
+                            <tr>
+
+                                <td>
+                                    No manuscripts yet
+                                </td>
+
+                                <td>
+                                    —
+                                </td>
+
+                                <td>
+                                    —
+                                </td>
+
+                                <td>
+                                    <span class="status pending">
+                                        Waiting
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- QUICK ACTIONS -->
+
+            <section class="card">
+
+                <div class="card-header">
+
+                    <h2>
+                        Quick Actions
+                    </h2>
+
+                </div>
+
+
+                <div class="action-grid">
+
+
+                    <button
+                        class="action"
+                        onclick="location.href='admin-manuscripts.html'">
+
+                        📝 Manage Manuscripts
+
+                    </button>
+
+
+                    <button
+                        class="action"
+                        onclick="location.href='admin-authors.html'">
+
+                        👥 Manage Authors
+
+                    </button>
+
+
+                    <button
+                        class="action"
+                        onclick="location.href='admin-review.html'">
+
+                        🔍 Manage Peer Review
+
+                    </button>
+
+
+                    <button
+                        class="action"
+                        onclick="location.href='admin-payments.html'">
+
+                        💳 Review Payments
+
+                    </button>
+
+
+                    <button
+                        class="action"
+                        onclick="location.href='admin-journals.html'">
+
+                        📚 Manage Journals
+
+                    </button>
+
+
+                    <button
+                        class="action"
+                        onclick="location.href='admin-ai.html'">
+
+                        🤖 AI Publishing Tools
+
+                    </button>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- RECENT ACTIVITY -->
+
+            <section class="card">
+
+                <div class="card-header">
+
+                    <h2>
+                        Recent Activity
+                    </h2>
+
+                </div>
+
+
+                <div id="activityList">
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon">
+                            ℹ️
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Administration system ready
+                            </strong>
+
+                            <p>
+                                Waiting for platform activity.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+
+        <!-- RIGHT -->
+
+        <div>
+
+
+            <!-- SYSTEM STATUS -->
+
+            <section class="card">
+
+                <div class="card-header">
+
+                    <h2>
+                        System Status
+                    </h2>
+
+                </div>
+
+
+                <div class="system-item">
+
+                    <span>
+                        Website
+                    </span>
+
+                    <span class="online">
+                        ● Online
+                    </span>
+
+                </div>
+
+
+                <div class="system-item">
+
+                    <span>
+                        Author Registration
+                    </span>
+
+                    <span class="online">
+                        ● Active
+                    </span>
+
+                </div>
+
+
+                <div class="system-item">
+
+                    <span>
+                        Manuscript Submission
+                    </span>
+
+                    <span class="online">
+                        ● Active
+                    </span>
+
+                </div>
+
+
+                <div class="system-item">
+
+                    <span>
+                        Payment Center
+                    </span>
+
+                    <span class="online">
+                        ● Active
+                    </span>
+
+                </div>
+
+
+                <div class="system-item">
+
+                    <span>
+                        AI Services
+                    </span>
+
+                    <span class="online">
+                        ● Ready
+                    </span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ADMIN ACCOUNT -->
+
+            <section class="card">
+
+                <div class="card-header">
+
+                    <h2>
+                        Administrator
+                    </h2>
+
+                </div>
+
+
+                <div class="system-item">
+
+                    <span>
+                        Account
+                    </span>
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                </div>
+
+
+                <div class="system-item">
+
+                    <span>
+                        Access Level
+                    </span>
+
+                    <strong>
+                        Full Access
+                    </strong>
+
+                </div>
+
+
+                <div class="system-item">
+
+                    <span>
+                        Platform
+                    </span>
+
+                    <strong>
+                        Scopusixteen
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ADMIN LINKS -->
+
+            <section class="card">
+
+                <div class="card-header">
+
+                    <h2>
+                        Administration
+                    </h2>
+
+                </div>
+
+
+                <a
+                    href="admin-settings.html"
+                    class="action"
+                    style="display:block;margin-bottom:9px;">
+
+                    ⚙️ System Settings
+
+                </a>
+
+
+                <a
+                    href="admin-notifications.html"
+                    class="action"
+                    style="display:block;margin-bottom:9px;">
+
+                    🔔 Notifications
+
+                </a>
+
+
+                <a
+                    href="index.html"
+                    class="action"
+                    style="display:block;">
+
+                    🏠 Return to Website
+
+                </a>
+
+            </section>
+
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+</div>
+
+
+
+<footer class="footer">
+
+    © 2026 Scopusixteen Publishing.
+    Administration Panel.
+
+</footer>
+
+
+
+<script>
+
+/* =========================
+   SIDEBAR
+========================= */
+
+function toggleSidebar() {
+
+    document
+        .getElementById("sidebar")
+        .classList
+        .toggle("open");
+
+}
+
+
+/* =========================
+   LOAD ADMIN DATA
+========================= */
+
+function loadAdminData() {
+
+    /*
+       AUTHOR DATA
+
+       This reads the author account
+       created by your registration page.
+
+       Later we will replace this
+       localStorage system with a
+       real database.
+    */
+
+    const savedUser =
+        localStorage.getItem(
+            "scopusixteenUser"
+        );
+
+
+    if (savedUser) {
+
+        document.getElementById(
+            "authorCount"
+        ).textContent = "1";
+
+    }
+
+
+    /*
+       MANUSCRIPT DATA
+    */
+
+    const manuscripts =
+        JSON.parse(
+            localStorage.getItem(
+                "scopusixteenManuscripts"
+            ) || "[]"
+        );
+
+
+    document.getElementById(
+        "manuscriptCou<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Administration | Scopusixteen Publishing</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f6fa;
+    color: #10213b;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    height: 75px;
+    background: #061a3b;
+    color: white;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.admin-label {
+    color: #cbd8e8;
+    font-size: 12px;
+}
+
+
+/* =========================
+   LAYOUT
+========================= */
+
+.admin-layout {
+    display: grid;
+    grid-template-columns: 245px 1fr;
+    min-height: calc(100vh - 75px);
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    background: #09254c;
+    color: white;
+    padding: 25px 15px;
+}
+
+.sidebar-title {
+    color: #8fa6c3;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    padding: 0 12px 12px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    color: #d5e0ee;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.nav-item:hover {
+    background: #123c70;
+    color: white;
+}
+
+.nav-item.active {
+    background: #10aeb9;
+    color: white;
+}
+
+.nav-icon {
+    width: 22px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.sidebar-divider {
+    height: 1px;
+    background: #294565;
+    margin: 18px 10px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    padding: 35px;
+    overflow: hidden;
+}
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.page-heading h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+}
+
+.page-heading p {
+    color: #65748a;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.admin-status {
+    background: #eaf8ef;
+    color: #237a43;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   STATISTICS
+========================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 20px;
+}
+
+.stat-label {
+    color: #7b899c;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.stat-number {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.stat-change {
+    margin-top: 6px;
+    font-size: 11px;
+    color: #10aeb9;
+}
+
+
+/* =========================
+   CONTENT GRID
+========================= */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 22px;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.card-header h2 {
+    font-family: Georgia, serif;
+    font-size: 20px;
+}
+
+.view-link {
+    color: #078b95;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    color: #7b899c;
+    font-size: 10px;
+    padding: 11px;
+    border-bottom: 1px solid #dce3ed;
+    white-space: nowrap;
+}
+
+td {
+    padding: 13px 11px;
+    border-bottom: 1px solid #edf1f5;
+    font-size: 12px;
+}
+
+td strong {
+    font-size: 12px;
+}
+
+.status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.status-pending {
+    background: #fff3df;
+    color: #b96a00;
+}
+
+.status-review {
+    background: #e9f0ff;
+    color: #2c5eaa;
+}
+
+.status-accepted {
+    background: #eaf8ef;
+    color: #237a43;
+}
+
+.status-revision {
+    background: #fff0f0;
+    color: #b23b3b;
+}
+
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.action-grid {
+    display: grid;
+    gap: 9px;
+}
+
+.action {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px;
+    background: #f7f9fc;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.action:hover {
+    background: #eefafb;
+    color: #078b95;
+}
+
+.action-icon {
+    font-size: 19px;
+}
+
+
+/* =========================
+   ACTIVITY
+========================= */
+
+.activity {
+    padding: 13px 0;
+    border-bottom: 1px solid #edf1f5;
+}
+
+.activity:last-child {
+    border-bottom: none;
+}
+
+.activity strong {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.activity span {
+    color: #7b899c;
+    font-size: 10px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    color: #7b899c;
+    font-size: 11px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1100px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width:750px) {
+
+    .admin-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .page-heading {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+}
+
+@media(max-width:550px) {
+
+    .header {
+        padding: 0 20px;
+    }
+
+    .admin-label {
+        display: none;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-heading h1 {
+        font-size: 26px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+    <div class="admin-label">
+        ADMINISTRATION PANEL
+    </div>
+
+</header>
+
+
+<!-- ADMIN LAYOUT -->
+
+<div class="admin-layout">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-title">
+            ADMINISTRATION
+        </div>
+
+
+        <a
+            href="admin-dashboard.html"
+            class="nav-item active">
+
+            <span class="nav-icon">📊</span>
+            Dashboard
+
+        </a>
+
+
+        <a
+            href="admin-authors.html"
+            class="nav-item">
+
+            <span class="nav-icon">👥</span>
+            Authors
+
+        </a>
+
+
+        <a
+            href="admin-manuscripts.html"
+            class="nav-item">
+
+            <span class="nav-icon">📝</span>
+            Manuscripts
+
+        </a>
+
+
+        <a
+            href="admin-journals.html"
+            class="nav-item">
+
+            <span class="nav-icon">📚</span>
+            Journals
+
+        </a>
+
+
+        <a
+            href="admin-reviewers.html"
+            class="nav-item">
+
+            <span class="nav-icon">👨‍🔬</span>
+            Reviewers
+
+        </a>
+
+
+        <a
+            href="admin-editors.html"
+            class="nav-item">
+
+            <span class="nav-icon">👨‍💼</span>
+            Editors
+
+        </a>
+
+
+        <a
+            href="admin-payments.html"
+            class="nav-item">
+
+            <span class="nav-icon">💳</span>
+            Payments
+
+        </a>
+
+
+        <a
+            href="admin-messages.html"
+            class="nav-item">
+
+            <span class="nav-icon">💬</span>
+            Messages
+
+        </a>
+
+
+        <div class="sidebar-divider"></div>
+
+
+        <a
+            href="admin-settings.html"
+            class="nav-item">
+
+            <span class="nav-icon">⚙️</span>
+            Settings
+
+        </a>
+
+
+        <a
+            href="index.html"
+            class="nav-item">
+
+            <span class="nav-icon">🏠</span>
+            View Website
+
+        </a>
+
+
+        <a
+            href="login.html"
+            class="nav-item"
+            onclick="adminLogout()">
+
+            <span class="nav-icon">🚪</span>
+            Logout
+
+        </a>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+
+        <div class="page-heading">
+
+            <div>
+
+                <h1>
+                    Administration Dashboard
+                </h1>
+
+                <p>
+                    Manage Scopusixteen Publishing operations.
+                </p>
+
+            </div>
+
+
+            <span class="admin-status">
+                ● System Online
+            </span>
+
+        </div>
+
+
+        <!-- STATISTICS -->
+
+        <div class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    TOTAL AUTHORS
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="totalAuthors">
+
+                    0
+
+                </div>
+
+                <div class="stat-change">
+                    Registered authors
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    MANUSCRIPTS
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="totalManuscripts">
+
+                    0
+
+                </div>
+
+                <div class="stat-change">
+                    All submissions
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    UNDER REVIEW
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="underReview">
+
+                    0
+
+                </div>
+
+                <div class="stat-change">
+                    Active reviews
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    PENDING PAYMENTS
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="pendingPayments">
+
+                    0
+
+                </div>
+
+                <div class="stat-change">
+                    Awaiting payment
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- CONTENT -->
+
+        <div class="content-grid">
+
+
+            <!-- LEFT -->
+
+            <div>
+
+
+                <!-- RECENT MANUSCRIPTS -->
+
+                <section class="card">
+
+                    <div class="card-header">
+
+                        <h2>
+                            Recent Manuscripts
+                        </h2>
+
+                        <a
+                            href="admin-manuscripts.html"
+                            class="view-link">
+
+                            View All →
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        REFERENCE
+                                    </th>
+
+                                    <th>
+                                        TITLE
+                                    </th>
+
+                                    <th>
+                                        AUTHOR
+                                    </th>
+
+                                    <th>
+                                        STATUS
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            SCX-2026-0001
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        Machine Learning Approaches...
+                                    </td>
+
+                                    <td>
+                                        Author
+                                    </td>
+
+                                    <td>
+                                        <span class="status status-review">
+                                            Under Review
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            SCX-2026-0002
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        Ethical Leadership and Employee...
+                                    </td>
+
+                                    <td>
+                                        Author
+                                    </td>
+
+                                    <td>
+                                        <span class="status status-pending">
+                                            Pending
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            SCX-2026-0003
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        Sustainable Environmental...
+                                    </td>
+
+                                    <td>
+                                        Author
+                                    </td>
+
+                                    <td>
+                                        <span class="status status-revision">
+                                            Revision
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- RECENT ACTIVITY -->
+
+                <section class="card">
+
+                    <div class="card-header">
+
+                        <h2>
+                            Recent Activity
+                        </h2>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <strong>
+                            New manuscript submitted
+                        </strong>
+
+                        <span>
+                            SCX-2026-0003 · Today
+                        </span>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <strong>
+                            Author account registered
+                        </strong>
+
+                        <span>
+                            New author · Today
+                        </span>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <strong>
+                            Payment recorded
+                        </strong>
+
+                        <span>
+                            SCX-PAY-2026-0001 · Yesterday
+                        </span>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <strong>
+                            Manuscript sent for review
+                        </strong>
+
+                        <span>
+                            SCX-2026-0001 · Yesterday
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div>
+
+
+                <!-- QUICK ACTIONS -->
+
+                <section class="card">
+
+                    <div class="card-header">
+
+                        <h2>
+                            Quick Actions
+                        </h2>
+
+                    </div>
+
+
+                    <div class="action-grid">
+
+
+                        <a
+                            href="admin-manuscripts.html"
+                            class="action">
+
+                            <span class="action-icon">
+                                📝
+                            </span>
+
+                            Review Manuscripts
+
+                        </a>
+
+
+                        <a
+                            href="admin-authors.html"
+                            class="action">
+
+                            <span class="action-icon">
+                                👥
+                            </span>
+
+                            Manage Authors
+
+                        </a>
+
+
+                        <a
+                            href="admin-payments.html"
+                            class="action">
+
+                            <span class="action-icon">
+                                💳
+                            </span>
+
+                            Check Payments
+
+                        </a>
+
+
+                        <a
+                            href="admin-journals.html"
+                            class="action">
+
+                            <span class="action-icon">
+                                📚
+                            </span>
+
+                            Manage Journals
+
+                        </a>
+
+
+                        <a
+                            href="admin-reviewers.html"
+                            class="action">
+
+                            <span class="action-icon">
+                                👨‍🔬
+                            </span>
+
+                            Assign Reviewers
+
+                        </a>
+
+
+                        <a
+                            href="admin-messages.html"
+                            class="action">
+
+                            <span class="action-icon">
+                                💬
+                            </span>
+
+                            View Messages
+
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <!-- SYSTEM -->
+
+                <section class="card">
+
+                    <div class="card-header">
+
+                        <h2>
+                            System
+                        </h2>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <strong>
+                            Website
+                        </strong>
+
+                        <span>
+                            Operational
+                        </span>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <strong>
+                            Author Registration
+                        </strong>
+
+                        <span>
+                            Enabled
+                        </span>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <strong>
+                            Manuscript Submission
+                        </strong>
+
+                        <span>
+                            Enabled
+                        </span>
+
+                    </div>
+
+
+                    <div cla

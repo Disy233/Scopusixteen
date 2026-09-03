@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Messages | Scopusixteen Publishing</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f6fa;
+    color: #10213b;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* HEADER */
+
+.header {
+    background: #061a3b;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.back-btn {
+    color: white;
+    border: 1px solid #65d7df;
+    padding: 9px 15px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.back-btn:hover {
+    background: #10aeb9;
+}
+
+
+/* PAGE */
+
+.page {
+    max-width: 1200px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.page-title h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.page-title p {
+    color: #65748a;
+}
+
+
+/* LAYOUT */
+
+.messages-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    min-height: 620px;
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+/* SIDEBAR */
+
+.message-sidebar {
+    border-right: 1px solid #dce3ed;
+    background: #f9fbfd;
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid #dce3ed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-header h2 {
+    font-family: Georgia, serif;
+    font-size: 20px;
+}
+
+.unread-count {
+    background: #10aeb9;
+    color: white;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 20px;
+}
+
+
+/* SEARCH */
+
+.message-search {
+    padding: 15px;
+    border-bottom: 1px solid #dce3ed;
+}
+
+.message-search input {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #cbd6e2;
+    border-radius: 6px;
+    outline: none;
+}
+
+.message-search input:focus {
+    border-color: #10aeb9;
+}
+
+
+/* MESSAGE LIST */
+
+.message-list {
+    max-height: 510px;
+    overflow-y: auto;
+}
+
+.message-item {
+    padding: 16px;
+    border-bottom: 1px solid #e8edf3;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.message-item:hover {
+    background: #eefafb;
+}
+
+.message-item.active {
+    background: #e7f8fa;
+    border-left: 4px solid #10aeb9;
+}
+
+.message-item.unread {
+    background: #f0f8ff;
+}
+
+.message-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.sender {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.message-date {
+    color: #8794a5;
+    font-size: 10px;
+}
+
+.message-subject {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.message-preview {
+    color: #7b899c;
+    font-size: 11px;
+}
+
+
+/* MAIN MESSAGE */
+
+.message-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.message-header {
+    padding: 22px 25px;
+    border-bottom: 1px solid #dce3ed;
+}
+
+.message-header h2 {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.message-meta {
+    color: #7b899c;
+    font-size: 12px;
+}
+
+.message-body {
+    padding: 30px;
+    line-height: 1.8;
+    color: #42536a;
+    flex: 1;
+}
+
+.message-body p {
+    margin-bottom: 16px;
+}
+
+.manuscript-reference {
+    background: #f4f8fc;
+    border-left: 4px solid #10aeb9;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.manuscript-reference strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+/* REPLY */
+
+.reply-box {
+    padding: 20px 25px;
+    border-top: 1px solid #dce3ed;
+}
+
+.reply-box textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+    padding: 12px;
+    border: 1px solid #cbd6e2;
+    border-radius: 6px;
+    outline: none;
+    font-family: Arial, sans-serif;
+}
+
+.reply-box textarea:focus {
+    border-color: #10aeb9;
+}
+
+.reply-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+
+/* BUTTONS */
+
+.btn {
+    border: none;
+    padding: 11px 17px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: #09254c;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #10aeb9;
+}
+
+.btn-light {
+    background: #eef2f7;
+    color: #10213b;
+}
+
+
+/* EMPTY */
+
+.empty-message {
+    display: none;
+    text-align: center;
+    padding: 50px 20px;
+    color: #7b899c;
+}
+
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    color: #7b899c;
+    font-size: 12px;
+    padding: 30px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px) {
+
+    .messages-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .message-sidebar {
+        border-right: none;
+        border-bottom: 1px solid #dce3ed;
+    }
+
+    .message-list {
+        max-height: 300px;
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .header {
+        padding: 15px 5%;
+    }
+
+    .page {
+        margin: 25px auto;
+    }
+
+    .message-body {
+        padding: 20px;
+    }
+
+    .message-header {
+        padding: 18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+
+    <a
+        href="author-dashboard.html"
+        class="back-btn">
+
+        ← Dashboard
+
+    </a>
+
+</header>
+
+
+<!-- PAGE -->
+
+<main class="page">
+
+
+    <div class="page-title">
+
+        <h1>
+            Messages
+        </h1>
+
+        <p>
+            Communicate with editors and the
+            Scopusixteen Publishing team.
+        </p>
+
+    </div>
+
+
+    <div class="messages-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="message-sidebar">
+
+
+            <div class="sidebar-header">
+
+                <h2>
+                    Inbox
+                </h2>
+
+                <span
+                    class="unread-count"
+                    id="unreadCount">
+
+                    2 unread
+
+                </span>
+
+            </div>
+
+
+            <div class="message-search">
+
+                <input
+                    type="search"
+                    id="messageSearch"
+                    placeholder="Search messages..."
+                    onkeyup="searchMessages()">
+
+            </div>
+
+
+            <div
+                class="message-list"
+                id="messageList">
+
+
+                <!-- MESSAGE 1 -->
+
+                <div
+                    class="message-item unread active"
+                    data-subject="Manuscript received"
+                    onclick="openMessage(1)">
+
+                    <div class="message-top">
+
+                        <span class="sender">
+                            Editorial Office
+                        </span>
+
+                        <span class="message-date">
+                            Today
+                        </span>
+
+                    </div>
+
+                    <div class="message-subject">
+                        Manuscript received
+                    </div>
+
+                    <div class="message-preview">
+                        Your manuscript has been successfully received...
+                    </div>
+
+                </div>
+
+
+                <!-- MESSAGE 2 -->
+
+                <div
+                    class="message-item unread"
+                    data-subject="Revision required"
+                    onclick="openMessage(2)">
+
+                    <div class="message-top">
+
+                        <span class="sender">
+                            Dr. Editorial Team
+                        </span>
+
+                        <span class="message-date">
+                            Yesterday
+                        </span>
+
+                    </div>
+
+                    <div class="message-subject">
+                        Revision required
+                    </div>
+
+                    <div class="message-preview">
+                        Please review the comments attached...
+                    </div>
+
+                </div>
+
+
+                <!-- MESSAGE 3 -->
+
+                <div
+                    class="message-item"
+                    data-subject="Payment confirmation"
+                    onclick="openMessage(3)">
+
+                    <div class="message-top">
+
+                        <span class="sender">
+                            Finance Department
+                        </span>
+
+                        <span class="message-date">
+                            Aug 24
+                        </span>
+
+                    </div>
+
+                    <div class="message-subject">
+                        Payment confirmation
+                    </div>
+
+                    <div class="message-preview">
+                        Your payment has been received...
+                    </div>
+
+                </div>
+
+
+                <!-- MESSAGE 4 -->
+
+                <div
+                    class="message-item"
+                    data-subject="Welcome to Scopusixteen"
+                    onclick="openMessage(4)">
+
+                    <div class="message-top">
+
+                        <span class="sender">
+                            Scopusixteen Team
+                        </span>
+
+                        <span class="message-date">
+                            Aug 20
+                        </span>
+
+                    </div>
+
+                    <div class="message-subject">
+                        Welcome to Scopusixteen
+                    </div>
+
+                    <div class="message-preview">
+                        Welcome to your new author account...
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div
+                class="empty-message"
+                id="emptyMessage">
+
+                No messages found.
+
+            </div>
+
+
+        </aside>
+
+
+        <!-- MESSAGE CONTENT -->
+
+        <section class="message-content">
+
+
+            <div class="message-header">
+
+                <h2 id="messageTitle">
+                    Manuscript received
+                </h2>
+
+                <div
+                    class="message-meta"
+                    id="messageMeta">
+
+                    From: Editorial Office · Today
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="message-body"
+                id="messageBody">
+
+
+                <p>
+                    Dear Author,
+                </p>
+
+                <p>
+                    Thank you for submitting your manuscript
+                    to Scopusixteen Publishing.
+                </p>
+
+
+                <div class="manuscript-reference">
+
+                    <strong>
+                        Manuscript Reference
+                    </strong>
+
+                    SCX-2026-0001
+
+                </div>
+
+
+                <p>
+                    Your manuscript has been successfully
+                    received by our editorial office and is
+                    currently undergoing initial editorial
+                    screening.
+                </p>
+
+                <p>
+                    You can monitor the progress of your
+                    submission from your author dashboard.
+                </p>
+
+                <p>
+                    Kind regards,<br>
+                    Scopusixteen Editorial Office
+                </p>
+
+            </div>
+
+
+            <!-- REPLY -->
+
+            <div class="reply-box">
+
+                <textarea
+                    id="replyMessage"
+                    placeholder="Write a reply..."></textarea>
+
+
+                <div class="reply-actions">
+
+                    <button
+                        class="btn btn-light"
+                        onclick="clearReply()">
+
+                        Clear
+
+                    </button>
+
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="sendReply()">
+
+                        Send Reply
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+</main>
+
+
+<footer class="footer">
+
+    © 2026 Scopusixteen Publishing.
+    All rights reserved.
+
+</footer>
+
+
+<script>
+
+/* =========================
+   CHECK AUTHOR
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const savedUser =
+            localStorage.getItem(
+                "scopusixteenUser"
+            );
+
+        if (!savedUser) {
+
+            alert(
+                "Please register or login first."
+            );
+
+            window.location.href =
+                "register.html";
+
+        }
+
+    }
+);
+
+
+/* =========================
+   MESSAGE DATA
+========================= */
+
+const messages = {
+
+    1: {
+
+        title:
+            "Manuscript received",
+
+        meta:
+            "From: Editorial Office · Today",
+
+        body: `
+            <p>Dear Author,</p>
+
+            <p>
+                Thank you for submitting your manuscript
+                to Scopusixteen Publishing.
+            </p>
+
+            <div class="manuscript-reference">
+
+                <strong>
+                    Manuscript Reference
+                </strong>
+
+                SCX-2026-0001
+
+            </div>
+
+            <p>
+                Your manuscript has been successfully
+                received by our editorial office and is
+                currently undergoing initial editorial
+                screening.
+            </p>
+
+            <p>
+                You can monitor the progress of your
+                submission from your author dashboard.
+            </p>
+
+            <p>
+                Kind regards,<br>
+                Scopusixteen Editorial Office
+            </p>
+        `
+
+    },
+
+
+    2: {
+
+        title:
+            "Revision required",
+
+        meta:
+            "From: Dr. Editorial Team · Yesterday",
+
+        body: `
+            <p>Dear Author,</p>
+
+            <p>
+                Your manuscript has been reviewed by the
+                editorial team.
+            </p>
+
+            <div class="manuscript-reference">
+
+                <strong>
+                    Manuscript Reference
+                </strong>
+
+                SCX-2026-0001
+
+            </div>
+
+            <p>
+                A revision is required before the manuscript
+                can proceed to the next stage.
+            </p>
+
+            <p>
+                Please log in to your author dashboard
+                to view the reviewer comments and submit
+                your revised manuscript.
+            </p>
+
+            <p>
+                Kind regards,<br>
+                Editorial Team
+            </p>
+        `
+
+    },
+
+
+    3: {
+
+        title:
+            "Payment confirmation",
+
+        meta:
+            "From: Finance Department · Aug 24",
+
+        body: `
+            <p>Dear Author,</p>
+
+            <p>
+                This is to confirm that your publication
+                payment has been successfully recorded.
+            </p>
+
+            <div class="manuscript-reference">
+
+                <strong>
+                    Payment Reference
+                </strong>
+
+                SCX-PAY-2026-0001
+
+            </div>
+
+            <p>
+                You can view your payment information
+                from the Payment Center.
+            </p>
+
+            <p>
+                Kind regards,<br>
+                Scopusixteen Finance Department
+            </p>
+        `
+
+    },
+
+
+    4: {
+
+        title:
+            "Welcome to Scopusixteen",
+
+        meta:
+            "From: Scopusixteen Team · Aug 20",
+
+        body: `
+            <p>Dear Author,</p>
+
+            <p>
+                Welcome to Scopusixteen Publishing.
+            </p>
+
+            <p>
+                Your author account has been created
+                successfully.
+            </p>
+
+            <p>
+                From your author dashboard you can submit
+                manuscripts, monitor editorial decisions,
+                manage payments and communicate with our
+                publishing team.
+            </p>
+
+            <p>
+                We look forward to working with you.
+            </p>
+
+            <p>
+                Kind regards,<br>
+                Scopusixteen Publishing Team
+            </p>
+        `
+
+    }
+
+};
+
+
+/* =========================
+   OPEN MESSAGE
+========================= */
+
+function openMessage(id) {
+
+    const message =
+        messages[id];
+
+    if (!message) {
+        return;
+    }
+
+
+    document.getElementById(
+        "messageTitle"
+    ).textContent =
+        message.title;
+
+
+    document.getElementById(
+        "messageMeta"
+    ).textContent =
+        message.meta;
+
+
+    document.getElementById(
+        "messageBody"
+    ).innerHTML =
+        message.body;
+
+
+    document
+        .querySelectorAll(".message-item")
+        .forEach(function(item) {
+
+            item.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    event.currentTarget.classList.add(
+        "active"
+    );
+
+
+    /* Mark as read */
+
+    event.currentTarget.classList.remove(
+        "unread"
+    );
+
+
+    updateUnreadCount();
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchMessages() {
+
+    const query =
+        document.getElementById(
+            "messageSearch"
+        ).value.toLowerCase();
+
+
+    const items =
+        document.querySelectorAll(
+            ".message-item"
+        );
+
+
+    let visible = 0;
+
+
+    items.forEach(function(item) {
+
+        const subject =
+            item.dataset.subject
+            .toLowerCase();
+
+
+        const text =
+            item.innerText
+            .toLowerCase();
+
+
+        if (
+            subject.includes(query) ||
+            text.includes(query)
+        ) {
+
+            item.style.display =
+                "block";
+
+            visible++;
+
+        } else {
+
+            item.style.display =
+                "none";
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "emptyMessage"
+    ).style.display =
+        visible === 0
+        ? "block"
+        : "none";
+
+}
+
+
+/* =========================
+   UNREAD COUNT
+========================= */
+
+function updateUnreadCount() {
+
+    const unread =
+        document.querySelectorAll(
+            ".message-item.unread"
+        ).length;
+
+
+    document.getElementById(
+        "unreadCount"
+    ).textContent =
+        unread + " unread";
+
+}
+
+
+/* =========================
+   REPLY
+========================= */
+
+function sendReply() {
+
+    const message =
+        document.getElementById(
+            "replyMessage"
+        ).value.trim();
+
+
+    if (!message) {
+
+        alert(
+            "Please write a message before sending."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "Your reply has been prepared. The messaging system will be connected to the Scopusixteen server when the backend is added."
+    );
+
+
+    document.getElementById(
+        "replyMessage"
+    ).value = "";
+
+}
+
+
+/* =========================
+   CLEAR
+========================= */
+
+function clearReply() {
+
+    document.getElementById(
+        "replyMessage"
+    ).value = "";
+
+}
+
+</script>
+
+</body>
+
+</html>

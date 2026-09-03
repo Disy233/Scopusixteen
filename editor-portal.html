@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Editor Portal | Scopusixteen Publishing</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #10213b;
+}
+
+
+/* HEADER */
+
+.header {
+    background: #061a3b;
+    color: white;
+    padding: 18px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.back-btn {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+
+/* LAYOUT */
+
+.layout {
+    display: flex;
+    min-height: calc(100vh - 75px);
+}
+
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 240px;
+    background: white;
+    border-right: 1px solid #dce3ed;
+    padding: 25px 15px;
+}
+
+.sidebar h3 {
+    font-size: 12px;
+    color: #8a98aa;
+    text-transform: uppercase;
+    margin: 10px 12px 12px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #40516a;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: #eefafb;
+    color: #078b95;
+}
+
+
+/* CONTENT */
+
+.content {
+    flex: 1;
+    padding: 35px;
+    max-width: 1400px;
+}
+
+.portal-section {
+    display: none;
+}
+
+.portal-section.active {
+    display: block;
+}
+
+.page-header {
+    margin-bottom: 25px;
+}
+
+.page-header h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.page-header p {
+    color: #65748a;
+}
+
+
+/* STATISTICS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 20px;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: #09254c;
+}
+
+.stat-card p {
+    color: #65748a;
+    font-size: 12px;
+}
+
+
+/* CARD */
+
+.card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.card h2 {
+    font-family: Georgia, serif;
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: #65748a;
+    font-size: 13px;
+}
+
+
+/* TABLE */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 14px 10px;
+    border-bottom: 1px solid #e3e8ef;
+    text-align: left;
+    font-size: 13px;
+}
+
+th {
+    color: #65748a;
+    font-size: 12px;
+}
+
+
+/* STATUS */
+
+.status {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.status-submitted {
+    background: #eef2ff;
+    color: #4055a5;
+}
+
+.status-review {
+    background: #fff5dc;
+    color: #a96b00;
+}
+
+.status-revision {
+    background: #ffeaea;
+    color: #b52d2d;
+}
+
+.status-accepted {
+    background: #e7f8ee;
+    color: #16834b;
+}
+
+
+/* BUTTON */
+
+.btn {
+    border: none;
+    border-radius: 6px;
+    padding: 9px 14px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background: #09254c;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #10aeb9;
+}
+
+
+/* SEARCH */
+
+.search-box {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd6e2;
+    border-radius: 6px;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px) {
+
+    .sidebar {
+        width: 190px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width:650px) {
+
+    .layout {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #dce3ed;
+    }
+
+    .sidebar a {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <span>
+            Editor
+        </span>
+
+        <a
+            href="index.html"
+            class="back-btn">
+
+            Home
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<div class="layout">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <h3>
+        Editorial
+    </h3>
+
+    <a
+        href="#"
+        class="active"
+        onclick="showSection('dashboard', this)">
+
+        Dashboard
+
+    </a>
+
+
+    <a
+        href="#"
+        onclick="showSection('manuscripts', this)">
+
+        Manuscripts
+
+    </a>
+
+
+    <a
+        href="#"
+        onclick="showSection('reviewers', this)">
+
+        Reviewers
+
+    </a>
+
+
+    <a
+        href="#"
+        onclick="showSection('decisions', this)">
+
+        Decisions
+
+    </a>
+
+
+    <a
+        href="#"
+        onclick="showSection('settings', this)">
+
+        Settings
+
+    </a>
+
+
+    <br>
+
+
+    <a
+        href="index.html">
+
+        ← Return Home
+
+    </a>
+
+</aside>
+
+
+<!-- CONTENT -->
+
+<main class="content">
+
+
+<!-- DASHBOARD -->
+
+<section
+    id="dashboard"
+    class="portal-section active">
+
+    <div class="page-header">
+
+        <h1>
+            Editorial Dashboard
+        </h1>
+
+        <p>
+            Manage manuscripts, peer review and editorial decisions.
+        </p>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat-card">
+
+            <span
+                class="stat-number"
+                id="totalCount">
+
+                0
+
+            </span>
+
+            <p>
+                Total Manuscripts
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span
+                class="stat-number"
+                id="submittedCount">
+
+                0
+
+            </span>
+
+            <p>
+                Submitted
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span
+                class="stat-number"
+                id="reviewCount">
+
+                0
+
+            </span>
+
+            <p>
+                Under Review
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span
+                class="stat-number"
+                id="revisionCount">
+
+                0
+
+            </span>
+
+            <p>
+                Revision Required
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span
+                class="stat-number"
+                id="acceptedCount">
+
+                0
+
+            </span>
+
+            <p>
+                Accepted
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            Recent Manuscripts
+        </h2>
+
+        <p>
+            Latest submissions requiring editorial attention.
+        </p>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Manuscript
+                        </th>
+
+                        <th>
+                            Journal
+                        </th>
+
+                        <th>
+                            Author
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="recentTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MANUSCRIPTS -->
+
+<section
+    id="manuscripts"
+    class="portal-section">
+
+    <div class="page-header">
+
+        <h1>
+            Manuscripts
+        </h1>
+
+        <p>
+            Review and manage submitted manuscripts.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <input
+            type="search"
+            id="editorSearch"
+            class="search-box"
+            placeholder="Search manuscripts..."
+            onkeyup="loadManuscripts()">
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Title
+                        </th>
+
+                        <th>
+                            Journal
+                        </th>
+
+                        <th>
+                            Author
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="manuscriptTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REVIEWERS -->
+
+<section
+    id="reviewers"
+    class="portal-section">
+
+    <div class="page-header">
+
+        <h1>
+            Reviewers
+        </h1>
+
+        <p>
+            Manage peer reviewers and reviewer assignments.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            Reviewer Management
+        </h2>
+
+        <p>
+            Reviewer accounts and assignments will appear here.
+        </p>
+
+        <br>
+
+        <button
+            class="btn btn-primary"
+            onclick="alert('Reviewer management will be connected later.')">
+
+            Add Reviewer
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- DECISIONS -->
+
+<section
+    id="decisions"
+    class="portal-section">
+
+    <div class="page-header">
+
+        <h1>
+            Editorial Decisions
+        </h1>
+
+        <p>
+            Make and manage publication decisions.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            Decision Center
+        </h2>
+
+        <p>
+            Manuscript decisions will be managed from this section.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- SETTINGS -->
+
+<section
+    id="settings"
+    class="portal-section">
+
+    <div class="page-header">
+
+        <h1>
+            Editorial Settings
+        </h1>
+
+        <p>
+            Configure editorial workflow settings.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            Journal Settings
+        </h2>
+
+        <p>
+            Journal configuration, editorial policies and workflow
+            settings will be connected later.
+        </p>
+
+    </div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<script>
+
+/* =========================
+   SECTION NAVIGATION
+========================= */
+
+function showSection(sectionId, element) {
+
+    document.querySelectorAll(
+        ".portal-section"
+    ).forEach(function(section) {
+
+        section.classList.remove("active");
+
+    });
+
+
+    document
+        .getElementById(sectionId)
+        .classList.add("active");
+
+
+    document.querySelectorAll(
+        ".sidebar a"
+    ).forEach(function(link) {
+
+        link.classList.remove("active");
+
+    });
+
+
+    element.classList.add("active");
+
+
+    if (sectionId === "manuscripts") {
+
+        loadManuscripts();
+
+    }
+
+}
+
+
+/* =========================
+   LOAD MANUSCRIPTS
+========================= */
+
+function loadManuscripts() {
+
+    const submissions =
+        JSON.parse(
+            localStorage.getItem(
+                "scopusixteenSubmissions"
+            )
+        ) || [];
+
+
+    const table =
+        document.getElementById(
+            "manuscriptTable"
+        );
+
+
+    const search =
+        document.getElementById(
+            "editorSearch"
+        ).value.toLowerCase();
+
+
+    table.innerHTML = "";
+
+
+    const filtered =
+        submissions.filter(function(item) {
+
+            return (
+
+                item.title.toLowerCase().includes(search) ||
+
+                item.journal.toLowerCase().includes(search) ||
+
+                item.id.toLowerCase().includes(search)
+
+            );
+
+        });
+
+
+    if (filtered.length === 0) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="6"
+                    style="text-align:center;padding:30px;">
+
+                    No manuscripts found.
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    filtered.forEach(function(item) {
+
+        const row =
+            document.createElement("tr");
+
+
+        row.innerHTML = `
+
+            <td>
+                ${item.id}
+            </td>
+
+            <td>
+                ${item.title}
+            </td>
+
+            <td>
+                ${item.journal}
+            </td>
+
+            <td>
+                ${item.authorName}
+            </td>
+
+            <td>
+                <span class="status status-review">
+                    ${item.status}
+                </span>
+            </td>
+
+            <td>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="reviewManuscript('${item.id}')">
+
+                    Review
+
+                </button>
+
+            </td>
+
+        `;
+
+
+        table.appendChild(row);
+
+    });
+
+}
+
+
+/* =========================
+   REVIEW MANUSCRIPT
+========================= */
+
+function reviewManuscript(id) {
+
+    const submissions =
+        JSON.parse(
+            localStorage.getItem(
+                "scopusixteenSubmissions"
+            )
+        ) || [];
+
+
+    const manuscript =
+        submissions.find(function(item) {
+
+            return item.id === id;
+
+        });
+
+
+    if (!manuscript) {
+
+        alert("Manuscript not found.");
+
+        return;
+
+    }
+
+
+    const decision =
+        prompt(
+            "Enter editorial status:\n\n" +
+            "Submitted\n" +
+            "Under Review\n" +
+            "Revision Required\n" +
+            "Accepted\n" +
+            "Rejected"
+        );
+
+
+    if (!decision) {
+
+        return;
+
+    }
+
+
+    const validStatuses = [
+
+        "Submitted",
+        "Under Review",
+        "Revision Required",
+        "Accepted",
+        "Rejected"
+
+    ];
+
+
+    if (!validStatuses.includes(decision)) {
+
+        alert("Invalid status.");
+
+        return;
+
+    }
+
+
+    manuscript.status =
+        decision;
+
+
+    localStorage.setItem(
+        "scopusixteenSubmissions",
+        JSON.stringify(submissions)
+    );
+
+
+    loadManuscripts();
+
+    updateDashboard();
+
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+function updateDashboard() {
+
+    const submissions =
+        JSON.parse(
+            localStorage.getItem(
+                "scopusixteenSubmissions"
+            )
+        ) || [];
+
+
+    document.getElementById(
+        "totalCount"
+    ).textContent =
+        submissions.length;
+
+
+    document.getElementById(
+        "submittedCount"
+    ).textContent =
+        submissions.filter(
+            item => item.status === "Submitted"
+        ).length;
+
+
+    document.getElementById(
+        "reviewCount"
+    ).textContent =
+        submissions.filter(
+            item => item.status === "Under Review"
+        ).length;
+
+
+    document.getElementById(
+        "revisionCount"
+    ).textContent =
+        submissions.filter(
+            item => item.status === "Revision Required"
+        ).length;
+
+
+    document.getElementById(
+        "acceptedCount"
+    ).textContent =
+        submissions.filter(
+            item => item.status === "Accepted"
+        ).length;
+
+
+    const table =
+        document.getElementById(
+            "recentTable"
+        );
+
+
+    table.innerHTML = "";
+
+
+    submissions.slice(-5).reverse()
+    .forEach(function(item) {
+
+        const row =
+            document.createElement("tr");
+
+
+        row.innerHTML = `
+
+            <td>
+                ${item.id}
+            </td>
+
+            <td>
+                ${item.title}
+            </td>
+
+            <td>
+                ${item.journal}
+            </td>
+
+            <td>
+                ${item.authorName}
+            </td>
+
+            <td>
+
+                <span class="status status-review">
+
+                    ${item.status}
+
+                </span>
+
+            </td>
+
+            <td>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="reviewManuscript('${item.id}')">
+
+                    Review
+
+                </button>
+
+            </td>
+
+        `;
+
+
+        table.appendChild(row);
+
+    });
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        updateDashboard();
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Author Portal | Scopusixteen Publishing</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #10213b;
+}
+
+/* HEADER */
+
+.header {
+    background: #061a3b;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.logout-btn {
+    background: transparent;
+    border: 1px solid #65d7df;
+    color: white;
+    padding: 9px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #10aeb9;
+}
+
+
+/* LAYOUT */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    min-height: calc(100vh - 75px);
+}
+
+
+/* SIDEBAR */
+
+.sidebar {
+    background: white;
+    border-right: 1px solid #dce3ed;
+    padding: 25px 15px;
+}
+
+.sidebar h3 {
+    font-size: 12px;
+    color: #8a98aa;
+    margin: 10px 12px 15px;
+    text-transform: uppercase;
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: #53637a;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: #eefafb;
+    color: #078b95;
+    font-weight: bold;
+}
+
+
+/* CONTENT */
+
+.content {
+    padding: 35px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.welcome h1 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    margin-bottom: 6px;
+}
+
+.welcome p {
+    color: #65748a;
+    margin-bottom: 30px;
+}
+
+
+/* STATS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 22px;
+}
+
+.stat-card h3 {
+    color: #65748a;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+/* QUICK ACTIONS */
+
+.section-title {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.action-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 22px;
+    text-decoration: none;
+    color: #10213b;
+    transition: .2s;
+}
+
+.action-card:hover {
+    border-color: #10aeb9;
+    transform: translateY(-2px);
+}
+
+.action-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.action-card h3 {
+    margin-bottom: 5px;
+}
+
+.action-card p {
+    color: #65748a;
+    font-size: 13px;
+}
+
+
+/* PAYMENT HIGHLIGHT */
+
+.payment-card {
+    border: 1px solid #10aeb9;
+    background: linear-gradient(
+        135deg,
+        #f7ffff,
+        #eefafb
+    );
+}
+
+.payment-card .action-icon {
+    font-size: 30px;
+}
+
+
+/* MANUSCRIPTS */
+
+.manuscripts {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    overflow: hidden;
+    margin-bottom: 35px;
+}
+
+.manuscript-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 15px;
+    padding: 18px 20px;
+    border-bottom: 1px solid #edf1f5;
+    font-size: 13px;
+}
+
+.manuscript-row:last-child {
+    border-bottom: none;
+}
+
+.manuscript-header {
+    font-weight: bold;
+    background: #f8fafc;
+    color: #65748a;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.status.submitted {
+    background: #eefafb;
+    color: #078b95;
+}
+
+.status.review {
+    background: #fff7e6;
+    color: #9a6700;
+}
+
+.status.accepted {
+    background: #eaf8ef;
+    color: #237a43;
+}
+
+.status.rejected {
+    background: #fdecec;
+    color: #b42318;
+}
+
+
+/* PROFILE */
+
+.profile {
+    margin-top: 35px;
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 25px;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.profile-item {
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 6px;
+}
+
+.profile-item strong {
+    display: block;
+    font-size: 11px;
+    color: #7b899c;
+    margin-bottom: 4px;
+}
+
+.profile-item span {
+    font-size: 14px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:1000px) {
+
+    .actions {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media(max-width:900px) {
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid #dce3ed;
+    }
+
+    .sidebar a {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .actions {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .header {
+        padding: 15px 5%;
+    }
+
+    .content {
+        padding: 22px 15px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .manuscript-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+    <button
+        class="logout-btn"
+        onclick="logout()">
+
+        Logout
+
+    </button>
+
+</header>
+
+
+<!-- =========================
+     DASHBOARD
+========================= -->
+
+<div class="dashboard">
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================= -->
+
+    <aside class="sidebar">
+
+        <h3>
+            Author Portal
+        </h3>
+
+
+        <a
+            href="author-dashboard.html"
+            class="active">
+
+            🏠 Dashboard
+
+        </a>
+
+
+        <a href="submit-manuscript.html">
+
+            📝 Submit Manuscript
+
+        </a>
+
+
+        <a href="my-manuscripts.html">
+
+            📚 My Manuscripts
+
+        </a>
+
+
+        <a href="track-submission.html">
+
+            📊 Track Submission
+
+        </a>
+
+
+        <!-- NEW PAYMENT LINK -->
+
+        <a href="payment.html">
+
+            💳 Payments
+
+        </a>
+
+
+        <a href="#profile">
+
+            👤 My Profile
+
+        </a>
+
+
+        <a href="index.html">
+
+            🌐 Homepage
+
+        </a>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="content">
+
+
+        <!-- WELCOME -->
+
+        <div class="welcome">
+
+            <h1>
+                Welcome,
+                <span id="authorName">
+                    Author
+                </span>
+            </h1>
+
+            <p>
+                Manage your manuscripts,
+                payments and author profile.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             STATISTICS
+        ========================= -->
+
+        <div class="stats">
+
+
+            <div class="stat-card">
+
+                <h3>
+                    Total Submissions
+                </h3>
+
+                <div
+                    class="stat-number"
+                    id="totalSubmissions">
+
+                    0
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>
+                    Under Review
+                </h3>
+
+                <div
+                    class="stat-number"
+                    id="underReview">
+
+                    0
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>
+                    Accepted
+                </h3>
+
+                <div
+                    class="stat-number"
+                    id="accepted">
+
+                    0
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>
+                    Rejected
+                </h3>
+
+                <div
+                    class="stat-number"
+                    id="rejected">
+
+                    0
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =========================
+             QUICK ACTIONS
+        ========================= -->
+
+        <h2 class="section-title">
+
+            Quick Actions
+
+        </h2>
+
+
+        <div class="actions">
+
+
+            <!-- SUBMIT -->
+
+            <a
+                href="submit-manuscript.html"
+                class="action-card">
+
+                <div class="action-icon">
+                    📝
+                </div>
+
+                <h3>
+                    Submit Manuscript
+                </h3>
+
+                <p>
+                    Submit a new research manuscript
+                    for editorial consideration.
+                </p>
+
+            </a>
+
+
+            <!-- MANUSCRIPTS -->
+
+            <a
+                href="my-manuscripts.html"
+                class="action-card">
+
+                <div class="action-icon">
+                    📚
+                </div>
+
+                <h3>
+                    My Manuscripts
+                </h3>
+
+                <p>
+                    View and track your manuscript
+                    submissions.
+                </p>
+
+            </a>
+
+
+            <!-- PAYMENT -->
+
+            <a
+                href="payment.html"
+                class="action-card payment-card">
+
+                <div class="action-icon">
+                    💳
+                </div>
+
+                <h3>
+                    Payment Center
+                </h3>
+
+                <p>
+                    Pay applicable publication,
+                    processing and editorial fees.
+                </p>
+
+            </a>
+
+
+            <!-- PROFILE -->
+
+            <a
+                href="#profile"
+                class="action-card">
+
+                <div class="action-icon">
+                    👤
+                </div>
+
+                <h3>
+                    My Profile
+                </h3>
+
+                <p>
+                    View your author information.
+                </p>
+
+            </a>
+
+
+        </div>
+
+
+        <!-- =========================
+             RECENT MANUSCRIPTS
+        ========================= -->
+
+        <h2
+            class="section-title"
+            id="manuscripts">
+
+            Recent Manuscripts
+
+        </h2>
+
+
+        <div class="manuscripts">
+
+
+            <div class="manuscript-row manuscript-header">
+
+                <div>
+                    Title
+                </div>
+
+                <div>
+                    Journal
+                </div>
+
+                <div>
+                    Date
+                </div>
+
+                <div>
+                    Status
+                </div>
+
+            </div>
+
+
+            <div id="manuscriptList">
+
+                <div class="manuscript-row">
+
+                    <div>
+                        No manuscripts submitted yet.
+                    </div>
+
+                    <div>
+                        —
+                    </div>
+
+                    <div>
+                        —
+                    </div>
+
+                    <div>
+                        —
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =========================
+             PROFILE
+        ========================= -->
+
+        <div
+            class="profile"
+            id="profile">
+
+
+            <h2 class="section-title">
+
+                Author Profile
+
+            </h2>
+
+
+            <div class="profile-grid">
+
+
+                <div class="profile-item">
+
+                    <strong>
+                        FULL NAME
+                    </strong>
+
+                    <span id="profileName">
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <strong>
+                        EMAIL
+                    </strong>
+
+                    <span id="profileEmail">
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <strong>
+                        INSTITUTION
+                    </strong>
+
+                    <span id="profileInstitution">
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <strong>
+                        COUNTRY
+                    </strong>
+
+                    <span id="profileCountry">
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <strong>
+                        ORCID iD
+                    </strong>
+
+                    <span id="profileOrcid">
+                        Not provided
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+/* =========================
+   LOAD AUTHOR INFORMATION
+========================= */
+
+function loadAuthor() {
+
+    const savedUser =
+        localStorage.getItem(
+            "scopusixteenUser"
+        );
+
+
+    if (!savedUser) {
+        return;
+    }
+
+
+    try {
+
+        const user =
+            JSON.parse(savedUser);
+
+
+        const firstName =
+            user.firstName || "";
+
+
+        const lastName =
+            user.lastName || "";
+
+
+        const fullName =
+            (firstName + " " + lastName)
+            .trim();
+
+
+        document.getElementById(
+            "authorName"
+        ).textContent =
+            firstName || "Author";
+
+
+        document.getElementById(
+            "profileName"
+        ).textContent =
+            fullName || "—";
+
+
+        document.getElementById(
+            "profileEmail"
+        ).textContent =
+            user.email || "—";
+
+
+        document.getElementById(
+            "profileInstitution"
+        ).textContent =
+            user.institution || "—";
+
+
+        document.getElementById(
+            "profileCountry"
+        ).textContent =
+            user.country || "—";
+
+
+        document.getElementById(
+            "profileOrcid"
+        ).textContent =
+            user.orcid || "Not provided";
+
+
+    } catch (error) {
+
+        console.error(
+            "Unable to load author information.",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================
+   LOAD MANUSCRIPTS
+========================= */
+
+function loadManuscripts() {
+
+
+    const saved =
+        localStorage.getItem(
+            "scopusixteenManuscripts"
+        );
+
+
+    let manuscripts = [];
+
+
+    try {
+
+        manuscripts =
+            saved
+            ? JSON.parse(saved)
+            : [];
+
+    } catch (error) {
+
+        manuscripts = [];
+
+    }
+
+
+    if (!Array.isArray(manuscripts)) {
+
+        manuscripts = [];
+
+    }
+
+
+    /* =========================
+       STATISTICS
+    ========================= */
+
+    let total =
+        manuscripts.length;
+
+    let review = 0;
+
+    let accepted = 0;
+
+    let rejected = 0;
+
+
+    manuscripts.forEach(
+        function(manuscript) {
+
+
+            const status =
+                (manuscript.status || "")
+                .toLowerCase();
+
+
+            if (
+                status === "under review" ||
+                status === "review"
+            ) {
+
+                review++;
+
+            }
+
+
+            if (
+                status === "accepted"
+            ) {
+
+                accepted++;
+
+            }
+
+
+            if (
+                status === "rejected"
+            ) {
+
+                rejected++;
+
+            }
+
+        }
+    );
+
+
+    document.getElementById(
+        "totalSubmissions"
+    ).textContent =
+        total;
+
+
+    document.getElementById(
+        "underReview"
+    ).textContent =
+        review;
+
+
+    document.getElementById(
+        "accepted"
+    ).textContent =
+        accepted;
+
+
+    document.getElementById(
+        "rejected"
+    ).textContent =
+        rejected;
+
+
+    /* =========================
+       MANUSCRIPT LIST
+    ========================= */
+
+    const list =
+        document.getElementById(
+            "manuscriptList"
+        );
+
+
+    if (!list) {
+        return;
+    }
+
+
+    if (manuscripts.length === 0) {
+
+
+        list.innerHTML = `
+
+            <div class="manuscript-row">
+
+                <div>
+                    No manuscripts submitted yet.
+                </div>
+
+                <div>
+                    —
+                </div>
+
+                <div>
+                    —
+                </div>
+
+                <div>
+                    —
+                </div>
+
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    /*
+       Create a copy before sorting.
+       This prevents changing the
+       original localStorage array.
+    */
+
+    const newestFirst =
+        manuscripts
+        .slice()
+        .reverse();
+
+
+    list.innerHTML =
+        newestFirst
+        .slice(0, 5)
+        .map(
+            function(manuscript) {
+
+
+                let statusClass =
+                    "submitted";
+
+
+                const status =
+                    (
+                        manuscript.status ||
+                        "Submitted"
+                    ).toLowerCase();
+
+
+                if (
+                    status === "under review" ||
+                    status === "review"
+                ) {
+
+                    statusClass =
+                        "review";
+
+                }
+
+
+                if (
+                    status === "accepted"
+                ) {
+
+                    statusClass =
+                        "accepted";
+
+                }
+
+
+                if (
+                    status === "rejected"
+                ) {
+
+                    statusClass =
+                        "rejected";
+
+                }
+
+
+                return `
+
+                    <div class="manuscript-row">
+
+                        <div>
+
+                            ${escapeHTML(
+                                manuscript.title ||
+                                "Untitled Manuscript"
+                            )}
+
+                        </div>
+
+
+                        <div>
+
+                            ${escapeHTML(
+                                manuscript.journal ||
+                                "—"
+                            )}
+
+                        </div>
+
+
+                        <div>
+
+                            ${escapeHTML(
+                                manuscript.date ||
+                                "—"
+                            )}
+
+                        </div>
+
+
+                        <div>
+
+                            <span
+                                class="status ${statusClass}">
+
+                                ${escapeHTML(
+                                    manuscript.status ||
+                                    "Submitted"
+                                )}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+/* =========================
+   HTML SECURITY
+========================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        text == null
+        ? ""
+        : String(text);
+
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout() {
+
+    localStorage.removeItem(
+        "scopusixteenLoggedIn"
+    );
+
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* =========================
+   START DASHBOARD
+========================= */
+
+document.addEventListener(
+    "DOMContentLoa<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Author Portal | Scopusixteen Publishing</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #10213b;
+}
+
+/* HEADER */
+
+.header {
+    background: #061a3b;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.logout-btn {
+    background: transparent;
+    border: 1px solid #65d7df;
+    color: white;
+    padding: 9px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #10aeb9;
+}
+
+/* LAYOUT */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    min-height: calc(100vh - 75px);
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    background: white;
+    border-right: 1px solid #dce3ed;
+    padding: 25px 15px;
+}
+
+.sidebar h3 {
+    font-size: 12px;
+    color: #8a98aa;
+    margin: 10px 12px 15px;
+    text-transform: uppercase;
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: #53637a;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: #eefafb;
+    color: #078b95;
+    font-weight: bold;
+}
+
+/* CONTENT */
+
+.content {
+    padding: 35px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.welcome h1 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    margin-bottom: 6px;
+}
+
+.welcome p {
+    color: #65748a;
+    margin-bottom: 30px;
+}
+
+/* STATS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 22px;
+}
+
+.stat-card h3 {
+    color: #65748a;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* QUICK ACTIONS */
+
+.section-title {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.action-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 22px;
+    text-decoration: none;
+    color: #10213b;
+    transition: .2s;
+}
+
+.action-card:hover {
+    border-color: #10aeb9;
+    transform: translateY(-2px);
+}
+
+.action-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.action-card h3 {
+    margin-bottom: 5px;
+}
+
+.action-card p {
+    color: #65748a;
+    font-size: 13px;
+}
+
+/* MANUSCRIPTS */
+
+.manuscripts {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    overflow: hidden;
+    margin-bottom: 35px;
+}
+
+.manuscript-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 15px;
+    padding: 18px 20px;
+    border-bottom: 1px solid #edf1f5;
+    font-size: 13px;
+}
+
+.manuscript-row:last-child {
+    border-bottom: none;
+}
+
+.manuscript-header {
+    font-weight: bold;
+    background: #f8fafc;
+    color: #65748a;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.status.submitted {
+    background: #eefafb;
+    color: #078b95;
+}
+
+.status.review {
+    background: #fff7e6;
+    color: #9a6700;
+}
+
+.status.accepted {
+    background: #eaf8ef;
+    color: #237a43;
+}
+
+.status.rejected {
+    background: #fdecec;
+    color: #b42318;
+}
+
+/* PROFILE */
+
+.profile {
+    margin-top: 35px;
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 25px;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.profile-item {
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 6px;
+}
+
+.profile-item strong {
+    display: block;
+    font-size: 11px;
+    color: #7b899c;
+    margin-bottom: 4px;
+}
+
+.profile-item span {
+    font-size: 14px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px) {
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid #dce3ed;
+    }
+
+    .sidebar a {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .actions {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width:600px) {
+
+    .header {
+        padding: 15px 5%;
+    }
+
+    .content {
+        padding: 22px 15px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .manuscript-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+    <button
+        class="logout-btn"
+        onclick="logout()">
+
+        Logout
+
+    </button>
+
+</header>
+
+
+<!-- DASHBOARD -->
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <h3>Author Portal</h3>
+
+        <a href="author-dashboard.html" class="active">
+            🏠 Dashboard
+        </a>
+
+        <a href="submit-manuscript.html">
+            📝 Submit Manuscript
+        </a>
+
+        <a href="my-manuscripts.html">
+            📚 My Manuscripts
+        </a>
+
+        <a href="track-submission.html">
+            📊 Track Submission
+        </a>
+
+        <a href="#profile">
+            👤 My Profile
+        </a>
+
+        <a href="index.html">
+            🌐 Homepage
+        </a>
+
+    </aside>
+
+
+    <!-- CONTENT -->
+
+    <main class="content">
+
+        <!-- WELCOME -->
+
+        <div class="welcome">
+
+            <h1>
+                Welcome, <span id="authorName">Author</span>
+            </h1>
+
+            <p>
+                Manage your manuscripts and author profile.
+            </p>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <h3>
+                    Total Submissions
+                </h3>
+
+                <div
+                    class="stat-number"
+                    id="totalSubmissions">
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>
+                    Under Review
+                </h3>
+
+                <div
+                    class="stat-number"
+                    id="underReview">
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>
+                    Accepted
+                </h3>
+
+                <div
+                    class="stat-number"
+                    id="accepted">
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>
+                    Rejected
+                </h3>
+
+                <div
+                    class="stat-number"
+                    id="rejected">
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <h2 class="section-title">
+            Quick Actions
+        </h2>
+
+        <div class="actions">
+
+            <a
+                href="submit-manuscript.html"
+                class="action-card">
+
+                <div class="action-icon">
+                    📝
+                </div>
+
+                <h3>
+                    Submit Manuscript
+                </h3>
+
+                <p>
+                    Submit a new research manuscript
+                    for editorial consideration.
+                </p>
+
+            </a>
+
+
+            <a
+                href="my-manuscripts.html"
+                class="action-card">
+
+                <div class="action-icon">
+                    📚
+                </div>
+
+                <h3>
+                    My Manuscripts
+                </h3>
+
+                <p>
+                    View and track your manuscript
+                    submissions.
+                </p>
+
+            </a>
+
+
+            <a
+                href="#profile"
+                class="action-card">
+
+                <div class="action-icon">
+                    👤
+                </div>
+
+                <h3>
+                    My Profile
+                </h3>
+
+                <p>
+                    View your author information.
+                </p>
+
+            </a>
+
+        </div>
+
+
+        <!-- MANUSCRIPTS -->
+
+        <h2
+            class="section-title"
+            id="manuscripts">
+
+            Recent Manuscripts
+
+        </h2>
+
+
+        <div class="manuscripts">
+
+            <div class="manuscript-row manuscript-header">
+
+                <div>Title</div>
+
+                <div>Journal</div>
+
+                <div>Date</div>
+
+                <div>Status</div>
+
+            </div>
+
+
+            <div id="manuscriptList">
+
+                <div class="manuscript-row">
+
+                    <div>
+                        No manuscripts submitted yet.
+                    </div>
+
+                    <div>—</div>
+
+                    <div>—</div>
+
+                    <div>—</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROFILE -->
+
+        <div
+            class="profile"
+            id="profile">
+
+            <h2 class="section-title">
+                Author Profile
+            </h2>
+
+            <div class="profile-grid">
+
+                <div class="profile-item">
+
+                    <strong>
+                        FULL NAME
+                    </strong>
+
+                    <span id="profileName">
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <strong>
+                        EMAIL
+                    </strong>
+
+                    <span id="profileEmail">
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <strong>
+                        INSTITUTION
+                    </strong>
+
+                    <span id="profileInstitution">
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <strong>
+                        COUNTRY
+                    </strong>
+
+                    <span id="profileCountry">
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <strong>
+                        ORCID iD
+                    </strong>
+
+                    <span id="profileOrcid">
+                        Not provided
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+/* =========================
+   LOAD AUTHOR
+========================= */
+
+const savedUser =
+    localStorage.getItem("scopusixteenUser");
+
+if (savedUser) {
+
+    const user =
+        JSON.parse(savedUser);
+
+    document.getElementById("authorName").textContent =
+        user.firstName || "Author";
+
+    document.getElementById("profileName").textContent =
+        (user.firstName || "") + " " +
+        (user.lastName || "");
+
+    document.getElementById("profileEmail").textContent =
+        user.email || "—";
+
+    document.getElementById("profileInstitution").textContent =
+        user.institution || "—";
+
+    document.getElementById("profileCountry").textContent =
+        user.country || "—";
+
+    if (user.orcid) {
+
+        document.getElementById("profileOrcid").textContent =
+            user.orcid;
+
+    }
+
+}
+
+
+/* =========================
+   LOAD MANUSCRIPTS
+========================= */
+
+function loadManuscripts() {
+
+    const saved =
+        localStorage.getItem(
+            "scopusixteenManuscripts"
+        );
+
+    const manuscripts =
+        saved ? JSON.parse(saved) : [];
+
+
+    /* Statistics */
+
+    let total = manuscripts.length;
+
+    let review = 0;
+
+    let accepted = 0;
+
+    let rejected = 0;
+
+
+    manuscripts.forEach(function(manuscript) {
+
+        const status =
+            (manuscript.status || "")
+            .toLowerCase();
+
+        if (
+            status === "under review" ||
+            status === "review"
+        ) {
+            review++;
+        }
+
+        if (status === "accepted") {
+            accepted++;
+        }
+
+        if (status === "rejected") {
+            rejected++;
+        }
+
+    });
+
+
+    document.getElementById(
+        "totalSubmissions"
+    ).textContent = total;
+
+    document.getElementById(
+        "underReview"
+    ).textContent = review;
+
+    document.getElementById(
+        "accepted"
+    ).textContent = accepted;
+
+    document.getElementById(
+        "rejected"
+    ).textContent = rejected;
+
+
+    /* Manuscript list */
+
+    const list =
+        document.getElementById(
+            "manuscriptList"
+        );
+
+
+    if (manuscripts.length === 0) {
+
+        list.innerHTML = `
+
+            <div class="manuscript-row">
+
+                <div>
+                    No manuscripts submitted yet.
+                </div>
+
+                <div>—</div>
+
+                <div>—</div>
+
+                <div>—</div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /* Show newest first */
+
+    manuscripts.reverse();
+
+
+    list.innerHTML = manuscripts
+        .slice(0, 5)
+        .map(function(manuscript) {
+
+            let statusClass =
+                "submitted";
+
+            const status =
+                (manuscript.status || "Submitted")
+                .toLowerCase();
+
+            if (
+                status === "under review" ||
+                status === "review"
+            ) {
+                statusClass = "review";
+            }
+
+            if (status === "accepted") {
+                statusClass = "accepted";
+            }
+
+            if (status === "rejected") {
+                statusClass = "rejected";
+            }
+
+            return `
+
+                <div class="manuscript-row">
+
+                    <div>
+                        ${escapeHTML(
+                            manuscript.title ||
+                            "Untitled Manuscript"
+                        )}
+                    </div>
+
+                    <div>
+                        ${escapeHTML(
+                            manuscript.journal ||
+                            "—"
+                        )}
+                    </div>
+
+                    <div>
+                        ${escapeHTML(
+                            manuscript.date ||
+                            "—"
+                        )}
+                    </div>
+
+                    <div>
+
+                        <span
+                            class="status ${statusClass}">
+
+                            ${escapeHTML(
+                                manuscript.status ||
+                                "Submitted"
+                            )}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        })
+        .join("");
+
+}
+
+
+/* =========================
+   SAFE TEXT
+========================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout() {
+
+    localStorage.removeItem(
+        "scopusixteenLoggedIn"
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+loadManuscripts();
+
+</script>
+
+</body>
+
+</html>

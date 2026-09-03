@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Manuscripts | Scopusixteen Publishing</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #10213b;
+    line-height: 1.6;
+}
+
+/* HEADER */
+
+.header {
+    background: #061a3b;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.back-link {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.back-link:hover {
+    color: #65d7df;
+}
+
+/* MAIN */
+
+.main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.page-title h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    margin-bottom: 6px;
+}
+
+.page-title p {
+    color: #65748a;
+    font-size: 14px;
+}
+
+/* ACTION BAR */
+
+.action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    flex: 1;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd6e2;
+    border-radius: 7px;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-box input:focus {
+    border-color: #10aeb9;
+}
+
+.submit-btn {
+    background: #09254c;
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.submit-btn:hover {
+    background: #10aeb9;
+}
+
+/* TABLE CARD */
+
+.table-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,.04);
+}
+
+/* TABLE */
+
+.table-header,
+.manuscript-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 120px 130px 110px;
+    gap: 15px;
+    align-items: center;
+}
+
+.table-header {
+    background: #f8fafc;
+    color: #65748a;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 16px 20px;
+}
+
+.manuscript-row {
+    padding: 20px;
+    border-top: 1px solid #edf1f5;
+    font-size: 13px;
+}
+
+.manuscript-title {
+    font-weight: bold;
+    color: #10213b;
+}
+
+.manuscript-id {
+    display: block;
+    color: #8a98aa;
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+.journal {
+    color: #53637a;
+}
+
+.date {
+    color: #53637a;
+}
+
+/* STATUS */
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.status.submitted {
+    background: #eefafb;
+    color: #078b95;
+}
+
+.status.review {
+    background: #fff7e6;
+    color: #9a6700;
+}
+
+.status.accepted {
+    background: #eaf8ef;
+    color: #237a43;
+}
+
+.status.rejected {
+    background: #fff0f0;
+    color: #b42318;
+}
+
+/* VIEW BUTTON */
+
+.view-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #078b95;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.view-btn:hover {
+    text-decoration: underline;
+}
+
+/* EMPTY STATE */
+
+.empty-state {
+    text-align: center;
+    padding: 70px 25px;
+}
+
+.empty-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.empty-state h2 {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    color: #65748a;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+.empty-submit {
+    display: inline-block;
+    background: #09254c;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.empty-submit:hover {
+    background: #10aeb9;
+}
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    padding: 30px;
+    color: #8a98aa;
+    font-size: 11px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px) {
+
+    .action-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .submit-btn {
+        text-align: center;
+    }
+
+    .table-card {
+        overflow-x: auto;
+    }
+
+    .table-header,
+    .manuscript-row {
+        min-width: 850px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+
+    <a
+        href="author-dashboard.html"
+        class="back-link">
+
+        ← Back to Dashboard
+
+    </a>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+    <div class="page-title">
+
+        <h1>
+            My Manuscripts
+        </h1>
+
+        <p>
+            View and track all manuscripts submitted
+            through your Scopusixteen author account.
+        </p>
+
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <div class="action-bar">
+
+        <div class="search-box">
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search by title, manuscript ID or journal..."
+                oninput="searchManuscripts()"
+            >
+
+        </div>
+
+
+        <a
+            href="submit-manuscript.html"
+            class="submit-btn">
+
+            + Submit New Manuscript
+
+        </a>
+
+    </div>
+
+
+    <!-- MANUSCRIPTS -->
+
+    <div class="table-card" id="manuscriptContainer">
+
+
+        <!-- TABLE HEADER -->
+
+        <div class="table-header">
+
+            <div>
+                Manuscript
+            </div>
+
+            <div>
+                Journal
+            </div>
+
+            <div>
+                Date
+            </div>
+
+            <div>
+                Status
+            </div>
+
+            <div>
+                Action
+            </div>
+
+        </div>
+
+
+        <!-- MANUSCRIPTS WILL LOAD HERE -->
+
+        <div id="manuscriptList"></div>
+
+
+    </div>
+
+
+</main>
+
+
+<footer class="footer">
+
+    © 2026 Scopusixteen Publishing.
+    All rights reserved.
+
+</footer>
+
+
+<script>
+
+/* =========================
+   LOAD MANUSCRIPTS
+========================= */
+
+function loadManuscripts() {
+
+    const list =
+        document.getElementById("manuscriptList");
+
+    const manuscripts =
+        JSON.parse(
+            localStorage.getItem(
+                "scopusixteenManuscripts"
+            )
+        ) || [];
+
+
+    /* EMPTY STATE */
+
+    if (manuscripts.length === 0) {
+
+        list.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    📚
+                </div>
+
+                <h2>
+                    No Manuscripts Yet
+                </h2>
+
+                <p>
+                    You have not submitted any manuscripts.
+                    Your submissions will appear here.
+                </p>
+
+                <a
+                    href="submit-manuscript.html"
+                    class="empty-submit">
+
+                    Submit Your First Manuscript
+
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    manuscripts.forEach(function(manuscript, index) {
+
+        const row =
+            document.createElement("div");
+
+        row.className =
+            "manuscript-row";
+
+
+        let statusClass =
+            "submitted";
+
+
+        if (
+            manuscript.status ===
+            "Under Review"
+        ) {
+
+            statusClass = "review";
+
+        }
+
+
+        if (
+            manuscript.status ===
+            "Accepted"
+        ) {
+
+            statusClass = "accepted";
+
+        }
+
+
+        if (
+            manuscript.status ===
+            "Rejected"
+        ) {
+
+            statusClass = "rejected";
+
+        }
+
+
+        row.innerHTML = `
+
+            <div>
+
+                <div class="manuscript-title">
+                    ${escapeHTML(manuscript.title)}
+                </div>
+
+                <span class="manuscript-id">
+                    ${escapeHTML(manuscript.id)}
+                </span>
+
+            </div>
+
+
+            <div class="journal">
+                ${escapeHTML(manuscript.journal)}
+            </div>
+
+
+            <div class="date">
+                ${escapeHTML(manuscript.date)}
+            </div>
+
+
+            <div>
+
+                <span class="status ${statusClass}">
+                    ${escapeHTML(manuscript.status)}
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <a
+                    href="#"
+                    class="view-btn"
+                    onclick="viewManuscript(${index}); return false;">
+
+                    View Details
+
+                </a>
+
+            </div>
+
+        `;
+
+
+        list.appendChild(row);
+
+    });
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchManuscripts() {
+
+    const search =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+
+    const rows =
+        document.querySelectorAll(
+            ".manuscript-row"
+        );
+
+
+    rows.forEach(function(row) {
+
+        const text =
+            row.textContent.toLowerCase();
+
+
+        if (
+            text.includes(search)
+        ) {
+
+            row.style.display =
+                "grid";
+
+        } else {
+
+            row.style.display =
+                "none";
+
+        }
+
+    });
+
+}
+
+
+/* =========================
+   VIEW MANUSCRIPT
+========================= */
+
+function viewManuscript(index) {
+
+    const manuscripts =
+        JSON.parse(
+            localStorage.getItem(
+                "scopusixteenManuscripts"
+            )
+        ) || [];
+
+
+    const manuscript =
+        manuscripts[index];
+
+
+    if (!manuscript) {
+
+        alert(
+            "Manuscript information could not be found."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+
+        "Manuscript Details\n\n" +
+
+        "ID: " +
+        manuscript.id +
+
+        "\n\nTitle: " +
+        manuscript.title +
+
+        "\n\nJournal: " +
+        manuscript.journal +
+
+        "\n\nDate: " +
+        manuscript.date +
+
+        "\n\nStatus: " +
+        manuscript.status
+
+    );
+
+}
+
+
+/* =========================
+   HTML SECURITY
+========================= */
+
+function escapeHTML(value) {
+
+    if (!value) {
+        return "";
+    }
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+loadManuscripts();
+
+</script>
+
+
+</body>
+
+</html><!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Manuscripts | Scopusixteen Publishing</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #10213b;
+}
+
+/* HEADER */
+
+.header {
+    background: #061a3b;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.back-link {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.back-link:hover {
+    color: #65d7df;
+}
+
+/* MAIN */
+
+.main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* TITLE */
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.page-title h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    margin-bottom: 6px;
+}
+
+.page-title p {
+    color: #65748a;
+    font-size: 14px;
+}
+
+/* TOP ACTIONS */
+
+.top-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 15px;
+}
+
+.submit-btn {
+    background: #09254c;
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.submit-btn:hover {
+    background: #10aeb9;
+}
+
+/* SUMMARY */
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.summary-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 8px;
+    padding: 18px;
+}
+
+.summary-card h3 {
+    font-size: 12px;
+    color: #65748a;
+    margin-bottom: 8px;
+}
+
+.summary-number {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* TABLE */
+
+.manuscript-container {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    overflow: hidden;
+}
+
+.table-header,
+.manuscript-item {
+    display: grid;
+    grid-template-columns:
+        1.8fr
+        1.3fr
+        1fr
+        .9fr
+        1.2fr;
+    gap: 15px;
+    align-items: center;
+}
+
+.table-header {
+    background: #f8fafc;
+    color: #65748a;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 17px 20px;
+}
+
+.manuscript-item {
+    padding: 20px;
+    border-top: 1px solid #edf1f5;
+    font-size: 13px;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.manuscript-id {
+    color: #078b95;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.journal {
+    color: #53637a;
+}
+
+.date {
+    color: #53637a;
+}
+
+/* STATUS */
+
+.status {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.status.submitted {
+    background: #eefafb;
+    color: #078b95;
+}
+
+.status.review {
+    background: #fff7e6;
+    color: #9a6700;
+}
+
+.status.accepted {
+    background: #eaf8ef;
+    color: #237a43;
+}
+
+.status.rejected {
+    background: #fdecec;
+    color: #b42318;
+}
+
+/* ACTIONS */
+
+.item-actions {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.small-btn {
+    border: none;
+    padding: 7px 9px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.view-btn {
+    background: #eef2f7;
+    color: #10213b;
+}
+
+.track-btn {
+    background: #09254c;
+    color: white;
+}
+
+.small-btn:hover {
+    opacity: .85;
+}
+
+/* EMPTY */
+
+.empty {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.empty h2 {
+    font-family: Georgia, serif;
+    margin-bottom: 8px;
+}
+
+.empty p {
+    color: #65748a;
+    margin-bottom: 20px;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    max-width: 650px;
+    width: 100%;
+    margin: 60px auto;
+    border-radius: 10px;
+    padding: 30px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.modal-header h2 {
+    font-family: Georgia, serif;
+}
+
+.close {
+    border: none;
+    background: transparent;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.detail {
+    margin-bottom: 18px;
+}
+
+.detail strong {
+    display: block;
+    color: #7b899c;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+.detail span,
+.detail p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    padding: 30px;
+    color: #8a98aa;
+    font-size: 11px;
+}
+
+/* MOBILE */
+
+@media(max-width:850px) {
+
+    .summary {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .table-header {
+        display: none;
+    }
+
+    .manuscript-item {
+        display: block;
+        padding: 20px;
+    }
+
+    .manuscript-item > div {
+        margin-bottom: 12px;
+    }
+
+    .item-actions {
+        margin-top: 15px;
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .header {
+        padding: 15px 5%;
+    }
+
+    .main {
+        margin: 25px auto;
+        padding: 0 15px;
+    }
+
+    .page-title h1 {
+        font-size: 27px;
+    }
+
+    .summary {
+        grid-template-columns: 1fr;
+    }
+
+    .top-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .submit-btn {
+        text-align: center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+    <a
+        href="author-dashboard.html"
+        class="back-link">
+
+        ← Author Dashboard
+
+    </a>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+    <!-- TITLE -->
+
+    <div class="page-title">
+
+        <h1>
+            My Manuscripts
+        </h1>
+
+        <p>
+            View and manage your manuscript submissions.
+        </p>
+
+    </div>
+
+
+    <!-- TOP ACTION -->
+
+    <div class="top-actions">
+
+        <div>
+            <strong id="authorDisplay">
+                Author
+            </strong>
+        </div>
+
+        <a
+            href="submit-manuscript.html"
+            class="submit-btn">
+
+            + Submit New Manuscript
+
+        </a>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <div class="summary">
+
+        <div class="summary-card">
+
+            <h3>
+                TOTAL
+            </h3>
+
+            <div
+                class="summary-number"
+                id="total">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <h3>
+                SUBMITTED
+            </h3>
+
+            <div
+                class="summary-number"
+                id="submitted">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <h3>
+                UNDER REVIEW
+            </h3>
+
+            <div
+                class="summary-number"
+                id="review">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <h3>
+                ACCEPTED
+            </h3>
+
+            <div
+                class="summary-number"
+                id="accepted">
+                0
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MANUSCRIPTS -->
+
+    <div
+        class="manuscript-container"
+        id="manuscriptContainer">
+
+
+        <div class="table-header">
+
+            <div>
+                Manuscript
+            </div>
+
+            <div>
+                Journal
+            </div>
+
+            <div>
+                Date
+            </div>
+
+            <div>
+                Status
+            </div>
+
+            <div>
+                Actions
+            </div>
+
+        </div>
+
+
+        <div id="manuscriptList"></div>
+
+
+    </div>
+
+</main>
+
+
+<!-- DETAILS MODAL -->
+
+<div
+    class="modal"
+    id="detailsModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>
+                Manuscript Details
+            </h2>
+
+            <button
+                class="close"
+                onclick="closeModal()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div id="detailsContent"></div>
+
+    </div>
+
+</div>
+
+
+<footer class="footer">
+
+    © 2026 Scopusixteen Publishing.
+    All rights reserved.
+
+</footer>
+
+
+<script>
+
+/* =========================
+   LOAD USER
+========================= */
+
+const savedUser =
+    localStorage.getItem("scopusixteenUser");
+
+if (savedUser) {
+
+    const user =
+        JSON.parse(savedUser);
+
+    document.getElementById(
+        "authorDisplay"
+    ).textContent =
+        (user.firstName || "") +
+        " " +
+        (user.lastName || "");
+
+}
+
+
+/* =========================
+   LOAD MANUSCRIPTS
+========================= */
+
+function loadManuscripts() {
+
+    const saved =
+        localStorage.getItem(
+            "scopusixteenManuscripts"
+        );
+
+    const manuscripts =
+        saved ? JSON.parse(saved) : [];
+
+
+    /* SUMMARY */
+
+    let submitted = 0;
+    let review = 0;
+    let accepted = 0;
+
+
+    manuscripts.forEach(function(item) {
+
+        const status =
+            (item.status || "Submitted")
+            .toLowerCase();
+
+        if (status === "submitted") {
+            submitted++;
+        }
+
+        if (
+            status === "review" ||
+            status === "under review"
+        ) {
+            review++;
+        }
+
+        if (status === "accepted") {
+            accepted++;
+        }
+
+    });
+
+
+    document.getElementById("total")
+        .textContent = manuscripts.length;
+
+    document.getElementById("submitted")
+        .textContent = submitted;
+
+    document.getElementById("review")
+        .textContent = review;
+
+    document.getElementById("accepted")
+        .textContent = accepted;
+
+
+    const list =
+        document.getElementById(
+            "manuscriptList"
+        );
+
+
+    if (manuscripts.length === 0) {
+
+        list.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    📚
+                </div>
+
+                <h2>
+                    No Manuscripts Yet
+                </h2>
+
+                <p>
+                    You have not submitted any
+                    manuscripts yet.
+                </p>
+
+                <a
+                    href="submit-manuscript.html"
+                    class="submit-btn">
+
+                    Submit Your First Manuscript
+
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /* Newest first */
+
+    const reversed =
+        [...manuscripts].reverse();
+
+
+    list.innerHTML =
+        reversed.map(function(item, index) {
+
+            const originalIndex =
+                manuscripts.length -
+                1 -
+                index;
+
+
+            let statusClass =
+                "submitted";
+
+            const status =
+                (item.status || "Submitted")
+                .toLowerCase();
+
+            if (
+                status === "review" ||
+                status === "under review"
+            ) {
+                statusClass = "review";
+            }
+
+            if (status === "accepted") {
+                statusClass = "accepted";
+            }
+
+            if (status === "rejected") {
+                statusClass = "rejected";
+            }
+
+
+            return `
+
+                <div class="manuscript-item">
+
+                    <div>
+
+                        <div class="title">
+
+                            ${escapeHTML(
+                                item.title ||
+                                "Untitled Manuscript"
+                            )}
+
+                        </div>
+
+                        <div class="manuscript-id">
+
+                            ${escapeHTML(
+                                item.id ||
+                                "No ID"
+                            )}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="journal">
+
+                        ${escapeHTML(
+                            item.journal ||
+                            "—"
+                        )}
+
+                    </div>
+
+
+                    <div class="date">
+
+                        ${escapeHTML(
+                            item.date ||
+                            "—"
+                        )}
+
+                    </div>
+
+
+                    <div>
+
+                        <span
+                            class="status ${statusClass}">
+
+                            ${escapeHTML(
+                                item.status ||
+                                "Submitted"
+                            )}
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="item-actions">
+
+                        <button
+                            class="small-btn view-btn"
+                            onclick="viewDetails(${originalIndex})">
+
+                            View Details
+
+                        </button>
+
+                        <button
+                            class="small-btn track-btn"
+                            onclick="trackManuscript('${escapeAttribute(
+                                item.id || ""
+                            )}')">
+
+                            Track
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+}
+
+
+/* =========================
+   VIEW DETAILS
+========================= */
+
+function viewDetails(index) {
+
+    const saved =
+        localStorage.getItem(
+            "scopusixteenManuscripts"
+        );
+
+    const manuscripts =
+        saved ? JSON.parse(saved) : [];
+
+    const item =
+        manuscripts[index];
+
+    if (!item) {
+        return;
+    }
+
+
+    document.getElementById(
+        "detailsContent"
+    ).innerHTML = `
+
+        <div class="detail">
+
+            <strong>
+                MANUSCRIPT ID
+            </strong>
+
+            <span>
+                ${escapeHTML(item.id || "—")}
+            </span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                ARTICLE TITLE
+            </strong>
+
+            <p>
+                ${escapeHTML(item.title || "—")}
+            </p>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                JOURNAL
+            </strong>
+
+            <span>
+                ${escapeHTML(item.journal || "—")}
+            </span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                ARTICLE TYPE
+            </strong>
+
+            <span>
+                ${escapeHTML(item.articleType || "—")}
+            </span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                AUTHOR
+            </strong>
+
+            <span>
+                ${escapeHTML(item.author || "—")}
+            </span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                INSTITUTION
+            </strong>
+
+            <span>
+                ${escapeHTML(item.institution || "—")}
+            </span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                COUNTRY
+            </strong>
+
+            <span>
+                ${escapeHTML(item.country || "—")}
+            </span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                SUBMISSION DATE
+            </strong>
+
+            <span>
+                ${escapeHTML(item.date || "—")}
+            </span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                STATUS
+            </strong>
+
+            <span>
+                ${escapeHTML(item.status || "Submitted")}
+            </span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                MANUSCRIPT FILE
+            </strong>
+
+            <span>
+                ${escapeHTML(
+                    item.manuscriptFile || "—"
+                )}
+            </span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                COVER LETTER
+            </strong>
+
+            <span>
+                ${escapeHTML(
+                    item.coverLetter || "Not provided"
+                )}
+            </span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                ABSTRACT
+            </strong>
+
+            <p>
+                ${escapeHTML(item.abstract || "—")}
+            </p>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                KEYWORDS
+            </strong>
+
+            <p>
+                ${escapeHTML(item.keywords || "—")}
+            </p>
+
+        </div>
+
+    `;
+
+
+    document.getElementById(
+        "detailsModal"
+    ).style.display = "block";
+
+}
+
+
+/* =========================
+   CLOSE MODAL
+========================= */
+
+function closeModal() {
+
+    document.getElementById(
+        "detailsModal"
+    ).style.display = "none";
+
+}
+
+
+/* =========================
+   TRACK
+========================= */
+
+function trackManuscript(id) {
+
+    localStorage.setItem(
+        "selectedManuscriptID",
+        id
+    );
+
+    window.location.href =
+        "track-submission.html";
+
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================
+   ESCAPE ATTRIBUTE
+========================= */
+
+function escapeAttribute(text) {
+
+    return String(text)
+        .replace(/\\/g, "\\\\")
+        .replace(/'/g, "\\'");
+}
+
+
+/* =========================
+   CLOSE MODAL OUTSIDE
+========================= */
+
+window.addEventListener(
+    "click",
+    function(event) {
+
+        const modal =
+            document.getElementById(
+                "detailsModal"
+            );
+
+        if (event.target === modal) {
+            closeModal();
+        }
+
+    }
+);
+
+
+/* =========================
+   START
+========================= */
+
+loadManuscripts();
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Authors | Scopusixteen Administration</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f6fa;
+    color: #10213b;
+}
+
+.header {
+    background: #061a3b;
+    color: white;
+    padding: 18px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.admin-label {
+    background: #10aeb9;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.layout {
+    display: flex;
+    min-height: calc(100vh - 75px);
+}
+
+.sidebar {
+    width: 240px;
+    background: #09254c;
+    color: white;
+    padding: 25px 15px;
+}
+
+.sidebar h3 {
+    font-family: Georgia, serif;
+    margin: 0 10px 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: #c9d7e8;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: #10aeb9;
+    color: white;
+}
+
+.main {
+    flex: 1;
+    padding: 35px;
+    overflow-x: auto;
+}
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.page-title h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.page-title p {
+    color: #65748a;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 20px;
+}
+
+.stat-card strong {
+    display: block;
+    color: #7b899c;
+    font-size: 11px;
+    margin-bottom: 8px;
+}
+
+.stat-card span {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.toolbar {
+    background: white;
+    border: 1px solid #dce3ed;
+    padding: 15px;
+    border-radius: 9px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.toolbar input,
+.toolbar select {
+    padding: 11px;
+    border: 1px solid #cbd6e2;
+    border-radius: 6px;
+    outline: none;
+}
+
+.toolbar input {
+    flex: 1;
+}
+
+.toolbar button {
+    border: none;
+    background: #09254c;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.table-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #f7f9fc;
+    text-align: left;
+    padding: 14px;
+    font-size: 11px;
+    color: #65748a;
+    border-bottom: 1px solid #dce3ed;
+}
+
+td {
+    padding: 14px;
+    border-bottom: 1px solid #edf1f5;
+    font-size: 13px;
+}
+
+.author-name {
+    font-weight: bold;
+}
+
+.author-email {
+    color: #65748a;
+    font-size: 11px;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.active {
+    background: #eaf8ef;
+    color: #237a43;
+}
+
+.suspended {
+    background: #fff0f0;
+    color: #b52b2b;
+}
+
+.action-btn {
+    border: none;
+    padding: 7px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+.view-btn {
+    background: #e9f0ff;
+    color: #2c5eaa;
+}
+
+.suspend-btn {
+    background: #fff0f0;
+    color: #b52b2b;
+}
+
+.empty {
+    text-align: center;
+    padding: 45px;
+    color: #7b899c;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 2000;
+}
+
+.modal-card {
+    background: white;
+    width: 100%;
+    max-width: 520px;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.modal-card h2 {
+    font-family: Georgia, serif;
+    margin-bottom: 20px;
+}
+
+.detail {
+    background: #f8fafc;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+}
+
+.detail strong {
+    display: block;
+    font-size: 10px;
+    color: #7b899c;
+    margin-bottom: 4px;
+}
+
+.close-btn {
+    margin-top: 15px;
+    border: none;
+    background: #09254c;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+@media(max-width:900px) {
+
+    .sidebar {
+        width: 190px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width:650px) {
+
+    .layout {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .main {
+        padding: 20px 12px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .toolbar {
+        flex-direction: column;
+    }
+
+    .table-card {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 750px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div>
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+    </div>
+
+    <div class="admin-label">
+        ADMINISTRATION
+    </div>
+
+</header>
+
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <h3>Administration</h3>
+
+        <a href="admin-dashboard.html">
+            🏠 Dashboard
+        </a>
+
+        <a href="admin-authors.html" class="active">
+            👤 Authors
+        </a>
+
+        <a href="admin-manuscripts.html">
+            📚 Manuscripts
+        </a>
+
+        <a href="admin-journals.html">
+            📖 Journals
+        </a>
+
+        <a href="admin-reviewers.html">
+            👨‍🔬 Reviewers
+        </a>
+
+        <a href="admin-editors.html">
+            ✍️ Editors
+        </a>
+
+        <a href="payment.html">
+            💳 Payments
+        </a>
+
+        <a href="messages.html">
+            💬 Messages
+        </a>
+
+        <a href="index.html">
+            🌐 Homepage
+        </a>
+
+    </aside>
+
+
+    <main class="main">
+
+        <div class="page-title">
+
+            <h1>Authors</h1>
+
+            <p>
+                Manage registered Scopusixteen Publishing authors.
+            </p>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <strong>TOTAL AUTHORS</strong>
+                <span id="totalAuthors">0</span>
+            </div>
+
+            <div class="stat-card">
+                <strong>ACTIVE AUTHORS</strong>
+                <span id="activeAuthors">0</span>
+            </div>
+
+            <div class="stat-card">
+                <strong>SUSPENDED</strong>
+                <span id="suspendedAuthors">0</span>
+            </div>
+
+            <div class="stat-card">
+                <strong>COUNTRIES</strong>
+                <span id="countryCount">0</span>
+            </div>
+
+        </div>
+
+
+        <div class="toolbar">
+
+            <input
+                type="search"
+                id="searchAuthor"
+                placeholder="Search by name, email or institution..."
+                oninput="displayAuthors()"
+            >
+
+            <select
+                id="countryFilter"
+                onchange="displayAuthors()">
+
+                <option value="">All Countries</option>
+
+            </select>
+
+            <button onclick="displayAuthors()">
+                Search
+            </button>
+
+        </div>
+
+
+        <div class="table-card">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>AUTHOR</th>
+                        <th>INSTITUTION</th>
+                        <th>COUNTRY</th>
+                        <th>ORCID</th>
+                        <th>STATUS</th>
+                        <th>ACTION</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="authorsTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- VIEW AUTHOR MODAL -->
+
+<div class="modal" id="authorModal">
+
+    <div class="modal-card">
+
+        <h2>
+            Author Details
+        </h2>
+
+        <div id="authorDetails"></div>
+
+        <button
+            class="close-btn"
+            onclick="closeModal()">
+
+            Close
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let authors = [];
+
+
+/* LOAD REGISTERED AUTHORS */
+
+function loadAuthors() {
+
+    const savedUser =
+        localStorage.getItem("scopusixteenUser");
+
+    authors = [];
+
+    /*
+       The current registration system stores
+       the registered author in scopusixteenUser.
+    */
+
+    if (savedUser) {
+
+        try {
+
+            const user =
+                JSON.parse(savedUser);
+
+            user.status =
+                user.status || "Active";
+
+            authors.push(user);
+
+        } catch(error) {
+
+            console.error(error);
+
+        }
+
+    }
+
+    updateStats();
+    populateCountries();
+    displayAuthors();
+
+}
+
+
+/* STATISTICS */
+
+function updateStats() {
+
+    const total = authors.length;
+
+    const active =
+        authors.filter(
+            user =>
+            (user.status || "Active")
+            === "Active"
+        ).length;
+
+    const suspended =
+        authors.filter(
+            user =>
+            user.status === "Suspended"
+        ).length;
+
+    const countries =
+        new Set(
+            authors
+            .map(user => user.country)
+            .filter(Boolean)
+        );
+
+    document.getElementById(
+        "totalAuthors"
+    ).textContent = total;
+
+    document.getElementById(
+        "activeAuthors"
+    ).textContent = active;
+
+    document.getElementById(
+        "suspendedAuthors"
+    ).textContent = suspended;
+
+    document.getElementById(
+        "countryCount"
+    ).textContent = countries.size;
+
+}
+
+
+/* COUNTRY FILTER */
+
+function populateCountries() {
+
+    const select =
+        document.getElementById(
+            "countryFilter"
+        );
+
+    const current =
+        select.value;
+
+    select.innerHTML =
+        '<option value="">All Countries</option>';
+
+    const countries =
+        [...new Set(
+            authors
+            .map(user => user.country)
+            .filter(Boolean)
+        )].sort();
+
+    countries.forEach(country => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = country;
+        option.textContent = country;
+
+        select.appendChild(option);
+
+    });
+
+    select.value = current;
+
+}
+
+
+/* DISPLAY AUTHORS */
+
+function displayAuthors() {
+
+    const tbody =
+        document.getElementById(
+            "authorsTable"
+        );
+
+    const search =
+        document.getElementById(
+            "searchAuthor"
+        ).value
+        .toLowerCase();
+
+    const country =
+        document.getElementById(
+            "countryFilter"
+        ).value;
+
+    const filtered =
+        authors.filter(user => {
+
+            const fullName =
+                `${user.firstName || ""}
+                ${user.lastName || ""}`
+                .toLowerCase();
+
+            const matchesSearch =
+                fullName.includes(search) ||
+                (user.email || "")
+                .toLowerCase()
+                .includes(search) ||
+                (user.institution || "")
+                .toLowerCase()
+                .includes(search);
+
+            const matchesCountry =
+                !country ||
+                user.country === country;
+
+            return matchesSearch &&
+                   matchesCountry;
+
+        });
+
+
+    tbody.innerHTML = "";
+
+
+    if (filtered.length === 0) {
+
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="6" class="empty">
+                    No registered authors found.
+                </td>
+            </tr>
+        `;
+
+        return;
+
+    }
+
+
+    filtered.forEach((user, index) => {
+
+        const row =
+            document.createElement("tr");
+
+        const fullName =
+            `${user.firstName || ""}
+            ${user.lastName || ""}`
+            .trim() || "Author";
+
+
+        const status =
+            user.status || "Active";
+
+
+        row.innerHTML = `
+
+            <td>
+
+                <div class="author-name">
+                    ${escapeHTML(fullName)}
+                </div>
+
+                <div class="author-email">
+                    ${escapeHTML(user.email || "—")}
+                </div>
+
+            </td>
+
+            <td>
+                ${escapeHTML(
+                    user.institution || "—"
+                )}
+            </td>
+
+            <td>
+                ${escapeHTML(
+                    user.country || "—"
+                )}
+            </td>
+
+            <td>
+                ${escapeHTML(
+                    user.orcid || "Not provided"
+                )}
+            </td>
+
+            <td>
+
+                <span class="status ${
+                    status === "Suspended"
+                    ? "suspended"
+                    : "active"
+                }">
+
+                    ${status}
+
+                </span>
+
+            </td>
+
+            <td>
+
+                <button
+                    class="action-btn view-btn"
+                    onclick="viewAuthor(${index})">
+
+                    View
+
+                </button>
+
+                <button
+                    class="action-btn suspend-btn"
+                    onclick="toggleStatus(${index})">
+
+                    ${
+                        status === "Suspended"
+                        ? "Activate"
+                        : "Suspend"
+                    }
+
+                </button>
+
+            </td>
+
+        `;
+
+        tbody.appendChild(row);
+
+    });
+
+}
+
+
+/* VIEW AUTHOR */
+
+function viewAuthor(index) {
+
+    const user = authors[index];
+
+    if (!user) return;
+
+    const fullName =
+        `${user.firstName || ""}
+        ${user.lastName || ""}`
+        .trim() || "Author";
+
+
+    document.getElementById(
+        "authorDetails"
+    ).innerHTML = `
+
+        <div class="detail">
+            <strong>FULL NAME</strong>
+            ${escapeHTML(fullName)}
+        </div>
+
+        <div class="detail">
+            <strong>EMAIL</strong>
+            ${escapeHTML(user.email || "—")}
+        </div>
+
+        <div class="detail">
+            <strong>INSTITUTION</strong>
+            ${escapeHTML(user.institution || "—")}
+        </div>
+
+        <div class="detail">
+            <strong>COUNTRY</strong>
+            ${escapeHTML(user.country || "—")}
+        </div>
+
+        <div class="detail">
+            <strong>ORCID</strong>
+            ${escapeHTML(user.orcid || "Not provided")}
+        </div>
+
+        <div class="detail">
+            <strong>STATUS</strong>
+            ${escapeHTML(user.status || "Active")}
+        </div>
+
+    `;
+
+
+    document.getElementById(
+        "authorModal"
+    ).style.display = "flex";
+
+}
+
+
+/* CLOSE MODAL */
+
+function closeModal() {
+
+    document.getElementById(
+        "authorModal"
+    ).style.display = "none";
+
+}
+
+
+/* SUSPEND / ACTIVATE */
+
+function toggleStatus(index) {
+
+    const user = authors[index];
+
+    if (!user) return;
+
+
+    if (user.status === "Suspended") {
+
+        user.status = "Active";
+
+    } else {
+
+        user.status = "Suspended";
+
+    }
+
+
+    /*
+       Save the status together with the
+       registered author account.
+    */
+
+    localStorage.setItem(
+        "scopusixteenUser",
+        JSON.stringify(user)
+    );
+
+
+    loadAuthors();
+
+}
+
+
+/* BASIC HTML PROTECTION */
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* START */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    loadAuthors
+);
+
+</script>
+
+</body>
+</html>

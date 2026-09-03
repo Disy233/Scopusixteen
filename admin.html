@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Administration | Scopusixteen Publishing</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fa;
+    color:#10213b;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    height:72px;
+    background:#061a3b;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+}
+
+.logo-main{
+    font-size:21px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.logo-main span{
+    color:#10b8c3;
+}
+
+.logo-sub{
+    color:#65d7df;
+    font-size:9px;
+    letter-spacing:4px;
+}
+
+.admin-title{
+    font-size:13px;
+    color:#c9d7e8;
+}
+
+
+/* =========================
+   LAYOUT
+========================= */
+
+.layout{
+    display:flex;
+    min-height:calc(100vh - 72px);
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+    width:240px;
+    background:#09254c;
+    color:white;
+    padding:25px 15px;
+    flex-shrink:0;
+}
+
+.sidebar-title{
+    color:#8fa6c3;
+    font-size:10px;
+    font-weight:bold;
+    letter-spacing:1.5px;
+    margin:5px 12px 12px;
+}
+
+.nav-item{
+    display:block;
+    padding:12px 14px;
+    margin-bottom:5px;
+    border-radius:6px;
+    font-size:13px;
+    color:#d7e2ef;
+}
+
+.nav-item:hover,
+.nav-item.active{
+    background:#10aeb9;
+    color:white;
+}
+
+.logout{
+    margin-top:25px;
+    border-top:1px solid #29415f;
+    padding-top:20px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+    flex:1;
+    padding:30px;
+    min-width:0;
+}
+
+.page-heading{
+    margin-bottom:25px;
+}
+
+.page-heading h1{
+    font-family:Georgia,serif;
+    font-size:31px;
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#65748a;
+    font-size:13px;
+}
+
+
+/* =========================
+   STATISTICS
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:25px;
+}
+
+.stat-card{
+    background:white;
+    border:1px solid #dce3ed;
+    border-radius:9px;
+    padding:20px;
+}
+
+.stat-label{
+    color:#7b899c;
+    font-size:11px;
+    font-weight:bold;
+    margin-bottom:9px;
+}
+
+.stat-number{
+    font-size:28px;
+    font-weight:900;
+    color:#09254c;
+}
+
+.stat-info{
+    margin-top:7px;
+    font-size:11px;
+    color:#078b95;
+}
+
+
+/* =========================
+   CONTENT GRID
+========================= */
+
+.content-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:22px;
+}
+
+.card{
+    background:white;
+    border:1px solid #dce3ed;
+    border-radius:9px;
+    padding:22px;
+    margin-bottom:22px;
+}
+
+.card h2{
+    font-family:Georgia,serif;
+    font-size:21px;
+    margin-bottom:18px;
+}
+
+
+/* =========================
+   MANUSCRIPTS
+========================= */
+
+.manuscript{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    padding:15px 0;
+    border-bottom:1px solid #edf1f5;
+}
+
+.manuscript:last-child{
+    border-bottom:none;
+}
+
+.manuscript-title{
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:4px;
+}
+
+.manuscript-author{
+    color:#7b899c;
+    font-size:11px;
+}
+
+.status{
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.pending{
+    background:#fff3d8;
+    color:#a96800;
+}
+
+.review{
+    background:#e7f0ff;
+    color:#285ea8;
+}
+
+.accepted{
+    background:#e8f8ee;
+    color:#237a43;
+}
+
+.rejected{
+    background:#fdeaea;
+    color:#a63232;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.action-btn{
+    border:none;
+    background:#09254c;
+    color:white;
+    padding:10px 15px;
+    border-radius:6px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.action-btn:hover{
+    background:#10aeb9;
+}
+
+.outline-btn{
+    background:white;
+    color:#09254c;
+    border:1px solid #b9c7d7;
+    padding:9px 14px;
+    border-radius:6px;
+    font-size:11px;
+    font-weight:bold;
+}
+
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.quick-action{
+    display:block;
+    padding:13px;
+    background:#f7f9fc;
+    border-radius:6px;
+    margin-bottom:8px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.quick-action:hover{
+    background:#eefafb;
+    color:#078b95;
+}
+
+
+/* =========================
+   ACTIVITY
+========================= */
+
+.activity{
+    display:flex;
+    gap:12px;
+    padding:13px 0;
+    border-bottom:1px solid #edf1f5;
+}
+
+.activity:last-child{
+    border-bottom:none;
+}
+
+.activity-icon{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:#e8f7f8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.activity-text{
+    font-size:12px;
+}
+
+.activity-time{
+    display:block;
+    color:#8a98aa;
+    font-size:10px;
+    margin-top:3px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+    color:#8a98aa;
+    font-size:11px;
+    padding:25px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1000px){
+
+    .sidebar{
+        width:190px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .content-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .header{
+        padding:0 15px;
+    }
+
+    .admin-title{
+        display:none;
+    }
+
+    .layout{
+        display:block;
+    }
+
+    .sidebar{
+        width:100%;
+        padding:10px;
+        display:flex;
+        overflow-x:auto;
+        gap:5px;
+    }
+
+    .sidebar-title,
+    .logout{
+        display:none;
+    }
+
+    .nav-item{
+        white-space:nowrap;
+        margin:0;
+    }
+
+    .main{
+        padding:20px 15px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:450px){
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .manuscript{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+    <div class="admin-title">
+        Administration Panel
+    </div>
+
+</header>
+
+
+<div class="layout">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-title">
+        ADMINISTRATION
+    </div>
+
+    <a href="admin.html" class="nav-item active">
+        🏠 Dashboard
+    </a>
+
+    <a href="admin-manuscripts.html" class="nav-item">
+        📄 Manuscripts
+    </a>
+
+    <a href="admin-authors.html" class="nav-item">
+        👤 Authors
+    </a>
+
+    <a href="admin-reviewers.html" class="nav-item">
+        👨‍🔬 Reviewers
+    </a>
+
+    <a href="admin-journals.html" class="nav-item">
+        📚 Journals
+    </a>
+
+    <a href="admin-payments.html" class="nav-item">
+        💳 Payments
+    </a>
+
+    <a href="message.html" class="nav-item">
+        ✉️ Messages
+    </a>
+
+    <a href="admin-reports.html" class="nav-item">
+        📊 Reports
+    </a>
+
+    <a href="profile.html" class="nav-item">
+        ⚙️ Admin Profile
+    </a>
+
+    <div class="logout">
+
+        <a href="index.html" class="nav-item">
+            ← Back to Website
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+    <div class="page-heading">
+
+        <h1>
+            Administration Dashboard
+        </h1>
+
+        <p>
+            Manage Scopusixteen Publishing operations,
+            submissions, authors, reviewers and payments.
+        </p>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <div class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                TOTAL MANUSCRIPTS
+            </div>
+
+            <div class="stat-number" id="totalManuscripts">
+                0
+            </div>
+
+            <div class="stat-info">
+                All submissions
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                PENDING REVIEW
+            </div>
+
+            <div class="stat-number" id="pendingManuscripts">
+                0
+            </div>
+
+            <div class="stat-info">
+                Awaiting action
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                REGISTERED AUTHORS
+            </div>
+
+            <div class="stat-number" id="totalAuthors">
+                0
+            </div>
+
+            <div class="stat-info">
+                Author accounts
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                PAYMENTS
+            </div>
+
+            <div class="stat-number" id="totalPayments">
+                $0
+            </div>
+
+            <div class="stat-info">
+                Recorded payments
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="content-grid">
+
+
+        <!-- LEFT -->
+
+        <div>
+
+
+            <!-- RECENT MANUSCRIPTS -->
+
+            <section class="card">
+
+                <h2>
+                    Recent Manuscripts
+                </h2>
+
+
+                <div class="manuscript">
+
+                    <div>
+
+                        <div class="manuscript-title">
+                            Machine Learning Approaches for Predicting Protein Structures
+                        </div>
+
+                        <div class="manuscript-author">
+                            A. Jana • Engineering
+                        </div>
+
+                    </div>
+
+                    <span class="status pending">
+                        Pending
+                    </span>
+
+                </div>
+
+
+                <div class="manuscript">
+
+                    <div>
+
+                        <div class="manuscript-title">
+                            Ethical Leadership and Employee Performance
+                        </div>
+
+                        <div class="manuscript-author">
+                            Author • Management
+                        </div>
+
+                    </div>
+
+                    <span class="status review">
+                        Under Review
+                    </span>
+
+                </div>
+
+
+                <div class="manuscript">
+
+                    <div>
+
+                        <div class="manuscript-title">
+                            Climate Change and Vector-Borne Diseases
+                        </div>
+
+                        <div class="manuscript-author">
+                            Researcher • Medical Science
+                        </div>
+
+                    </div>
+
+                    <span class="status accepted">
+                        Accepted
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="outline-btn"
+                    onclick="window.location.href='admin-manuscripts.html'">
+
+                    View All Manuscripts →
+
+                </button>
+
+            </section>
+
+
+            <!-- ACTIVITY -->
+
+            <section class="card">
+
+                <h2>
+                    Recent Activity
+                </h2>
+
+
+                <div class="activity">
+
+                    <div class="activity-icon">
+                        📝
+                    </div>
+
+                    <div class="activity-text">
+
+                        New manuscript submitted.
+
+                        <span class="activity-time">
+                            Today
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <div class="activity-icon">
+                        👤
+                    </div>
+
+                    <div class="activity-text">
+
+                        New author account registered.
+
+                        <span class="activity-time">
+                            Today
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <div class="activity-icon">
+                        💳
+                    </div>
+
+                    <div class="activity-text">
+
+                        Payment record updated.
+
+                        <span class="activity-time">
+                            Yesterday
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <div class="activity-icon">
+                        👨‍🔬
+                    </div>
+
+                    <div class="activity-text">
+
+                        Reviewer assigned to manuscript.
+
+                        <span class="activity-time">
+                            Yesterday
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <section class="card">
+
+                <h2>
+                    Quick Actions
+                </h2>
+
+
+                <a
+                    href="admin-manuscripts.html"
+                    class="quick-action">
+
+                    📄 Manage Manuscripts
+
+                </a>
+
+
+                <a
+                    href="admin-authors.html"
+                    class="quick-action">
+
+                    👤 Manage Authors
+
+                </a>
+
+
+                <a
+                    href="admin-reviewers.html"
+                    class="quick-action">
+
+                    👨‍🔬 Manage Reviewers
+
+                </a>
+
+
+                <a
+                    href="admin-journals.html"
+                    class="quick-action">
+
+                    📚 Manage Journals
+
+                </a>
+
+
+                <a
+                    href="admin-payments.html"
+                    class="quick-action">
+
+                    💳 Manage Payments
+
+                </a>
+
+
+                <a
+                    href="message.html"
+                    class="quick-action">
+
+                    ✉️ Open Messages
+
+                </a>
+
+            </section>
+
+
+            <!-- SYSTEM -->
+
+            <section class="card">
+
+                <h2>
+                    System Status
+                </h2>
+
+
+                <div class="account-item">
+
+                    <strong>
+                        WEBSITE
+                    </strong>
+
+                    <span>
+                        ● Operational
+                    </span>
+
+                </div>
+
+
+                <div class="account-item">
+
+                    <strong>
+                        AUTHOR REGISTRATION
+                    </strong>
+
+                    <span>
+                        ● Enabled
+                    </span>
+
+                </div>
+
+
+                <div class="account-item">
+
+                    <strong>
+                        MANUSCRIPT SUBMISSION
+                    </strong>
+
+                    <span>
+                        ● Enabled
+                    </span>
+
+                </div>
+
+
+                <div class="account-item">
+
+                    <strong>
+                        PAYMENT CENTER
+                    </strong>
+
+                    <span>
+                        ● Enabled
+                    </span>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+</div>
+
+
+<footer class="footer">
+
+    © 2026 Scopusixteen Publishing.
+    Administration Panel.
+
+</footer>
+
+
+<script>
+
+/* =========================
+   LOAD ADMIN STATISTICS
+========================= */
+
+function loadAdminStatistics(){
+
+    /*
+       These values currently use
+       localStorage so the dashboard
+       can work with the prototype.
+
+       Later we can connect this
+       to a real database/backend.
+    */
+
+    let authors = 0;
+
+    const savedUser =
+        localStorage.getItem("scopusixteenUser");
+
+    if(savedUser){
+        authors = 1;
+    }
+
+
+    const manuscripts =
+        JSON.parse(
+            localStorage.getItem(
+                "scopusixteenManuscripts"
+            ) || "[]"
+        );
+
+
+    const payments =
+        JSON.parse(
+            localStorage.getItem(
+                "scopusixteenPayments"
+            ) || "[]"
+        );
+
+
+    document.getElementById(
+        "totalAuthors"
+    ).textContent = authors;
+
+
+    document.getElementById(
+        "totalManuscripts"
+    ).textContent =
+        manuscripts.length;
+
+
+    let pending = 0;
+
+    manuscripts.forEach(function(manuscript){
+
+        if(
+            manuscript.status === "Pending" ||
+            !manuscript.status
+        ){
+            pending++;
+        }
+
+    });
+
+
+    document.getElementById(
+        "pendingManuscripts"
+    ).textContent = pending;
+
+
+    let totalPayment = 0;
+
+    payments.forEach(function(payment){
+
+        const amount =
+            parseFloat(payment.amount);
+
+        if(!isNaN(amount)){
+            totalPayment += amount;
+        }
+
+    });
+
+
+    document.getElementById(
+        "totalPayments"
+    ).textContent =
+        "$" + totalPayment.toFixed(2);
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadAdminStatistics();
+
+    }
+);
+
+</script>
+
+</body>
+</html>

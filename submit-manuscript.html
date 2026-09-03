@@ -1,0 +1,4508 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Submit Manuscript | Scopusixteen Publishing</title><style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #10213b;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.header {
+    background: #061a3b;
+    color: white;
+    padding: 17px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.back-btn {
+    border: 1px solid #65d7df;
+    background: transparent;
+    color: white;
+    padding: 9px 15px;
+    border-radius: 6px;
+}
+
+.page {
+    max-width: 1100px;
+    margin: auto;
+    padding: 35px 20px 60px;
+}
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.page-title h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    margin-bottom: 7px;
+}
+
+.page-title p {
+    color: #65748a;
+}
+
+/* PROGRESS */
+
+.progress {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.progress-step {
+    text-align: center;
+    font-size: 11px;
+    color: #8795a8;
+}
+
+.progress-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: auto auto 6px;
+    display: grid;
+    place-items: center;
+    background: #dce3ed;
+    font-weight: bold;
+}
+
+.progress-step.active {
+    color: #078b95;
+    font-weight: bold;
+}
+
+.progress-step.active .progress-number {
+    background: #10aeb9;
+    color: white;
+}
+
+/* CARD */
+
+.card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 10px;
+    padding: 28px;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    font-family: Georgia, serif;
+    margin-bottom: 7px;
+}
+
+.card-description {
+    color: #65748a;
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+/* PACKAGES */
+
+.package-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.package {
+    border: 2px solid #dce3ed;
+    border-radius: 10px;
+    padding: 24px;
+    position: relative;
+    transition: .2s;
+}
+
+.package:hover {
+    border-color: #10aeb9;
+}
+
+.package.selected {
+    border-color: #10aeb9;
+    background: #f1fcfd;
+}
+
+.package input {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 18px;
+    height: 18px;
+}
+
+.package-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.package h3 {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.package-price {
+    font-size: 25px;
+    font-weight: bold;
+    color: #078b95;
+    margin-bottom: 12px;
+}
+
+.package ul {
+    padding-left: 18px;
+    color: #53637a;
+    font-size: 13px;
+}
+
+.package li {
+    margin-bottom: 7px;
+}
+
+/* FORM */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.required {
+    color: #c62828;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccd6e2;
+    border-radius: 6px;
+    outline: none;
+    background: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #10aeb9;
+}
+
+textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+/* UPLOAD */
+
+.upload-box {
+    border: 2px dashed #b8c6d6;
+    border-radius: 9px;
+    padding: 35px;
+    text-align: center;
+    background: #f9fbfd;
+}
+
+.upload-box .upload-icon {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.upload-box p {
+    color: #65748a;
+    margin-bottom: 15px;
+}
+
+.upload-box input {
+    max-width: 400px;
+    margin: auto;
+}
+
+/* AI */
+
+.ai-card {
+    background: linear-gradient(120deg, #f2f0fb, #eefafb);
+    border: 1px solid #d9dff0;
+}
+
+.ai-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.ai-icon {
+    font-size: 34px;
+}
+
+.ai-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.ai-option {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 7px;
+    padding: 15px;
+}
+
+.ai-option label {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.ai-option input {
+    width: auto;
+    margin-top: 3px;
+}
+
+.ai-note {
+    margin-top: 18px;
+    padding: 12px;
+    background: #fff9e8;
+    border-radius: 6px;
+    color: #725500;
+    font-size: 12px;
+}
+    
+    <script>
+
+/* =========================
+   AUTHOR LOGIN CHECK
+========================= */
+
+const loggedIn =
+    localStorage.getItem("scopusixteenLoggedIn");
+
+const authorData =
+    localStorage.getItem("scopusixteenAuthor");
+
+
+/*
+   If the author has not registered/logged in,
+   send them to the registration page.
+*/
+
+if (loggedIn !== "true" || !authorData) {
+
+    alert(
+        "Please create an Author Account or login before submitting a manuscript."
+    );
+
+    window.location.href =
+        "register.html";
+
+}
+
+
+/* =========================
+   LOAD AUTHOR INFORMATION
+========================= */
+
+if (authorData) {
+
+    const author =
+        JSON.parse(authorData);
+
+    console.log("Logged-in author:", author.fullName);
+
+}
+
+
+/* =========================
+   LOGOUT FUNCTION
+========================= */
+
+function logoutAuthor() {
+
+    localStorage.removeItem(
+        "scopusixteenLoggedIn"
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+</script>
+
+/* AUTHORS */
+
+.author-box {
+    border: 1px solid #dce3ed;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 15px;
+}
+
+.author-box h3 {
+    margin-bottom: 15px;
+}
+
+.remove-author {
+    background: #fdecec;
+    color: #b42318;
+    border: none;
+    padding: 7px 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* REVIEW */
+
+.review-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.review-table td {
+    padding: 12px;
+    border-bottom: 1px solid #edf1f5;
+    font-size: 14px;
+}
+
+.review-table td:first-child {
+    width: 35%;
+    color: #65748a;
+    font-weight: bold;
+}
+
+/* PAYMENT */
+
+.payment-box {
+    background: #f8fafc;
+    border: 1px solid #dce3ed;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.payment-box h3 {
+    margin-bottom: 8px;
+}
+
+.payment-note {
+    color: #65748a;
+    font-size: 13px;
+}
+
+/* BUTTONS */
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.btn {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background: #09254c;
+    color: white;
+}
+
+.btn-teal {
+    background: #10aeb9;
+    color: white;
+}
+
+.btn-outline {
+    background: white;
+    color: #09254c;
+    border: 1px solid #aebdcc;
+}
+
+/* HIDDEN */
+
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+/* SUCCESS */
+
+.success {
+    display: none;
+    text-align: center;
+    padding: 45px 20px;
+}
+
+.success-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.success h2 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.success p {
+    color: #65748a;
+    margin-bottom: 20px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    .header {
+        padding: 15px 4%;
+    }
+
+    .progress {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 15px;
+    }
+
+    .package-grid,
+    .form-grid,
+    .ai-options {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full {
+        grid-column: auto;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .actions button {
+        width: 100%;
+    }
+}
+</style></head><body><header class="header"><div>
+    <div class="logo-main">
+        SCOPUSI<span>XTEEN</span>
+    </div>
+
+    <div class="logo-sub">
+        PUBLISHING
+    </div>
+</div>
+
+<<a
+        href="author-dashboard.html"
+        class="back-link">
+
+        ← Back to Dashboard
+
+    </a>
+
+</header><main class="page"><div class="page-title">
+    <h1>Submit Your Manuscript</h1>
+    <p>
+        Complete the submission process below for editorial consideration.
+    </p>
+</div>
+
+<!-- PROGRESS -->
+
+<div class="progress">
+
+    <div class="progress-step active" id="progress1">
+        <div class="progress-number">1</div>
+        Package
+    </div>
+
+    <div class="progress-step" id="progress2">
+        <div class="progress-number">2</div>
+        Manuscript
+    </div>
+
+    <div class="progress-step" id="progress3">
+        <div class="progress-number">3</div>
+        AI Assistance
+    </div>
+
+    <div class="progress-step" id="progress4">
+        <div class="progress-number">4</div>
+        Authors
+    </div>
+
+    <div class="progress-step" id="progress5">
+        <div class="progress-number">5</div>
+        Review
+    </div>
+
+    <div class="progress-step" id="progress6">
+        <div class="progress-number">6</div>
+        Payment
+    </div>
+
+</div>
+
+
+<!-- STEP 1 -->
+
+<section class="step active" id="step1">
+
+    <div class="card">
+
+        <h2>Choose Publication Package</h2>
+
+        <p class="card-description">
+            Select the publication model that applies to your manuscript.
+        </p>
+
+        <div class="package-grid">
+
+            <label class="package" id="apcPackage">
+
+                <input
+                    type="radio"
+                    name="package"
+                    value="APC"
+                    onchange="selectPackage('APC')">
+
+                <div class="package-icon">📄</div>
+
+                <h3>APC Package</h3>
+
+                <div class="package-price">
+                    Article Processing Charge
+                </div>
+
+                <ul>
+                    <li>Open-access publication option</li>
+                    <li>Editorial and peer-review workflow</li>
+                    <li>Manuscript tracking</li>
+                    <li>Publication processing</li>
+                    <li>Applicable APC displayed before payment</li>
+                </ul>
+
+            </label>
+
+
+            <label class="package" id="subscriptionPackage">
+
+                <input
+                    type="radio"
+                    name="package"
+                    value="Subscription"
+                    onchange="selectPackage('Subscription')">
+
+                <div class="package-icon">📚</div>
+
+                <h3>Subscription Package</h3>
+
+                <div class="package-price">
+                    Subscription Model
+                </div>
+
+                <ul>
+                    <li>Subscription-based publication model</li>
+                    <li>Editorial and peer-review workflow</li>
+                    <li>Manuscript tracking</li>
+                    <li>Subscription access options</li>
+                    <li>Applicable charges displayed before payment</li>
+                </ul>
+
+            </label>
+
+        </div>
+
+        <div class="actions">
+
+            <button
+                class="btn btn-primary"
+                onclick="nextStep(1)">
+                Continue →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STEP 2 -->
+
+<section class="step" id="step2">
+
+    <div class="card">
+
+        <h2>Manuscript Information</h2>
+
+        <p class="card-description">
+            Enter the basic information about your manuscript.
+        </p>
+
+        <div class="form-grid">
+
+            <div class="form-group full">
+
+                <label>
+                    Article Title <span class="required">*</span>
+                </label>
+
+                <input
+                    id="articleTitle"
+                    type="text"
+                    placeholder="Enter manuscript title">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Journal <span class="required">*</span>
+                </label>
+
+                <select id="journal">
+
+                    <option value="">
+                        Select Journal
+                    </option>
+
+                    <option>
+                        Journal of Engineering and Applied Sciences
+                    </option>
+
+                    <option>
+                        International Journal of Medical and Health Research
+                    </option>
+
+                    <option>
+                        Journal of Business, Management & Economics
+                    </option>
+
+                    <option>
+                        Advances in Environmental Science & Sustainability
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Article Type
+                </label>
+
+                <select id="articleType">
+
+                    <option>Original Research</option>
+                    <option>Review Article</option>
+                    <option>Case Study</option>
+                    <option>Short Communication</option>
+                    <option>Technical Article</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group full">
+
+                <label>
+                    Abstract <span class="required">*</span>
+                </label>
+
+                <textarea
+                    id="abstract"
+                    placeholder="Enter your manuscript abstract"></textarea>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Upload Manuscript</h2>
+
+        <p class="card-description">
+            Upload your manuscript file for editorial consideration.
+        </p>
+
+        <div class="upload-box">
+
+            <div class="upload-icon">
+                📤
+            </div>
+
+            <p>
+                Select your manuscript file
+            </p>
+
+            <input
+                type="file"
+                id="manuscriptFile"
+                accept=".pdf,.doc,.docx">
+
+        </div>
+
+    </div>
+
+
+    <div class="actions">
+
+        <button
+            class="btn btn-outline"
+            onclick="prevStep(2)">
+            ← Back
+        </button>
+
+        <button
+            class="btn btn-primary"
+            onclick="nextStep(2)">
+            Continue →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- STEP 3 AI -->
+
+<section class="step" id="step3">
+
+    <div class="card ai-card">
+
+        <div class="ai-header">
+
+            <div class="ai-icon">
+                🤖
+            </div>
+
+            <div>
+                <h2>AI-Assisted Submission</h2>
+                <p>
+                    Optional tools to help prepare your submission.
+                </p>
+            </div>
+
+        </div>
+
+        <p class="card-description">
+            Select the AI assistance you would like to use.
+        </p>
+
+
+        <div class="ai-options">
+
+            <div class="ai-option">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="aiCompleteness">
+
+                    <span>
+                        <strong>Manuscript Completeness</strong><br>
+                        Check for potentially missing submission information.
+                    </span>
+
+                </label>
+
+            </div>
+
+
+            <div class="ai-option">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="aiLanguage">
+
+                    <span>
+                        <strong>Academic Language</strong><br>
+                        Identify possible language and clarity issues.
+                    </span>
+
+                </label>
+
+            </div>
+
+
+            <div class="ai-option">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="aiScope">
+
+                    <span>
+                        <strong>Journal Scope Check</strong><br>
+                        Compare manuscript information with the selected journal scope.
+                    </span>
+
+                </label>
+
+            </div>
+
+
+            <div class="ai-option">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="aiKeywords">
+
+                    <span>
+                        <strong>Title & Keywords</strong><br>
+                        Suggest possible titles and keywords.
+                    </span>
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <div class="ai-note">
+
+            <strong>Important:</strong>
+            AI assistance is advisory only. It does not guarantee
+            acceptance, peer-review approval, publication, indexing,
+            or any editorial outcome. Final decisions remain with
+            qualified human editors.
+
+        </div>
+
+    </div>
+
+
+    <div class="actions">
+
+        <button
+            class="btn btn-outline"
+            onclick="prevStep(3)">
+            ← Back
+        </button>
+
+        <button
+            class="btn btn-primary"
+            onclick="nextStep(3)">
+            Continue →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- STEP 4 AUTHORS -->
+
+<section class="step" id="step4">
+
+    <div class="card">
+
+        <h2>Author Information</h2>
+
+        <p class="card-description">
+            Provide the corresponding author's information.
+        </p>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>
+                    First Name <span class="required">*</span>
+                </label>
+
+                <input id="firstName" type="text">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Last Name <span class="required">*</span>
+                </label>
+
+                <input id="lastName" type="text">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Email <span class="required">*</span>
+                </label>
+
+                <input id="email" type="email">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Country <span class="required">*</span>
+                </label>
+
+                <input id="country" type="text">
+
+            </div>
+
+
+            <div class="form-group full">
+
+                <label>
+                    Institution / Affiliation
+                </label>
+
+                <input id="institution" type="text">
+
+            </div>
+
+
+            <div class="form-group full">
+
+                <label>
+                    ORCID iD
+                </label>
+
+                <input
+                    id="orcid"
+                    type="text"
+                    placeholder="0000-0000-0000-0000">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Co-authors</h2>
+
+        <p class="card-description">
+            Add additional authors if applicable.
+        </p>
+
+        <div id="coauthors"></div>
+
+        <button
+            class="btn btn-outline"
+            onclick="addAuthor()">
+            + Add Co-author
+        </button>
+
+    </div>
+
+
+    <div class="actions">
+
+        <button
+            class="btn btn-outline"
+            onclick="prevStep(4)">
+            ← Back
+        </button>
+
+        <button
+            class="btn btn-primary"
+            onclick="nextStep(4)">
+            Continue →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- STEP 5 REVIEW -->
+
+<section class="step" id="step5">
+
+    <div class="card">
+
+        <h2>Review Your Submission</h2>
+
+        <p class="card-description">
+            Check the information below before proceeding.
+        </p>
+
+        <table class="review-table">
+
+            <tr>
+                <td>Publication Package</td>
+                <td id="reviewPackage">—</td>
+            </tr>
+
+            <tr>
+                <td>Article Title</td>
+                <td id="reviewTitle">—</td>
+            </tr>
+
+            <tr>
+                <td>Journal</td>
+                <td id="reviewJournal">—</td>
+            </tr>
+
+            <tr>
+                <td>Article Type</td>
+                <td id="reviewType">—</td>
+            </tr>
+
+            <tr>
+                <td>Manuscript File</td>
+                <td id="reviewFile">—</td>
+            </tr>
+
+            <tr>
+                <td>Corresponding Author</td>
+                <td id="reviewAuthor">—</td>
+            </tr>
+
+            <tr>
+                <td>AI Assistance</td>
+                <td id="reviewAI">Not selected</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <div class="card">
+
+        <label>
+
+            <input
+                type="checkbox"
+                id="confirmInfo"
+                style="width:auto; margin-right:8px;">
+
+            I confirm that the information provided is accurate
+            and <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Submit Manuscript | Scopusixteen Publishing</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #10213b;
+    line-height: 1.6;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    background: #061a3b;
+    color: white;
+    min-height: 76px;
+    padding: 15px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 9px;
+    letter-spacing: 4px;
+}
+
+.header-right {
+    display: flex;
+    gap: 10px;
+}
+
+.header-btn {
+    padding: 9px 15px;
+    border-radius: 6px;
+    border: 1px solid #6bdbe2;
+    background: transparent;
+    color: white;
+}
+
+.header-btn:hover {
+    background: #0b6477;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page {
+    width: 92%;
+    max-width: 1200px;
+    margin: 35px auto 70px;
+}
+
+.page-intro {
+    margin-bottom: 28px;
+}
+
+.page-intro .eyebrow {
+    color: #078b95;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 7px;
+}
+
+.page-intro h1 {
+    font-family: Georgia, serif;
+    font-size: 36px;
+    margin-bottom: 7px;
+}
+
+.page-intro p {
+    color: #65748a;
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 10px;
+    padding: 22px;
+    margin-bottom: 25px;
+}
+
+.progress-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}
+
+.step {
+    text-align: center;
+    position: relative;
+}
+
+.step-number {
+    width: 34px;
+    height: 34px;
+    margin: auto;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #e5ebf2;
+    color: #68788c;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.step.active .step-number {
+    background: #10aeb9;
+    color: white;
+}
+
+.step.completed .step-number {
+    background: #09254c;
+    color: white;
+}
+
+.step-label {
+    display: block;
+    margin-top: 7px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #65748a;
+}
+
+.step.active .step-label {
+    color: #078b95;
+}
+
+
+/* =========================
+   MAIN GRID
+========================= */
+
+.form-layout {
+    display: grid;
+    grid-template-columns: 1fr 290px;
+    gap: 22px;
+}
+
+
+/* =========================
+   FORM CARD
+========================= */
+
+.form-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.form-card h2 {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.form-description {
+    color: #65748a;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.required {
+    color: #c62828;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 12px;
+    outline: none;
+    background: white;
+    color: #10213b;
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #10aeb9;
+    box-shadow: 0 0 0 3px rgba(16,174,185,.08);
+}
+
+.form-group textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+
+/* =========================
+   PACKAGE
+========================= */
+
+.package-title {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    margin: 30px 0 15px;
+}
+
+.package-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.package {
+    border: 2px solid #dce3ed;
+    border-radius: 9px;
+    padding: 18px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.package:hover {
+    border-color: #10aeb9;
+}
+
+.package.selected {
+    border-color: #10aeb9;
+    background: #eefafb;
+}
+
+.package input {
+    display: none;
+}
+
+.package-icon {
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.package h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.package p {
+    font-size: 12px;
+    color: #65748a;
+}
+
+.package-price {
+    display: block;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #078b95;
+}
+
+
+/* =========================
+   AUTHORS
+========================= */
+
+.author-box {
+    border: 1px solid #dce3ed;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 15px;
+    background: #fafcfe;
+}
+
+.author-box h3 {
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.remove-author {
+    background: #fdecec;
+    color: #b42318;
+    border: none;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+    margin-top: 8px;
+}
+
+.add-author {
+    border: 1px dashed #10aeb9;
+    background: #eefafb;
+    color: #078b95;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   FILE UPLOAD
+========================= */
+
+.upload-box {
+    border: 2px dashed #b9c7d7;
+    border-radius: 9px;
+    padding: 35px 20px;
+    text-align: center;
+    background: #fafcfe;
+}
+
+.upload-box .upload-icon {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.upload-box h3 {
+    margin-bottom: 5px;
+}
+
+.upload-box p {
+    color: #65748a;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.upload-box input {
+    max-width: 100%;
+}
+
+
+/* =========================
+   CHECKBOX
+========================= */
+
+.check-row {
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    margin-top: 18px;
+    font-size: 13px;
+    color: #53637a;
+}
+
+.check-row input {
+    margin-top: 5px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 30px;
+    padding-top: 22px;
+    border-top: 1px solid #e1e7ee;
+}
+
+.btn {
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background: #09254c;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #123c70;
+}
+
+.btn-teal {
+    background: #10aeb9;
+    color: white;
+}
+
+.btn-teal:hover {
+    background: #078b95;
+}
+
+.btn-light {
+    background: #eef2f6;
+    color: #53637a;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.side-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 10px;
+    padding: 20px;
+    height: fit-content;
+}
+
+.side-card h3 {
+    font-family: Georgia, serif;
+    font-size: 19px;
+    margin-bottom: 15px;
+}
+
+.side-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.side-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #eefafb;
+    color: #078b95;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+.side-item strong {
+    display: block;
+    font-size: 12px;
+}
+
+.side-item span {
+    color: #65748a;
+    font-size: 11px;
+}
+
+
+/* =========================
+   HIDDEN STEPS
+========================= */
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    display: none;
+    padding: 14px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+.message.success {
+    display: block;
+    background: #eaf8ef;
+    color: #237a43;
+}
+
+.message.error {
+    display: block;
+    background: #fdecec;
+    color: #b42318;
+}
+
+
+/* =========================
+   REVIEW
+========================= */
+
+.review-box {
+    background: #f8fafc;
+    border: 1px solid #dce3ed;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 15px;
+}
+
+.review-box h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.review-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 8px 0;
+    border-bottom: 1px solid #e5eaf0;
+    font-size: 13px;
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-item span:first-child {
+    color: #65748a;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px) {
+
+    .form-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .package-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .progress-list {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .step-label {
+        font-size: 9px;
+    }
+}
+
+@media(max-width:600px) {
+
+    .header {
+        padding: 13px 5%;
+    }
+
+    .header-btn {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+
+    .page {
+        width: 94%;
+        margin-top: 22px;
+    }
+
+    .page-intro h1 {
+        font-size: 29px;
+    }
+
+    .form-card {
+        padding: 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .progress {
+        padding: 15px 8px;
+    }
+
+    .step-number {
+        width: 29px;
+        height: 29px;
+        font-size: 11px;
+    }
+
+    .step-label {
+        font-size: 8px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+    <div class="header-right">
+
+        <button
+        class="header-btn"
+        onclick="window.location.href='author-dashboard.html'">
+
+            ← Dashboard
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- PAGE -->
+
+<main class="page">
+
+
+    <!-- INTRO -->
+
+    <div class="page-intro">
+
+        <div class="eyebrow">
+            AUTHOR SUBMISSION
+        </div>
+
+        <h1>
+            Submit Your Manuscript
+        </h1>
+
+        <p>
+            Complete the submission process below.
+            Your information can be reviewed before final submission.
+        </p>
+
+    </div>
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress">
+
+        <div class="progress-list">
+
+            <div class="step active" id="stepIndicator1">
+                <div class="step-number">1</div>
+                <span class="step-label">Details</span>
+            </div>
+
+            <div class="step" id="stepIndicator2">
+                <div class="step-number">2</div>
+                <span class="step-label">Authors</span>
+            </div>
+
+            <div class="step" id="stepIndicator3">
+                <div class="step-number">3</div>
+                <span class="step-label">Files</span>
+            </div>
+
+            <div class="step" id="stepIndicator4">
+                <div class="step-number">4</div>
+                <span class="step-label">Payment</span>
+            </div>
+
+            <div class="step" id="stepIndicator5">
+                <div class="step-number">5</div>
+                <span class="step-label">Review</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- LAYOUT -->
+
+    <div class="form-layout">
+
+
+        <!-- FORM -->
+
+        <section class="form-card">
+
+            <div id="message" class="message"></div>
+
+
+            <!-- STEP 1 -->
+
+            <div
+            class="form-step active"
+            id="formStep1">
+
+                <h2>
+                    Manuscript Details
+                </h2>
+
+                <p class="form-description">
+                    Tell us about the manuscript you would like to submit.
+                </p>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Manuscript Title
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                    type="text"
+                    id="articleTitle"
+                    placeholder="Enter the full title of your manuscript">
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>
+                            Journal
+                            <span class="required">*</span>
+                        </label>
+
+                        <select id="journal">
+
+                            <option value="">
+                                Select Journal
+                            </option>
+
+                            <option>
+                                Journal of Engineering and Applied Sciences
+                            </option>
+
+                            <option>
+                                International Journal of Medical and Health Research
+                            </option>
+
+                            <option>
+                                Journal of Business, Management & Economics
+                            </option>
+
+                            <option>
+                                Advances in Environmental Science & Sustainability
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Article Type
+                            <span class="required">*</span>
+                        </label>
+
+                        <select id="articleType">
+
+                            <option value="">
+                                Select Article Type
+                            </option>
+
+                            <option>
+                                Original Research Article
+                            </option>
+
+                            <option>
+                                Review Article
+                            </option>
+
+                            <option>
+                                Case Study
+                            </option>
+
+                            <option>
+                                Short Communication
+                            </option>
+
+                            <option>
+                                Editorial
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Abstract
+                        <span class="required">*</span>
+                    </label>
+
+                    <textarea
+                    id="abstract"
+                    placeholder="Enter your manuscript abstract"></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Keywords
+                    </label>
+
+                    <input
+                    type="text"
+                    id="keywords"
+                    placeholder="Example: Artificial Intelligence, Machine Learning, Publishing">
+
+                </div>
+
+
+                <h3 class="package-title">
+                    Select Publishing Package
+                </h3>
+
+
+                <div class="package-grid">
+
+
+                    <label class="package">
+
+                        <input
+                        type="radio"
+                        name="package"
+                        value="APC"
+                        onchange="selectPackage(this)">
+
+                        <div class="package-icon">
+                            💳
+                        </div>
+
+                        <h3>
+                            APC Package
+                        </h3>
+
+                        <p>
+                            Article Processing Charge publishing option.
+                        </p>
+
+                        <span class="package-price">
+                            Fee shown at payment
+                        </span>
+
+                    </label>
+
+
+                    <label class="package">
+
+                        <input
+                        type="radio"
+                        name="package"
+                        value="Subscription"
+                        onchange="selectPackage(this)">
+
+                        <div class="package-icon">
+                            📚
+                        </div>
+
+                        <h3>
+                            Subscription Package
+                        </h3>
+
+                        <p>
+                            Publication under a subscription model.
+                        </p>
+
+                        <span class="package-price">
+                            Fee shown at payment
+                        </span>
+
+                    </label>
+
+
+                    <label class="package">
+
+                        <input
+                        type="radio"
+                        name="package"
+                        value="Hybrid"
+                        onchange="selectPackage(this)">
+
+                        <div class="package-icon">
+                            🔀
+                        </div>
+
+                        <h3>
+                            Hybrid Package
+                        </h3>
+
+                        <p>
+                            Subscription with eligible open-access options.
+                        </p>
+
+                        <span class="package-price">
+                            Fee shown at payment
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                    class="btn btn-light"
+                    onclick="saveDraft()">
+
+                        Save Draft
+
+                    </button>
+
+                    <button
+                    class="btn btn-teal"
+                    onclick="nextStep(1)">
+
+                        Continue →
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 2 -->
+
+            <div
+            class="form-step"
+            id="formStep2">
+
+                <h2>
+                    Authors
+                </h2>
+
+                <p class="form-description">
+                    Add the corresponding author and all co-authors.
+                </p>
+
+
+                <div id="authorsContainer">
+
+                    <div class="author-box">
+
+                        <h3>
+                            Author 1 — Corresponding Author
+                        </h3>
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label>
+                                    First Name *
+                                </label>
+
+                                <input
+                                type="text"
+                                class="author-first"
+                                placeholder="First name">
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label>
+                                    Last Name *
+                                </label>
+
+                                <input
+                                type="text"
+                                class="author-last"
+                                placeholder="Last name">
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label>
+                                    Email *
+                                </label>
+
+                                <input
+                                type="email"
+                                class="<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Submit Manuscript | Scopusixteen Publishing</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #10213b;
+    line-height: 1.6;
+}
+
+/* HEADER */
+
+.header {
+    background: #061a3b;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.back-link {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.back-link:hover {
+    color: #65d7df;
+}
+
+/* MAIN */
+
+.main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    margin-bottom: 30px;
+}
+
+.page-title h1 {
+    font-family: Georgia, serif;
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.page-title p {
+    color: #65748a;
+}
+
+/* STEPS */
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.step {
+    background: white;
+    border: 1px solid #dce3ed;
+    padding: 14px;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    color: #65748a;
+}
+
+.step.active {
+    background: #09254c;
+    color: white;
+}
+
+/* FORM */
+
+.form-card {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #dce3ed;
+    padding: 35px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.05);
+}
+
+.form-section {
+    margin-bottom: 35px;
+}
+
+.form-section h2 {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    margin-bottom: 6px;
+}
+
+.form-section > p {
+    color: #65748a;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #cbd6e2;
+    border-radius: 6px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #10aeb9;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* AUTHORS */
+
+.author-box {
+    border: 1px solid #dce3ed;
+    background: #f8fafc;
+    border-radius: 7px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.author-box h3 {
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.add-author {
+    background: white;
+    border: 1px solid #10aeb9;
+    color: #078b95;
+    padding: 9px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add-author:hover {
+    background: #eefafb;
+}
+
+/* UPLOAD */
+
+.upload-box {
+    border: 2px dashed #b9c7d8;
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    background: #f8fafc;
+    transition: 0.2s;
+}
+
+.upload-box:hover {
+    border-color: #10aeb9;
+    background: #f1fbfc;
+}
+
+.upload-box input {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.upload-box p {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.upload-box small {
+    color: #65748a;
+}
+
+.file-name {
+    margin-top: 10px;
+    color: #078b95;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* DECLARATION */
+
+.declaration {
+    background: #f4f8ff;
+    border: 1px solid #d8e4f3;
+    padding: 20px;
+    border-radius: 7px;
+}
+
+.check-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+.check-row:last-child {
+    margin-bottom: 0;
+}
+
+.check-row input {
+    margin-top: 5px;
+}
+
+/* BUTTONS */
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn {
+    border: none;
+    border-radius: 6px;
+    padding: 13px 22px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-secondary {
+    background: #eef2f7;
+    color: #10213b;
+}
+
+.btn-secondary:hover {
+    background: #dfe5ec;
+}
+
+.btn-primary {
+    background: #09254c;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #10aeb9;
+}
+
+/* SUCCESS */
+
+.success {
+    display: none;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #dce3ed;
+    padding: 50px 30px;
+}
+
+.success-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+    color: #237a43;
+}
+
+.success h2 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.success p {
+    color: #65748a;
+}
+
+.manuscript-id {
+    display: inline-block;
+    background: #eefafb;
+    color: #078b95;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    color: #7b899c;
+    font-size: 12px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    .header {
+        padding: 15px 5%;
+    }
+
+    .main {
+        margin: 25px auto;
+    }
+
+    .page-title h1 {
+        font-size: 29px;
+    }
+
+    .steps {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .form-card {
+        padding: 22px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+    <a href="index.html" class="back-link">
+        ← Back to Homepage
+    </a>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+    <div class="page-title">
+
+        <h1>
+            Submit New Manuscript
+        </h1>
+
+        <p>
+            Submit your research article for editorial consideration.
+        </p>
+
+    </div>
+
+
+    <!-- STEPS -->
+
+    <div class="steps">
+
+        <div class="step active">
+            1. Manuscript
+        </div>
+
+        <div class="step">
+            2. Authors
+        </div>
+
+        <div class="step">
+            3. Files
+        </div>
+
+        <div class="step">
+            4. Declaration
+        </div>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <form
+        id="manuscriptForm"
+        class="form-card">
+
+
+        <!-- MANUSCRIPT INFORMATION -->
+
+        <div class="form-section">
+
+            <h2>
+                1. Manuscript Information
+            </h2>
+
+            <p>
+                Provide the basic information about your research article.
+            </p>
+
+
+            <div class="form-group">
+
+                <label for="articleTitle">
+                    Article Title *
+                </label>
+
+                <input
+                    type="text"
+                    id="articleTitle"
+                    name="articleTitle"
+                    placeholder="Enter your complete article title"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="journal">
+                        Select Journal *
+                    </label>
+
+                    <select
+                        id="journal"
+                        name="journal"
+                        required
+                    >
+
+                        <option value="">
+                            Select a journal
+                        </option>
+
+                        <option value="AI and Education Review">
+                            AI and Education Review
+                        </option>
+
+                        <option value="Management Studies">
+                            Management Studies
+                        </option>
+
+                        <option value="Engineering and Technology Review">
+                            Engineering and Technology Review
+                        </option>
+
+                        <option value="Health and Medical Research">
+                            Health and Medical Research
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="articleType">
+                        Article Type *
+                    </label>
+
+                    <select
+                        id="articleType"
+                        name="articleType"
+                        required
+                    >
+
+                        <option value="">
+                            Select article type
+                        </option>
+
+                        <option value="Original Research">
+                            Original Research
+                        </option>
+
+                        <option value="Review Article">
+                            Review Article
+                        </option>
+
+                        <option value="Case Study">
+                            Case Study
+                        </option>
+
+                        <option value="Short Communication">
+                            Short Communication
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="abstract">
+                    Abstract *
+                </label>
+
+                <textarea
+                    id="abstract"
+                    name="abstract"
+                    rows="8"
+                    placeholder="Enter your article abstract"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="keywords">
+                    Keywords *
+                </label>
+
+                <input
+                    type="text"
+                    id="keywords"
+                    name="keywords"
+                    placeholder="AI, education, technology, innovation"
+                    required
+                >
+
+                <small>
+                    Separate keywords with commas.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- AUTHORS -->
+
+        <div class="form-section">
+
+            <h2>
+                2. Author Information
+            </h2>
+
+            <p>
+                Enter the corresponding author and co-author information.
+            </p>
+
+
+            <div class="author-box">
+
+                <h3>
+                    Corresponding Author
+                </h3>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="authorName">
+                            Full Name *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="authorName"
+                            name="authorName"
+                            placeholder="Full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="authorEmail">
+                            Email *
+                        </label>
+
+                        <input
+                            type="email"
+                            id="authorEmail"
+                            name="authorEmail"
+                            placeholder="author@example.com"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="institution">
+                            Institution / Affiliation *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="institution"
+                            name="institution"
+                            placeholder="University or organization"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="country">
+                            Country *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="country"
+                            name="country"
+                            placeholder="Country"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div id="coAuthors"></div>
+
+
+            <button
+                type="button"
+                class="add-author"
+                onclick="addAuthor()">
+
+                + Add Co-Author
+
+            </button>
+
+        </div>
+
+
+        <!-- FILES -->
+
+        <div class="form-section">
+
+            <h2>
+                3. Manuscript Files
+            </h2>
+
+            <p>
+                Upload the files required for your submission.
+            </p>
+
+
+            <!-- MAIN MANUSCRIPT -->
+
+            <div class="form-group">
+
+                <label for="manuscriptFile">
+                    Main Manuscript *
+                </label>
+
+                <div class="upload-box">
+
+                    <input
+                        type="file"
+                        id="manuscriptFile"
+                        name="manuscriptFile"
+                        accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                        required
+                    >
+
+                    <p>
+                        📄 Select Manuscript File
+                    </p>
+
+                    <small>
+                        PDF, DOC or DOCX — Maximum 10 MB
+                    </small>
+
+                    <div
+                        id="manuscriptFileName"
+                        class="file-name">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- COVER LETTER -->
+
+            <div class="form-group">
+
+                <label for="coverLetter">
+                    Cover Letter
+                </label>
+
+                <div class="upload-box">
+
+                    <input
+                        type="file"
+                        id="coverLetter"
+                        name="coverLetter"
+                        accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    >
+
+                    <p>
+                        📄 Select Cover Letter
+                    </p>
+
+                    <small>
+                        PDF, DOC or DOCX
+                    </small>
+
+                    <div
+                        id="coverLetterName"
+                        class="file-name">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DECLARATION -->
+
+        <div class="form-section">
+
+            <h2>
+                4. Declaration
+            </h2>
+
+            <p>
+                Please confirm the following before submitting.
+            </p>
+
+
+            <div class="declaration">
+
+
+                <div class="check-row">
+
+                    <input
+                        type="checkbox"
+                        id="originalWork"
+                        required
+                    >
+
+                    <label for="originalWork">
+
+                        I confirm that this manuscript is my original
+                        work and has not been submitted to another journal.
+
+                    </label>
+
+                </div>
+
+
+                <div class="check-row">
+
+                    <input
+                        type="checkbox"
+                        id="authorApproval"
+                        required
+                    >
+
+                    <label for="authorApproval">
+
+                        I confirm that all listed authors have approved
+                        the submission of this manuscript.
+
+                    </label>
+
+                </div>
+
+
+                <div class="check-row">
+
+                    <input
+                        type="checkbox"
+                        id="informationCorrect"
+                        required
+                    >
+
+                    <label for="informationCorrect">
+
+                        I confirm that the information provided in this
+                        submission is accurate and complete.
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="form-actions">
+
+            <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="window.location.href='author-portal.html'">
+
+                Cancel
+
+            </button>
+
+
+            <button
+                type="submit"
+                class="btn btn-primary">
+
+                Submit Manuscript
+
+            </button>
+
+        </div>
+
+
+    </form>
+
+
+    <!-- SUCCESS -->
+
+    <div
+        id="successMessage"
+        class="success">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>
+            Submission Received
+        </h2>
+
+        <p>
+            Your manuscript has been received by
+            Scopusixteen Publishing.
+        </p>
+
+
+        <div
+            id="manuscriptId"
+            class="manuscript-id">
+        </div>
+
+
+        <p>
+            Please keep your manuscript ID for future reference.
+        </p>
+
+
+        <br>
+
+
+        <button
+            class="btn btn-primary"
+            onclick="window.location.href='author-portal.html'">
+
+            Return to Author Portal
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<footer class="footer">
+
+    © 2026 Scopusixteen Publishing.
+    All rights reserved.
+
+</footer>
+
+
+<script>
+
+/* =========================
+   AUTO-FILL AUTHOR DETAILS
+========================= */
+
+const savedUser =
+    localStorage.getItem("scopusixteenUser");
+
+if (savedUser) {
+
+    try {
+
+        const user = JSON.parse(savedUser);
+
+        if (user.firstName && user.lastName) {
+
+            document.getElementById("authorName").value =
+                user.firstName + " " + user.lastName;
+
+        }
+
+        if (user.email) {
+
+            document.getElementById("authorEmail").value =
+                user.email;
+
+        }
+
+        if (user.institution) {
+
+            document.getElementById("institution").value =
+                user.institution;
+
+        }
+
+        if (user.country) {
+
+            document.getElementById("country").value =
+                user.country;
+
+        }
+
+    } catch (error) {
+
+        console.log(
+            "Unable to load author information."
+        );
+
+    }
+
+}
+
+
+/* =========================
+   FILE VALIDATION
+========================= */
+
+const MAX_FILE_SIZE =
+    10 * 1024 * 1024;
+
+const allowedExtensions = [
+    "pdf",
+    "doc",
+    "docx"
+];
+
+
+function validateFile(file) {
+
+    if (!file) {
+        return false;
+    }
+
+    const fileName =
+        file.name.toLowerCase();
+
+    const extension =
+        fileName.split(".").pop();
+
+    if (!allowedExtensions.includes(extension)) {
+
+        alert(
+            "Invalid file type.\n\n" +
+            "Please upload a PDF, DOC or DOCX file."
+        );
+
+        return false;
+
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+
+        alert(
+            "File is too large.\n\n" +
+            "The maximum allowed size is 10 MB."
+        );
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+
+/* =========================
+   MAIN MANUSCRIPT FILE
+========================= */
+
+document
+.getElementBy<!TYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Submit Manuscript | Scopusixteen Publishing</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #10213b;
+    line-height: 1.6;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    background: #061a3b;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.back-link {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.back-link:hover {
+    color: #65d7df;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    margin-bottom: 30px;
+}
+
+.page-title h1 {
+    font-family: Georgia, serif;
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.page-title p {
+    color: #65748a;
+}
+
+/* =========================
+   STEPS
+========================= */
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.step {
+    background: white;
+    border: 1px solid #dce3ed;
+    padding: 14px;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    color: #65748a;
+}
+
+.step.active {
+    background: #09254c;
+    color: white;
+}
+
+/* =========================
+   FORM CARD
+========================= */
+
+.form-card {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #dce3ed;
+    padding: 35px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.05);
+}
+
+.form-section {
+    margin-bottom: 35px;
+}
+
+.form-section h2 {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    margin-bottom: 6px;
+}
+
+.form-section > p {
+    color: #65748a;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #cbd6e2;
+    border-radius: 6px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #10aeb9;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* =========================
+   AUTHORS
+========================= */
+
+.author-box {
+    border: 1px solid #dce3ed;
+    background: #f8fafc;
+    border-radius: 7px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.author-box h3 {
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.add-author {
+    background: white;
+    border: 1px solid #10aeb9;
+    color: #078b95;
+    padding: 9px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* =========================
+   UPLOAD
+========================= */
+
+.upload-box {
+    border: 2px dashed #b9c7d8;
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    background: #f8fafc;
+}
+
+.upload-box input {
+    width: 100%;
+    border: none;
+}
+
+.upload-box p {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.upload-box small {
+    color: #65748a;
+}
+
+/* =========================
+   DECLARATION
+========================= */
+
+.declaration {
+    background: #f4f8ff;
+    border: 1px solid #d8e4f3;
+    padding: 20px;
+    border-radius: 7px;
+}
+
+.check-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+.check-row input {
+    margin-top: 5px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn {
+    border: none;
+    border-radius: 6px;
+    padding: 13px 22px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-secondary {
+    background: #eef2f7;
+    color: #10213b;
+}
+
+.btn-primary {
+    background: #09254c;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #10aeb9;
+}
+
+/* =========================
+   SUCCESS
+========================= */
+
+.success {
+    display: none;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #dce3ed;
+    padding: 50px 30px;
+}
+
+.success-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.success h2 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.success p {
+    color: #65748a;
+}
+
+.manuscript-id {
+    display: inline-block;
+    background: #eefafb;
+    color: #078b95;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    color: #7b899c;
+    font-size: 12px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px) {
+
+    .header {
+        padding: 15px 5%;
+    }
+
+    .main {
+        margin: 25px auto;
+    }
+
+    .page-title h1 {
+        font-size: 29px;
+    }
+
+    .steps {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .form-card {
+        padding: 22px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+    <a href="index.html" class="back-link">
+        ← Back to Homepage
+    </a>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+    <div class="page-title">
+
+        <h1>
+            Submit New Manuscript
+        </h1>
+
+        <p>
+            Submit your research article for editorial consideration.
+        </p>
+
+    </div>
+
+
+    <!-- STEPS -->
+
+    <div class="steps">
+
+        <div class="step active">
+            1. Manuscript
+        </div>
+
+        <div class="step">
+            2. Authors
+        </div>
+
+        <div class="step">
+            3. Files
+        </div>
+
+        <div class="step">
+            4. Declaration
+        </div>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <form
+        id="manuscriptForm"
+        class="form-card">
+
+
+        <!-- MANUSCRIPT -->
+
+        <div class="form-section">
+
+            <h2>
+                1. Manuscript Information
+            </h2>
+
+            <p>
+                Provide the basic information about your research article.
+            </p>
+
+
+            <div class="form-group">
+
+                <label for="articleTitle">
+                    Article Title *
+                </label>
+
+                <input
+                    type="text"
+                    id="articleTitle"
+                    name="articleTitle"
+                    placeholder="Enter your complete article title"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="journal">
+                        Select Journal *
+                    </label>
+
+                    <select
+                        id="journal"
+                        name="journal"
+                        required
+                    >
+
+                        <option value="">
+                            Select a journal
+                        </option>
+
+                        <option>
+                            AI and Education Review
+                        </option>
+
+                        <option>
+                            Management Studies
+                        </option>
+
+                        <option>
+                            Engineering and Technology Review
+                        </option>
+
+                        <option>
+                            Health and Medical Research
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="articleType">
+                        Article Type *
+                    </label>
+
+                    <select
+                        id="articleType"
+                        name="articleType"
+                        required
+                    >
+
+                        <option value="">
+                            Select article type
+                        </option>
+
+                        <option>
+                            Original Research
+                        </option>
+
+                        <option>
+                            Review Article
+                        </option>
+
+                        <option>
+                            Case Study
+                        </option>
+
+                        <option>
+                            Short Communication
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="abstract">
+                    Abstract *
+                </label>
+
+                <textarea
+                    id="abstract"
+                    name="abstract"
+                    rows="8"
+                    placeholder="Enter your article abstract"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="keywords">
+                    Keywords *
+                </label>
+
+                <input
+                    type="text"
+                    id="keywords"
+                    name="keywords"
+                    placeholder="AI, education, technology, innovation"
+                    required
+                >
+
+                <small>
+                    Separate keywords with commas.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- AUTHORS -->
+
+        <div class="form-section">
+
+            <h2>
+                2. Author Information
+            </h2>
+
+            <p>
+                Enter the corresponding author and co-author information.
+            </p>
+
+
+            <div class="author-box">
+
+                <h3>
+                    Corresponding Author
+                </h3>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="authorName">
+                            Full Name *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="authorName"
+                            name="authorName"
+                            placeholder="Full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="authorEmail">
+                            Email *
+                        </label>
+
+                        <input
+                            type="email"
+                            id="authorEmail"
+                            name="authorEmail"
+                            placeholder="author@example.com"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="institution">
+                            Institution / Affiliation *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="institution"
+                            name="institution"
+                            placeholder="University or organization"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="country">
+                            Country *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="country"
+                            name="country"
+                            placeholder="Country"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div id="coAuthors"></div>
+
+
+            <button
+                type="button"
+                class="add-author"
+                onclick="addAuthor()">
+
+                + Add Co-Author
+
+            </button>
+
+        </div>
+
+
+        <!-- FILES -->
+
+        <div class="form-section">
+
+            <h2>
+                3. Manuscript Files
+            </h2>
+
+            <p>
+                Upload the files required for your submission.
+            </p>
+
+
+            <div class="form-group">
+
+                <label>
+                    Main Manuscript *
+                </label>
+
+                <div class="upload-box">
+
+                    <input
+                        type="file"
+                        id="manuscriptFile"
+                        accept=".pdf,.doc,.docx"
+                        required
+                    >
+
+                    <p>
+                        Upload Manuscript
+                    </p>
+
+                    <small>
+                        PDF, DOC or DOCX — Maximum 10 MB
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Cover Letter
+                </label>
+
+                <div class="upload-box">
+
+                    <input
+                        type="file"
+                        id="coverLetter"
+                        accept=".pdf,.doc,.docx"
+                    >
+
+                    <p>
+                        Upload Cover Letter
+                    </p>
+
+                    <small>
+                        PDF, DOC or DOCX
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DECLARATION -->
+
+        <div class="form-section">
+
+            <h2>
+                4. Declaration
+            </h2>
+
+            <p>
+                Please confirm the following before submitting.
+            </p>
+
+
+            <div class="declaration">
+
+
+                <div class="check-row">
+
+                    <input
+                        type="checkbox"
+                        id="originalWork"
+                        required
+                    >
+
+                    <label for="originalWork">
+
+                        I confirm that this manuscript is my original
+                        work and has not been submitted to another journal.
+
+                    </label>
+
+                </div>
+
+
+                <div class="check-row">
+
+                    <input
+                        type="checkbox"
+                        id="authorApproval"
+                        required
+                    >
+
+                    <label for="authorApproval">
+
+                        I confirm that all listed authors have approved
+                        the submission of this manuscript.
+
+                    </label>
+
+                </div>
+
+
+                <div class="check-row">
+
+                    <input
+                        type="checkbox"
+                        id="informationCorrect"
+                        required
+                    >
+
+                    <label for="informationCorrect">
+
+                        I confirm that the information provided in this
+                        submission is accurate and complete.
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="form-actions">
+
+            <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="window.location.href='index.html'">
+
+                Cancel
+
+            </button>
+
+
+            <button
+                type="submit"
+                class="btn btn-primary">
+
+                Submit Manuscript
+
+            </button>
+
+        </div>
+
+
+    </form>
+
+
+    <!-- SUCCESS -->
+
+    <div
+        id="successMessage"
+        class="success">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>
+            Submission Received
+        </h2>
+
+        <p>
+            Your manuscript has been received by Scopusixteen Publishing.
+        </p>
+
+
+        <div
+            id="manuscriptId"
+            class="manuscript-id">
+        </div>
+
+
+        <p>
+            Please keep your manuscript ID for future reference.
+        </p>
+
+
+        <br>
+
+
+        <button
+            class="btn btn-primary"
+            onclick="window.location.href='index.html'">
+
+            Return to Homepage
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<footer class="footer">
+
+    © 2026 Scopusixteen Publishing.
+    All rights reserved.
+
+</footer>
+
+
+<script>
+
+/* =========================
+   ADD CO-AUTHOR
+========================= */
+
+let authorCount = 0;
+
+function addAuthor() {
+
+    authorCount++;
+
+    const container =
+        document.getElementById("coAuthors");
+
+    const author =
+        document.createElement("div");
+
+    author.className = "author-box";
+
+    author.innerHTML = `
+
+        <h3>
+            Co-Author ${authorCount}
+        </h3>
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    name="coAuthorName${authorCount}"
+                    placeholder="Full name"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    name="coAuthorEmail${authorCount}"
+                    placeholder="author@example.com"
+                    required
+                >
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Institution
+            </label>
+
+            <input
+                type="text"
+                name="coAuthorInstitution${authorCount}"
+                placeholder="University or organization"
+                required
+            >
+
+        </div>
+
+    `;
+
+    container.appendChild(author);
+
+}
+
+
+/* =========================
+   SUBMISSION
+========================= */
+
+document
+.getElementById("manuscriptForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+
+    const manuscript =
+        document.getElementById("manuscriptFile")
+        .files[0];
+
+
+    if (!manuscript) {
+
+        alert(
+            "Please upload your manuscript."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        manuscript.size >
+        10 * 1024 * 1024
+    ) {
+
+        alert(
+            "Your manuscript is larger than 10 MB."
+        );
+
+        return;
+
+    }
+
+
+    /* Generate demo manuscript ID */
+
+    const year =
+        new Date().getFullYear();
+
+    const randomNumber =
+        Math.floor(
+            10000 +
+            Math.random() * 90000
+        );
+
+
+    const manuscriptID =
+        "SCP-" +
+        year +
+        "-" +
+        randomNumber;
+
+
+    document
+    .getElementById("manuscriptId")
+    .textContent =
+        "Manuscript ID: " +
+        manuscriptID;
+
+
+    document
+    .getElementById("manuscriptForm")
+    .sty
+    
+    document.getElementById("manuscriptForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const manuscript =
+        document.getElementById("manuscriptFile").files[0];
+
+    if (!manuscript) {
+        alert("Please upload your manuscript.");
+        return;
+    }
+
+    // Maximum 10 MB
+    if (manuscript.size > 10 * 1024 * 1024) {
+        alert("Your manuscript is larger than 10 MB.");
+        return;
+    }
+
+    // Generate manuscript ID
+    const year = new Date().getFullYear();
+
+    const randomNumber = Math.floor(
+        10000 + Math.random() * 90000
+    );
+
+    const manuscriptID =
+        "SCP-" + year + "-" + randomNumber;
+
+    // Get form information
+    const title =
+        document.getElementById("articleTitle").value.trim();
+
+    const journal =
+        document.getElementById("journal").value;
+
+    const authorName =
+        document.getElementById("authorName").value.trim();
+
+    const authorEmail =
+        document.getElementById("authorEmail").value.trim();
+
+    // Create submission
+    const submission = {
+
+        id: manuscriptID,
+
+        title: title,
+
+        journal: journal,
+
+        author: authorName,
+
+        email: authorEmail,
+
+        date: new Date().toLocaleDateString(),
+
+        status: "Under Review"
+
+    };
+
+    // Get previous submissions
+    let submissions =
+        JSON.parse(
+            localStorage.getItem(
+                "scopusixteenManuscripts"
+            )
+        ) || [];
+
+    // Add new submission
+    submissions.push(submission);
+
+    // Save submissions
+    localStorage.setItem(
+        "scopusixteenManuscripts",
+        JSON.stringify(submissions)
+    );
+
+    // Show manuscript ID
+    document.getElementById(
+        "manuscriptId"
+    ).textContent =
+        "Manuscript ID: " + manuscriptID;
+
+    // Hide form
+    document.getElementById(
+        "manuscriptForm"
+    ).style.display = "none";
+
+    // Show success message
+    document.getElementById(
+        "successMessage"
+    ).style.display = "block";
+
+});

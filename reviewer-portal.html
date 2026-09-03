@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reviewer Portal | Scopusixteen Publishing</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #10213b;
+}
+
+/* HEADER */
+
+.header {
+    background: #061a3b;
+    color: white;
+    padding: 18px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.header-right {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.header-right a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+/* LAYOUT */
+
+.layout {
+    display: flex;
+    min-height: calc(100vh - 75px);
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 240px;
+    background: white;
+    border-right: 1px solid #dce3ed;
+    padding: 25px 15px;
+}
+
+.sidebar h3 {
+    font-size: 12px;
+    color: #8a98aa;
+    text-transform: uppercase;
+    margin: 10px 12px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    color: #40516a;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: #eefafb;
+    color: #078b95;
+}
+
+/* CONTENT */
+
+.content {
+    flex: 1;
+    padding: 35px;
+}
+
+.reviewer-section {
+    display: none;
+}
+
+.reviewer-section.active {
+    display: block;
+}
+
+.page-header {
+    margin-bottom: 25px;
+}
+
+.page-header h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.page-header p {
+    color: #65748a;
+}
+
+/* STATS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 20px;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: #09254c;
+}
+
+.stat-card p {
+    color: #65748a;
+    font-size: 12px;
+}
+
+/* CARD */
+
+.card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.card h2 {
+    font-family: Georgia, serif;
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: #65748a;
+    font-size: 13px;
+}
+
+/* TABLE */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 14px 10px;
+    border-bottom: 1px solid #e3e8ef;
+    text-align: left;
+    font-size: 13px;
+}
+
+th {
+    color: #65748a;
+    font-size: 12px;
+}
+
+/* STATUS */
+
+.status {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.status-invited {
+    background: #eef2ff;
+    color: #4055a5;
+}
+
+.status-progress {
+    background: #fff5dc;
+    color: #a96b00;
+}
+
+.status-completed {
+    background: #e7f8ee;
+    color: #16834b;
+}
+
+.status-declined {
+    background: #ffeaea;
+    color: #b52d2d;
+}
+
+/* BUTTONS */
+
+.btn {
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background: #09254c;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #10aeb9;
+}
+
+.btn-secondary {
+    background: #eef2f7;
+    color: #10213b;
+}
+
+/* REVIEW FORM */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd6e2;
+    border-radius: 6px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* MOBILE */
+
+@media(max-width:900px) {
+
+    .sidebar {
+        width: 190px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media(max-width:650px) {
+
+    .layout {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #dce3ed;
+    }
+
+    .sidebar a {
+        display: inline-block;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <span>
+            Reviewer
+        </span>
+
+        <a href="index.html">
+            Home
+        </a>
+
+    </div>
+
+</header>
+
+
+<div class="layout">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <h3>
+        Reviewer
+    </h3>
+
+
+    <a
+        href="#"
+        class="active"
+        onclick="showSection('dashboard', this)">
+
+        Dashboard
+
+    </a>
+
+
+    <a
+        href="#"
+        onclick="showSection('invitations', this)">
+
+        Review Invitations
+
+    </a>
+
+
+    <a
+        href="#"
+        onclick="showSection('reviews', this)">
+
+        My Reviews
+
+    </a>
+
+
+    <a
+        href="#"
+        onclick="showSection('profile', this)">
+
+        My Profile
+
+    </a>
+
+
+    <a href="index.html">
+
+        ← Return Home
+
+    </a>
+
+</aside>
+
+
+<main class="content">
+
+
+<!-- DASHBOARD -->
+
+<section
+    id="dashboard"
+    class="reviewer-section active">
+
+    <div class="page-header">
+
+        <h1>
+            Reviewer Dashboard
+        </h1>
+
+        <p>
+            Manage your peer-review assignments.
+        </p>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat-card">
+
+            <span
+                class="stat-number"
+                id="invitationCount">
+
+                0
+
+            </span>
+
+            <p>
+                Invitations
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span
+                class="stat-number"
+                id="pendingCount">
+
+                0
+
+            </span>
+
+            <p>
+                Pending Reviews
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span
+                class="stat-number"
+                id="completedCount">
+
+                0
+
+            </span>
+
+            <p>
+                Completed Reviews
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span
+                class="stat-number"
+                id="declinedCount">
+
+                0
+
+            </span>
+
+            <p>
+                Declined
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            Review Invitations
+        </h2>
+
+        <p>
+            Manuscripts assigned to you for peer review.
+        </p>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Manuscript
+                        </th>
+
+                        <th>
+                            Journal
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="dashboardReviews">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INVITATIONS -->
+
+<section
+    id="invitations"
+    class="reviewer-section">
+
+    <div class="page-header">
+
+        <h1>
+            Review Invitations
+        </h1>
+
+        <p>
+            Accept or decline manuscript review invitations.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div id="invitationList"></div>
+
+    </div>
+
+</section>
+
+
+<!-- MY REVIEWS -->
+
+<section
+    id="reviews"
+    class="reviewer-section">
+
+    <div class="page-header">
+
+        <h1>
+            My Reviews
+        </h1>
+
+        <p>
+            Submit and manage your peer-review reports.
+        </p>
+
+    </div>
+
+
+    <div
+        id="reviewFormContainer"
+        class="card"
+        style="display:none;">
+
+        <h2>
+            Peer Review
+        </h2>
+
+        <p id="reviewManuscriptTitle">
+        </p>
+
+        <br>
+
+
+        <div class="form-group">
+
+            <label>
+                Recommendation
+            </label>
+
+            <select id="recommendation">
+
+                <option value="">
+                    Select recommendation
+                </option>
+
+                <option>
+                    Accept
+                </option>
+
+                <option>
+                    Minor Revision
+                </option>
+
+                <option>
+                    Major Revision
+                </option>
+
+                <option>
+                    Reject
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Comments to the Editor
+            </label>
+
+            <textarea
+                id="editorComments"
+                rows="6"
+                placeholder="Enter confidential comments for the editor">
+            </textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Comments to the Author
+            </label>
+
+            <textarea
+                id="authorComments"
+                rows="6"
+                placeholder="Enter constructive comments for the author">
+            </textarea>
+
+        </div>
+
+
+        <button
+            class="btn btn-primary"
+            onclick="submitReview()">
+
+            Submit Review
+
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            Completed Reviews
+        </h2>
+
+        <div id="completedReviews"></div>
+
+    </div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section
+    id="profile"
+    class="reviewer-section">
+
+    <div class="page-header">
+
+        <h1>
+            Reviewer Profile
+        </h1>
+
+        <p>
+            Manage your reviewer information and expertise.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="form-group">
+
+            <label>
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="reviewerName"
+                placeholder="Full name"
+                style="width:100%;padding:12px;border:1px solid #cbd6e2;border-radius:6px;">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="reviewerEmail"
+                placeholder="reviewer@example.com"
+                style="width:100%;padding:12px;border:1px solid #cbd6e2;border-radius:6px;">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Institution
+            </label>
+
+            <input
+                type="text"
+                id="reviewerInstitution"
+                placeholder="University or organization"
+                style="width:100%;padding:12px;border:1px solid #cbd6e2;border-radius:6px;">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Areas of Expertise
+            </label>
+
+            <textarea
+                id="reviewerExpertise"
+                rows="5"
+                placeholder="Artificial Intelligence, Engineering, Medicine...">
+            </textarea>
+
+        </div>
+
+
+        <button
+            class="btn btn-primary"
+            onclick="saveReviewerProfile()">
+
+            Save Profile
+
+        </button>
+
+    </div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<script>
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function showSection(sectionId, element) {
+
+    document.querySelectorAll(
+        ".reviewer-section"
+    ).forEach(function(section) {
+
+        section.classList.remove("active");
+
+    });
+
+
+    document
+        .getElementById(sectionId)
+        .classList.add("active");
+
+
+    document.querySelectorAll(
+        ".sidebar a"
+    ).forEach(function(link) {
+
+        link.classList.remove("active");
+
+    });
+
+
+    element.classList.add("active");
+
+
+    if (sectionId === "invitations") {
+        loadInvitations();
+    }
+
+
+    if (sectionId === "reviews") {
+        loadCompletedReviews();
+    }
+
+}
+
+
+/* =========================
+   GET INVITATIONS
+========================= */
+
+function getInvitations() {
+
+    return JSON.parse(
+        localStorage.getItem(
+            "scopusixteenReviewerInvitations"
+        )
+    ) || [];
+
+}
+
+
+/* =========================
+   LOAD INVITATIONS
+========================= */
+
+function loadInvitations() {
+
+    const invitations =
+        getInvitations();
+
+
+    const container =
+        document.getElementById(
+            "invitationList"
+        );
+
+
+    container.innerHTML = "";
+
+
+    if (invitations.length === 0) {
+
+        container.innerHTML = `
+            <p>
+                No review invitations at this time.
+            </p>
+        `;
+
+        return;
+
+    }
+
+
+    invitations.forEach(function(item, index) {
+
+        const div =
+            document.createElement("div");
+
+        div.style.padding = "20px";
+
+        div.style.borderBottom =
+            "1px solid #e3e8ef";
+
+
+        div.innerHTML = `
+
+            <h3>
+                ${item.title}
+            </h3>
+
+            <p>
+                Journal: ${item.journal}
+            </p>
+
+            <p>
+                Status:
+                <span class="status status-${item.status}">
+                    ${item.status}
+                </span>
+            </p>
+
+            <br>
+
+            ${
+                item.status === "invited"
+                ?
+                `
+                <button
+                    class="btn btn-primary"
+                    onclick="acceptInvitation(${index})">
+
+                    Accept
+
+                </button>
+
+                <button
+                    class="btn btn-secondary"
+                    onclick="declineInvitation(${index})">
+
+                    Decline
+
+                </button>
+                `
+                :
+                item.status === "progress"
+                ?
+                `
+                <button
+                    class="btn btn-primary"
+                    onclick="openReview(${index})">
+
+                    Review Manuscript
+
+                </button>
+                `
+                :
+                `
+                <strong>
+                    Review ${item.status}
+                </strong>
+                `
+            }
+
+        `;
+
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+/* =========================
+   ACCEPT
+========================= */
+
+function acceptInvitation(index) {
+
+    const invitations =
+        getInvitations();
+
+
+    invitations[index].status =
+        "progress";
+
+
+    localStorage.setItem(
+        "scopusixteenReviewerInvitations",
+        JSON.stringify(invitations)
+    );
+
+
+    loadInvitations();
+
+    updateStats();
+
+}
+
+
+/* =========================
+   DECLINE
+========================= */
+
+function declineInvitation(index) {
+
+    const invitations =
+        getInvitations();
+
+
+    invitations[index].status =
+        "declined";
+
+
+    localStorage.setItem(
+        "scopusixteenReviewerInvitations",
+        JSON.stringify(invitations)
+    );
+
+
+    loadInvitations();
+
+    updateStats();
+
+}
+
+
+/* =========================
+   OPEN REVIEW
+========================= */
+
+let currentReviewIndex = null;
+
+
+function openReview(index) {
+
+    currentReviewIndex =
+        index;
+
+
+    const invitations =
+        getInvitations();
+
+
+    const manuscript =
+        invitations[index];
+
+
+    document.getElementById(
+        "reviewFormContainer"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "reviewManuscriptTitle"
+    ).textContent =
+        manuscript.title +
+        " — " +
+        manuscript.journal;
+
+
+    showSection(
+        "reviews",
+        document.querySelector(
+            '.sidebar a:nth-of-type(3)'
+        )
+    );
+
+}
+
+
+/* =========================
+   SUBMIT REVIEW
+========================= */
+
+function submitReview() {
+
+    if (currentReviewIndex === null) {
+
+        alert(
+            "Please select a manuscript first."
+        );
+
+        return;
+
+    }
+
+
+    const recommendation =
+        document.getElementById(
+            "recommendation"
+        ).value;
+
+
+    const editorComments =
+        document.getElementById(
+            "editorComments"
+        ).value;
+
+
+    const authorComments =
+        document.getElementById(
+            "authorComments"
+        ).value;
+
+
+    if (!recommendation) {
+
+        alert(
+            "Please select a recommendation."
+        );
+
+        return;
+
+    }
+
+
+    const invitations =
+        getInvitations();
+
+
+    const manuscript =
+        invitations[currentReviewIndex];
+
+
+    manuscript.status =
+        "completed";
+
+
+    manuscript.recommendation =
+        recommendation;
+
+
+    manuscript.editorComments =
+        editorComments;
+
+
+    manuscript.authorComments =
+        authorComments;
+
+
+    manuscript.reviewDate =
+        new Date().toLocaleDateString();
+
+
+    localStorage.setItem(
+        "scopusixteenReviewerInvitations",
+        JSON.stringify(invitations)
+    );
+
+
+    alert(
+        "Your review has been submitted."
+    );
+
+
+    document.getElementById(
+        "reviewFormContainer"
+    ).style.display = "none";
+
+
+    currentReviewIndex =
+        null;
+
+
+    loadCompletedReviews();
+
+    loadInvitations();
+
+    updateStats();
+
+}
+
+
+/* =========================
+   COMPLETED REVIEWS
+========================= */
+
+function loadCompletedReviews() {
+
+    const invitations =
+        getInvitations();
+
+
+    const completed =
+        invitations.filter(function(item) {
+
+            return item.status === "completed";
+
+        });
+
+
+    const container =
+        document.getElementById(
+            "completedReviews"
+        );
+
+
+    container.innerHTML = "";
+
+
+    if (completed.length === 0) {
+
+        container.innerHTML = `
+            <p>
+                No completed reviews yet.
+            </p>
+        `;
+
+        return;
+
+    }
+
+
+    completed.forEach(function(item) {
+
+        const div =
+            document.createElement("div");
+
+        div.style.padding = "15px 0";
+
+        div.style.borderBottom =
+            "1px solid #e3e8ef";
+
+
+        div.innerHTML = `
+
+            <strong>
+                ${item.title}
+            </strong>
+
+            <p>
+                Recommendation:
+                ${item.recommendation}
+            </p>
+
+            <small>
+                Submitted:
+                ${item.reviewDate}
+            </small>
+
+        `;
+
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+/* =========================
+   STATISTICS
+========================= */
+
+function updateStats() {
+
+    const invitations =
+        getInvitations();
+
+
+    document.getElementById(
+        "invitationCount"
+    ).textContent =
+        invitations.length;
+
+
+    document.getElementById(
+        "pendingCount"
+    ).textContent =
+        invitations.filter(
+            item =>
+            item.status === "invited" ||
+            item.status === "progress"
+        ).length;
+
+
+    document.getElementById(
+        "completedCount"
+    ).textContent =
+        invitations.filter(
+            item =>
+            item.status === "completed"
+        ).length;
+
+
+    document.getElementById(
+        "declinedCount"
+    ).textContent =
+        invitations.filter(
+            item =>
+            item.status === "declined"
+        ).length;
+
+
+    const table =
+        document.getElementById(
+            "dashboardReviews"
+        );
+
+
+    table.innerHTML = "";
+
+
+    invitations.slice(0, 5)
+    .forEach(function(item, index) {
+
+        table.innerHTML += `
+
+ 

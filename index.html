@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Scopusixteen Publishing</title>
+
+<meta name="description"
+content="Scopusixteen Publishing — discover, publish and advance knowledge through modern academic publishing.">
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    color: #10213b;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1250px;
+    margin: auto;
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar {
+    background: #061a3b;
+    color: white;
+    padding: 9px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.topbar-right {
+    display: flex;
+    gap: 20px;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar {
+    background: white;
+    border-bottom: 1px solid #dfe5ec;
+    min-height: 82px;
+    padding: 14px 5%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    min-width: 225px;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #09254c;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    display: block;
+    color: #10aab5;
+    font-size: 10px;
+    letter-spacing: 4px;
+    margin-top: -4px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #08aab5;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    border: none;
+    border-radius: 6px;
+    padding: 11px 16px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background: #09254c;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #123c70;
+}
+
+.btn-outline {
+    background: white;
+    color: #09254c;
+    border: 1px solid #aebdcc;
+}
+
+.btn-teal {
+    background: #10aeb9;
+    color: white;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 470px;
+    background:
+        radial-gradient(circle at 85% 30%, rgba(60,200,220,.25), transparent 25%),
+        linear-gradient(110deg, #061b3d, #064e70);
+    color: white;
+    padding: 80px 7%;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.eyebrow {
+    color: #66dbe2;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: 52px;
+    line-height: 1.05;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #72dce3;
+}
+
+.hero p {
+    max-width: 620px;
+    color: #e3edf7;
+    font-size: 17px;
+    margin-bottom: 28px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-container {
+    width: 88%;
+    max-width: 1150px;
+    margin: -30px auto 50px;
+    background: white;
+    padding: 12px;
+    border: 1px solid #d6dfeb;
+    border-radius: 8px;
+    box-shadow: 0 10px 35px rgba(0,0,0,.08);
+    display: flex;
+}
+
+.search-container input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 13px;
+    font-size: 15px;
+}
+
+.search-container select {
+    border: none;
+    border-left: 1px solid #ddd;
+    padding: 0 15px;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+    padding: 30px 5% 65px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+}
+
+.section-heading a {
+    color: #08738a;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+
+/* =========================
+   JOURNALS
+========================= */
+
+.journal-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.journal-card {
+    border: 1px solid #dce3ed;
+    border-radius: 8px;
+    padding: 12px;
+    background: white;
+    transition: .25s;
+}
+
+.journal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+.journal-cover {
+    height: 135px;
+    border-radius: 6px;
+    background: linear-gradient(145deg, #09264c, #0b8797);
+    color: white;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.journal-card h3 {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    margin: 12px 0 7px;
+}
+
+.journal-card p,
+.journal-card small {
+    color: #65748a;
+    font-size: 12px;
+}
+
+.journal-card hr {
+    border: none;
+    border-top: 1px solid #e2e7ee;
+    margin: 12px 0;
+}
+
+.journal-card button {
+    width: 100%;
+    margin-top: 14px;
+    padding: 10px;
+    background: white;
+    border: 1px solid #aebdcc;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.journal-tag {
+    display: inline-block;
+    background: #e5fbfb;
+    color: #078b95;
+    border-radius: 20px;
+    padding: 3px 9px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.hybrid {
+    background: #fff0dc;
+    color: #c46a00;
+}
+
+.subscription {
+    background: #e9f0ff;
+    color: #2c5eaa;
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 0 5% 65px;
+}
+
+.feature-box {
+    padding: 30px;
+    border-radius: 8px;
+    background: #eefafb;
+}
+
+.feature-box:nth-child(2) {
+    background: #f3f0fb;
+}
+
+.feature-box:nth-child(3) {
+    background: #edf4fc;
+}
+
+.feature-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.feature-box h2 {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.feature-box p {
+    color: #53637a;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   ARTICLE LIST
+========================= */
+
+.article-list {
+    border-top: 1px solid #dce3ed;
+}
+
+.article {
+    display: grid;
+    grid-template-columns: 75px 1fr 140px 150px;
+    gap: 18px;
+    align-items: center;
+    padding: 17px 5px;
+    border-bottom: 1px solid #dce3ed;
+}
+
+.article-thumb {
+    height: 65px;
+    border-radius: 6px;
+    background: #115d82;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-weight: 900;
+}
+
+.article h3 {
+    font-family: Georgia, serif;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.article p,
+.article small {
+    color: #65748a;
+    font-size: 12px;
+}
+
+
+/* =========================
+   AI SECTION
+========================= */
+
+.ai-section {
+    background: linear-gradient(120deg, #f2f0fb, #eefafb);
+    text-align: center;
+}
+
+.ai-section h2 {
+    font-family: Georgia, serif;
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.ai-section p {
+    max-width: 750px;
+    margin: auto;
+    color: #53637a;
+}
+
+
+/* =========================
+   MODELS
+========================= */
+
+.models {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.model {
+    border: 1px solid #dce3ed;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.model h3 {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.model p {
+    color: #5c6b80;
+    font-size: 14px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #061a3b;
+    color: #dbe7f6;
+    padding: 50px 5% 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr repeat(4, 1fr);
+    gap: 35px;
+}
+
+.footer-brand h2 {
+    color: white;
+    font-size: 20px;
+}
+
+.footer-brand span {
+    color: #65d7df;
+}
+
+footer h4 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+footer a {
+    display: block;
+    color: #9db0c8;
+    font-size: 13px;
+    margin-bottom: 9px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #29415f;
+    margin-top: 35px;
+    padding-top: 18px;
+    color: #8fa6c3;
+    font-size: 11px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1000px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .journal-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature-grid,
+    .models {
+        grid-template-columns: 1fr;
+    }
+
+    .article {
+        grid-template-columns: 65px 1fr;
+    }
+
+    .article-date,
+    .article-doi {
+        display: none;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width:600px) {
+
+    .topbar {
+        display: none;
+    }
+
+    .navbar {
+        padding: 12px 4%;
+    }
+
+    .logo {
+        min-width: 0;
+    }
+
+    .nav-buttons .btn-outline {
+        display: none;
+    }
+
+    .hero {
+        padding: 60px 7%;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .search-container {
+        width: 94%;
+    }
+
+    .search-container select {
+        display: none;
+    }
+
+    .journal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- TOP BAR -->
+
+<div class="topbar">
+
+    <div>
+        support@scopusixteen.com
+    </div>
+
+    <div class="topbar-right">
+
+    <a href="login.html">
+        Author Login
+    </a>
+
+    <a href="#">
+        Reviewer Login
+    </a>
+
+    <a href="#">
+        Editor Login
+    </a>
+
+    <a href="#">
+        Admin Login
+    </a>
+
+</div>
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+
+    <nav class="nav-links">
+
+        <a href="#journals">Journals</a>
+
+        <a href="#articles">Articles</a>
+
+        <a href="#books">Books</a>
+
+        <a href="#about">About</a>
+
+        <a href="#authors">For Authors</a>
+
+        <a href="#reviewers">For Reviewers</a>
+
+    </nav>
+
+
+    <div class="nav-buttons">
+
+    <!-- LOGIN -->
+    <button
+        class="btn btn-outline"
+        type="button"
+        onclick="window.location.href='login.html'">
+        Login
+    </button>
+
+    <!-- AUTHOR DASHBOARD -->
+    <button
+        class="btn btn-primary"
+        type="button"
+        onclick="window.location.href='author-dashboard.html'">
+        Author Dashboard
+    </button>
+
+    <!-- SUBMIT MANUSCRIPT -->
+    <button
+        class="btn btn-teal"
+        type="button"
+        onclick="window.location.href='submit-manuscript.html'">
+        Submit Manuscript
+    </button>
+
+</div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            SCOPUSIXTEEN PUBLISHING
+        </div>
+
+        <h1>
+            Discover. Publish.<br>
+            <span>Advance Knowledge.</span>
+        </h1>
+
+        <p>
+            Explore peer-reviewed research and submit your work
+            through a modern academic publishing platform with
+            responsible AI-assisted editorial tools.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button
+            class="btn btn-teal"
+            onclick="document.getElementById('journals').scrollIntoView()">
+
+                Explore Journals
+
+            </button>
+
+
+       <a
+class="btn btn-outline"
+href="submit-manuscript.html">
+
+    Submit Your Manuscript
+
+</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<div class="search-container">
+
+    <input
+    id="searchInput"
+    type="search"
+    placeholder="Search articles, authors, keywords, journals..."
+    onkeyup="searchArticles()">
+
+
+    <select>
+
+        <option>All Fields</option>
+
+        <option>Title</option>
+
+        <option>Author</option>
+
+        <option>Journal</option>
+
+        <option>Keyword</option>
+
+    </select>
+
+
+    <button
+    class="btn btn-primary"
+    onclick="searchArticles()">
+
+        Search
+
+    </button>
+
+</div>
+
+
+<!-- JOURNALS -->
+
+<section id="journals">
+
+    <div class="section-heading">
+
+        <div>
+
+            <div class="eyebrow">
+                EXPLORE
+            </div>
+
+            <h2>
+                Featured Journals
+            </h2>
+
+        </div>
+
+        <a href="#">
+            View all journals →
+        </a>
+
+    </div>
+
+
+    <div class="journal-grid">
+
+
+        <!-- JOURNAL 1 -->
+
+        <article class="journal-card">
+
+            <div class="journal-cover">
+
+                ENGINEERING<br>
+                & APPLIED<br>
+                SCIENCES
+
+            </div>
+
+            <span class="journal-tag">
+                APC
+            </span>
+
+            <h3>
+                Journal of Engineering and Applied Sciences
+            </h3>
+
+            <p>
+                ISSN: 2616-7300
+            </p>
+
+            <small>
+                Engineering
+            </small>
+
+            <hr>
+
+            <small>
+                Latest Issue: Vol. 8 No. 2
+            </small>
+
+            <button>
+                View Journal →
+            </button>
+
+        </article>
+
+
+        <!-- JOURNAL 2 -->
+
+        <article class="journal-card">
+
+            <div class="journal-cover">
+
+                MEDICAL &<br>
+                HEALTH<br>
+                RESEARCH
+
+            </div>
+
+            <span class="journal-tag hybrid">
+                HYBRID
+            </span>
+
+            <h3>
+                International Journal of Medical and Health Research
+            </h3>
+
+            <p>
+                ISSN: 2708-9516
+            </p>
+
+            <small>
+                Medicine & Health
+            </small>
+
+            <hr>
+
+            <small>
+                Latest Issue: Vol. 7 No. 2
+            </small>
+
+            <button>
+                View Journal →
+            </button>
+
+        </article>
+
+
+        <!-- JOURNAL 3 -->
+
+        <article class="journal-card">
+
+            <div class="journal-cover">
+
+                BUSINESS &<br>
+                MANAGEMENT
+
+            </div>
+
+            <span class="journal-tag subscription">
+                SUBSCRIPTION
+            </span>
+
+            <h3>
+                Journal of Business, Management & Economics
+            </h3>
+
+            <p>
+                ISSN: 2617-4611
+            </p>
+
+            <small>
+                Business & Management
+            </small>
+
+            <hr>
+
+            <small>
+                Latest Issue: Vol. 9 No. 1
+            </small>
+
+            <button>
+                View Journal →
+            </button>
+
+        </article>
+
+
+        <!-- JOURNAL 4 -->
+
+        <article class="journal-card">
+
+            <div class="journal-cover">
+
+                ENVIRONMENTAL<br>
+                SCIENCE
+
+            </div>
+
+            <span class="journal-tag">
+                APC
+            </span>
+
+            <h3>
+                Advances in Environmental Science & Sustainability
+            </h3>
+
+            <p>
+                ISSN: 2738-1141
+            </p>
+
+            <small>
+                Environmental Science
+            </small>
+
+            <hr>
+
+            <small>
+                Latest Issue: Vol. 6 No. 1
+            </small>
+
+            <button>
+                View Journal →
+            </button>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- THREE MAIN FEATURES -->
+
+<div class="feature-grid">
+
+
+    <div class="feature-box" id="authors">
+
+        <div class="feature-icon">
+            📝
+        </div>
+
+        <h2>
+            Ready to publish your research?
+        </h2>
+
+        <p>
+            Submit your manuscript, monitor peer review,
+            respond to revisions and track publication
+            from one dashboard.
+        </p>
+
+        <button
+        class="btn btn-primary"
+        onclick="openSubmission()">
+
+            Submit Manuscript
+
+        </button>
+
+    </div>
+
+
+    <div class="feature-box">
+
+        <div class="feature-icon">
+            🤖
+        </div>
+
+        <h2>
+            AI-Assisted Publishing
+        </h2>
+
+        <p>
+            AI can assist with manuscript completeness,
+            academic language, metadata, journal scope
+            and reviewer matching while human editors
+            retain decision authority.
+        </p>
+
+        <button
+        class="btn btn-primary"
+        onclick="showAI()">
+
+            Learn More
+
+        </button>
+
+    </div>
+
+
+    <div class="feature-box" id="reviewers">
+
+        <div class="feature-icon">
+            👨‍🔬
+        </div>
+
+        <h2>
+            For Reviewers & Editors
+        </h2>
+
+        <p>
+            Efficient tools for peer-review management,
+            editorial workflows and decision tracking.
+        </p>
+
+        <button
+        class="btn btn-primary"
+        onclick="showReviewer()">
+
+            Join as Reviewer
+
+        </button>
+
+    </div>
+
+
+</div>
+
+
+<!-- AI -->
+
+<section class="ai-section" id="about">
+
+    <div class="eyebrow">
+        RESPONSIBLE AI
+    </div>
+
+    <h2>
+        AI-Assisted Academic Publishing
+    </h2>
+
+    <p>
+        Scopusixteen can use AI to assist authors and
+        editorial teams with manuscript completeness,
+        language improvement, metadata generation,
+        journal-scope checking, reference checks and
+        reviewer suggestions.
+    </p>
+
+    <br>
+
+    <p>
+        AI recommendations remain advisory.
+        Final publication decisions belong to qualified
+        human editors.
+    </p>
+
+</section>
+
+
+<!-- PUBLISHING MODELS -->
+
+<section>
+
+    <div class="section-heading">
+
+        <div>
+
+            <div class="eyebrow">
+                PUBLISHING OPTIONS
+            </div>
+
+            <h2>
+                Flexible Publication Models
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="models">
+
+
+        <div class="model">
+
+            <h3>
+                APC Mode
+            </h3>
+
+            <p>
+                Journals can operate using Article Processing
+                Charges. APC amounts, currencies, discounts,
+                waivers and article types can be configured
+                by administrators.
+            </p>
+
+        </div>
+
+
+        <div class="model">
+
+            <h3>
+                Subscription Mode
+            </h3>
+
+            <p>
+                Journals can operate through individual and
+                institutional subscriptions with configurable
+                access periods and subscription prices.
+            </p>
+
+        </div>
+
+
+        <div class="model">
+
+            <h3>
+                Hybrid Mode
+            </h3>
+
+            <p>
+                Journals can combine subscription access with
+                eligible open-access publication options.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ARTICLES -->
+
+<section id="articles">
+    
+
+    <div class="section-heading">
+
+        <div>
+
+            <div class="eyebrow">
+                RESEARCH
+            </div>
+
+            <h2>
+                Latest Research
+            </h2>
+
+        </div>
+
+        <a href="#">
+            View all articles →
+        </a>
+
+    </div>
+
+
+    <div class="article-list">
+
+
+        <article
+        class="article"
+        data-search="machine learning protein structures engineering">
+
+            <div class="article-thumb">
+                ML
+            </div>
+
+            <div>
+
+                <h3>
+                    Machine Learning Approaches for Predicting Protein Structures: A Review
+                </h3>
+
+                <p>
+                    A. Jana, R. K. Singh, P. Verma
+                </p>
+
+                <small>
+                    Journal of Engineering and Applied Sciences
+                </small>
+
+            </div>
+
+            <span class="article-date">
+                May 20, 2026
+            </span>
+
+            <span class="article-doi">
+                DOI: Example
+            </span>
+
+        </article>
+
+
+        <article
+        class="article"
+        data-search="climate change vector diseases medical">
+
+            <div class="article-thumb">
+                BIO
+            </div>
+
+            <div>
+
+                <h3>
+                    Impact of Climate Change on Vector-Borne Diseases: A Global Perspective
+         

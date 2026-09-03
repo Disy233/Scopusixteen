@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Author Login | Scopusixteen Publishing</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #10213b;
+    min-height: 100vh;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    background: #061a3b;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.home-link {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.home-link:hover {
+    color: #65d7df;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-container {
+    min-height: calc(100vh - 75px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 450px;
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.08);
+}
+
+.login-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-title h1 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.login-title p {
+    color: #65748a;
+    font-size: 13px;
+}
+
+/* =========================
+   SOCIAL LOGIN
+========================= */
+
+.social-login {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.social-btn {
+    width: 100%;
+    padding: 13px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    background: white;
+}
+
+.orcid-btn {
+    border: 1px solid #a6ce39;
+    color: #4d6500;
+}
+
+.google-btn {
+    border: 1px solid #d5dbe3;
+    color: #333;
+}
+
+.social-btn:hover {
+    background: #f7fafc;
+}
+
+.orcid-icon {
+    display: inline-block;
+    background: #a6ce39;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    margin-right: 8px;
+    font-size: 11px;
+}
+
+.google-icon {
+    margin-right: 8px;
+    font-weight: 900;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 25px 0;
+    color: #8a98aa;
+    font-size: 10px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #dce3ed;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #cbd6e2;
+    border-radius: 7px;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #10aeb9;
+}
+
+/* =========================
+   PASSWORD
+========================= */
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 75px;
+}
+
+.show-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: #078b95;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* =========================
+   FORGOT PASSWORD
+========================= */
+
+.forgot {
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.forgot a {
+    color: #078b95;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.login-btn {
+    width: 100%;
+    border: none;
+    background: #09254c;
+    color: white;
+    padding: 14px;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background: #10aeb9;
+}
+
+.login-btn:disabled {
+    opacity: .7;
+    cursor: not-allowed;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.login-message {
+    display: none;
+    margin-bottom: 18px;
+    padding: 11px 13px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.login-message.error {
+    display: block;
+    background: #fff0f0;
+    color: #a22b2b;
+    border: 1px solid #f1caca;
+}
+
+.login-message.success {
+    display: block;
+    background: #eefaf2;
+    color: #237a43;
+    border: 1px solid #ccebd6;
+}
+
+/* =========================
+   REGISTER
+========================= */
+
+.register-link {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 13px;
+    color: #65748a;
+}
+
+.register-link a {
+    color: #078b95;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: #8a98aa;
+    font-size: 11px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    .header {
+        padding: 15px 5%;
+    }
+
+    .login-container {
+        padding: 25px 15px;
+    }
+
+    .login-card {
+        padding: 28px 22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+
+    <a
+        href="index.html"
+        class="home-link">
+
+        ← Back to Homepage
+
+    </a>
+
+</header>
+
+
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<main class="login-container">
+
+<div class="login-card">
+
+
+    <div class="login-title">
+
+        <h1>
+            Author Login
+        </h1>
+
+        <p>
+            Sign in to manage your manuscripts
+            and author profile.
+        </p>
+
+    </div>
+
+
+
+    <!-- SOCIAL LOGIN -->
+
+    <div class="social-login">
+
+        <button
+            type="button"
+            class="social-btn orcid-btn"
+            onclick="loginWithORCID()">
+
+            <span class="orcid-icon">
+                iD
+            </span>
+
+            Continue with ORCID
+
+        </button>
+
+
+        <button
+            type="button"
+            class="social-btn google-btn"
+            onclick="loginWithGoogle()">
+
+            <span class="google-icon">
+                G
+            </span>
+
+            Continue with Google
+
+        </button>
+
+    </div>
+
+
+
+    <!-- DIVIDER -->
+
+    <div class="divider">
+
+        OR LOGIN WITH EMAIL
+
+    </div>
+
+
+
+    <!-- MESSAGE -->
+
+    <div
+        id="loginMessage"
+        class="login-message">
+    </div>
+
+
+
+    <!-- LOGIN FORM -->
+
+    <form id="loginForm">
+
+
+        <!-- EMAIL -->
+
+        <div class="form-group">
+
+            <label for="email">
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="author@example.com"
+                autocomplete="email"
+                required
+            >
+
+        </div>
+
+
+
+        <!-- PASSWORD -->
+
+        <div class="form-group">
+
+            <label for="password">
+                Password
+            </label>
+
+
+            <div class="password-wrapper">
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+
+                <button
+                    type="button"
+                    class="show-password"
+                    onclick="togglePassword()">
+
+                    Show
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FORGOT PASSWORD -->
+
+        <div class="forgot">
+
+            <a
+                href="#"
+                onclick="forgotPassword(event)">
+
+                Forgot Password?
+
+            </a>
+
+        </div>
+
+
+
+        <!-- LOGIN BUTTON -->
+
+        <button
+            type="submit"
+            class="login-btn"
+            id="loginButton">
+
+            Login to Author Portal
+
+        </button>
+
+
+    </form>
+
+
+
+    <!-- REGISTER -->
+
+    <div class="register-link">
+
+        Don't have an account?
+
+        <a href="register.html">
+            Create an account
+        </a>
+
+    </div>
+
+
+</div>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    © 2026 Scopusixteen Publishing.
+    All rights reserved.
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   SCOPUSIXTEEN AUTHOR LOGIN
+   Uses the same storage key as register.html
+   ===================================================== */
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const loginButton =
+    document.getElementById("loginButton");
+
+const loginMessage =
+    document.getElementById("loginMessage");
+
+
+/* =========================
+   MESSAGE FUNCTION
+========================= */
+
+function showMessage(message, type) {
+
+    loginMessage.textContent = message;
+
+    loginMessage.className =
+        "login-message " + type;
+
+}
+
+
+/* =========================
+   LOGIN FORM
+========================= */
+
+loginForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const email =
+            document.getElementById("email")
+            .value
+            .trim()
+            .toLowerCase();
+
+
+        const password =
+            document.getElementById("password")
+            .value;
+
+
+        /* =========================
+           GET REGISTERED AUTHOR
+        ========================= */
+
+        const savedUser =
+            localStorage.getItem(
+                "scopusixteenUser"
+            );
+
+
+        /* =========================
+           NO ACCOUNT
+        ========================= */
+
+        if (!savedUser) {
+
+            showMessage(
+                "No author account was found. Please create an account first.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* =========================
+           READ ACCOUNT
+        ========================= */
+
+        let user;
+
+
+        try {
+
+            user =
+                JSON.parse(savedUser);
+
+        } catch (error) {
+
+            showMessage(
+                "Your account information could not be loaded. Please register again.",
+                "error"
+            );
+
+            localStorage.removeItem(
+                "scopusixteenUser"
+            );
+
+            return;
+        }
+
+
+        /* =========================
+           CHECK EMAIL
+        ========================= */
+
+        if (
+            !user.email ||
+            email !==
+            String(user.email)
+            .trim()
+            .toLowerCase()
+        ) {
+
+            showMessage(
+                "Incorrect email address.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* =========================
+           CHECK PASSWORD
+        ========================= */
+
+        if (
+            !user.password ||
+            password !== user.password
+        ) {
+
+            showMessage(
+                "Incorrect password. Please try again.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* =========================
+           LOGIN SUCCESS
+        ========================= */
+
+        localStorage.setItem(
+            "scopusixteenLoggedIn",
+            "true"
+        );
+
+
+        /* =========================
+           SAVE LOGIN TIME
+        ========================= */
+
+        localStorage.setItem(
+            "scopusixteenLoginTime",
+            new Date().toISOString()
+        );
+
+
+        /* =========================
+           SAVE CURRENT USER
+        ========================= */
+
+        localStorage.setItem(
+            "scopusixteenCurrentUser",
+            JSON.stringify(user)
+        );
+
+
+        /* =========================
+           SUCCESS MESSAGE
+        ========================= */
+
+        showMessage(
+            "Login successful. Redirecting to your Author Dashboard...",
+            "success"
+        );
+
+
+        loginButton.disabled = true;
+
+        loginButton.textContent =
+            "Opening Author Portal...";
+
+
+        /* =========================
+           REDIRECT
+        ========================= */
+
+        setTimeout(
+            function() {
+
+                window.location.href =
+                    "author-dashboard.html";
+
+            },
+            800
+        );
+
+    }
+);
+
+
+/* =========================
+   SHOW / HIDE PASSWORD
+========================= */
+
+function togglePassword() {
+
+    const password =
+        document.getElementById("password");
+
+    const button =
+        document.querySelector(".show-password");
+
+
+    if (
+        password.type ===
+        "password"
+    ) {
+
+        password.type =
+            "text";
+
+        button.textContent =
+            "Hide";
+
+    } else {
+
+        password.type =
+            "password";
+
+        button.textContent =
+            "Show";
+
+    }
+
+}
+
+
+/* =========================
+   ORCID
+========================= */
+
+function loginWithORCID() {
+
+    showMessage(
+        "ORCID authentication will be connected when secure authentication is added.",
+        "error"
+    );
+
+}
+
+
+/* =========================
+   GOOGLE
+========================= */
+
+function loginWithGoogle() {
+
+    showMessage(
+        "Google authentication will be connected when secure authentication is added.",
+        "error"
+    );
+
+}
+
+
+/* =========================
+   FORGOT PASSWORD
+========================= */
+
+function forgotPassword(event) {
+
+    event.preventDefault();
+
+    showMessage(
+        "Password recovery will be connected when the secure account system is added.",
+        "error"
+    );
+
+}
+
+
+/* =========================
+   CHECK EXISTING SESSION
+========================= */
+
+function checkExistingLogin() {
+
+    const loggedIn =
+        localStorage.getItem(
+            "scopusixteenLoggedIn"
+        );
+
+
+    const savedUser =
+        localStorage.getItem(
+            "scopusixteenUser"
+        );
+
+
+    if (
+        loggedIn === "true" &&
+        savedUser
+    ) {
+
+        /*
+           User is already logged in.
+           We don't automatically redirect
+           so the author can still choose
+           to log in with another account.
+        */
+
+    }
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        checkExistingLogin();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

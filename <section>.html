@@ -1,0 +1,132 @@
+<button onclick="showSection('submit-manuscript')">
+    Submit Manuscript
+</button>
+
+<!-- SUBMIT MANUSCRIPT -->
+<section id="submit-manuscript" class="portal-section">
+
+    <div class="section-header">
+        <h2>Submit New Manuscript</h2>
+        <p>Submit your research article for editorial consideration.</p>
+    </div>
+
+    <form id="manuscriptForm" class="manuscript-form">
+
+        <div class="form-group">
+            <label for="articleTitle">Article Title</label>
+            <input
+                type="text"
+                id="articleTitle"
+                name="articleTitle"
+                placeholder="Enter your article title"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="journal">Select Journal</label>
+            <select id="journal" name="journal" required>
+                <option value="">Select a journal</option>
+                <option value="AI and Education Review">AI and Education Review</option>
+                <option value="Management Studies">Management Studies</option>
+                <option value="Engineering and Technology Review">Engineering and Technology Review</option>
+                <option value="Health and Medical Research">Health and Medical Research</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="abstract">Abstract</label>
+            <textarea
+                id="abstract"
+                name="abstract"
+                rows="7"
+                placeholder="Enter your article abstract"
+                required
+            ></textarea>
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+                <label for="authorName">Author Name</label>
+                <input
+                    type="text"
+                    id="authorName"
+                    name="authorName"
+                    placeholder="Full name"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="authorEmail">Email Address</label>
+                <input
+                    type="email"
+                    id="authorEmail"
+                    name="authorEmail"
+                    placeholder="author@example.com"
+                    required
+                >
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="institution">Institution / Affiliation</label>
+            <input
+                type="text"
+                id="institution"
+                name="institution"
+                placeholder="University, institution or organization"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="keywords">Keywords</label>
+            <input
+                type="text"
+                id="keywords"
+                name="keywords"
+                placeholder="AI, education, technology, innovation"
+                required
+            >
+            <small>Separate keywords with commas.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="manuscriptFile">Upload Manuscript</label>
+
+            <div class="upload-box">
+                <input
+                    type="file"
+                    id="manuscriptFile"
+                    name="manuscriptFile"
+                    accept=".pdf,.doc,.docx"
+                    required
+                >
+
+                <p>PDF, DOC or DOCX</p>
+                <small>Maximum file size: 10 MB</small>
+            </div>
+        </div>
+
+        <div class="form-check">
+            <input
+                type="checkbox"
+                id="declaration"
+                required
+            >
+
+            <label for="declaration">
+                I confirm that this manuscript is my original work and
+                has not been submitted to another journal.
+            </label>
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Submit Manuscript
+        </button>
+
+    </form>
+</section>

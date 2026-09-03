@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Journal Management | Scopusixteen Administration</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f6fa;
+    color: #10213b;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    background: #061a3b;
+    color: white;
+    min-height: 75px;
+    padding: 15px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-label {
+    font-size: 12px;
+    color: #c9d7e8;
+}
+
+.home-btn {
+    text-decoration: none;
+    color: white;
+    border: 1px solid #65d7df;
+    padding: 9px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.home-btn:hover {
+    background: #10aeb9;
+}
+
+
+/* =========================
+   LAYOUT
+========================= */
+
+.layout {
+    display: flex;
+    min-height: calc(100vh - 75px);
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 240px;
+    background: white;
+    border-right: 1px solid #dce3ed;
+    padding: 25px 15px;
+    flex-shrink: 0;
+}
+
+.sidebar-title {
+    color: #7b899c;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0 12px 10px;
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: #40516a;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.sidebar a:hover {
+    background: #eefafb;
+    color: #078b95;
+}
+
+.sidebar a.active {
+    background: #09254c;
+    color: white;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    flex: 1;
+    padding: 35px;
+    min-width: 0;
+}
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.page-title h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.page-title p {
+    color: #65748a;
+    font-size: 14px;
+}
+
+
+/* =========================
+   STAT CARDS
+========================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 20px;
+}
+
+.stat-card strong {
+    display: block;
+    color: #7b899c;
+    font-size: 10px;
+    letter-spacing: .5px;
+    margin-bottom: 8px;
+}
+
+.stat-number {
+    font-size: 27px;
+    font-weight: 900;
+}
+
+.stat-card small {
+    color: #7b899c;
+    font-size: 11px;
+}
+
+
+/* =========================
+   TOOLBAR
+========================= */
+
+.toolbar {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    padding: 15px;
+    margin-bottom: 20px;
+
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 200px;
+}
+
+.search-box input,
+.filter select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #cbd6e2;
+    border-radius: 6px;
+    outline: none;
+}
+
+.search-box input:focus,
+.filter select:focus {
+    border-color: #10aeb9;
+}
+
+.filter {
+    width: 180px;
+}
+
+.add-btn {
+    background: #10aeb9;
+    color: white;
+    border: none;
+    padding: 11px 17px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.add-btn:hover {
+    background: #078b95;
+}
+
+
+/* =========================
+   JOURNAL TABLE
+========================= */
+
+.table-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 9px;
+    overflow: hidden;
+}
+
+.table-header {
+    padding: 20px;
+    border-bottom: 1px solid #e2e7ee;
+}
+
+.table-header h2 {
+    font-family: Georgia, serif;
+    font-size: 21px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 850px;
+}
+
+th {
+    background: #f7f9fc;
+    text-align: left;
+    color: #65748a;
+    font-size: 10px;
+    letter-spacing: .5px;
+    padding: 13px 15px;
+    border-bottom: 1px solid #dce3ed;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #edf1f5;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+tbody tr:hover {
+    background: #fbfcfe;
+}
+
+.journal-name {
+    font-weight: bold;
+    color: #10213b;
+}
+
+.journal-issn {
+    color: #7b899c;
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+
+/* =========================
+   BADGES
+========================= */
+
+.badge {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.badge-apc {
+    background: #e5fbfb;
+    color: #078b95;
+}
+
+.badge-subscription {
+    background: #e9f0ff;
+    color: #2c5eaa;
+}
+
+.badge-hybrid {
+    background: #fff0dc;
+    color: #c46a00;
+}
+
+.badge-active {
+    background: #eaf8ef;
+    color: #237a43;
+}
+
+.badge-inactive {
+    background: #fcecec;
+    color: #a13d3d;
+}
+
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.action-btn {
+    border: none;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+.view-btn {
+    background: #eefafb;
+    color: #078b95;
+}
+
+.edit-btn {
+    background: #edf2ff;
+    color: #365fa8;
+}
+
+.delete-btn {
+    background: #fff0f0;
+    color: #a13d3d;
+}
+
+.action-btn:hover {
+    opacity: .75;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(6,26,59,.55);
+
+    z-index: 5000;
+
+    padding: 25px;
+
+    overflow-y: auto;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 650px;
+    background: white;
+    margin: 30px auto;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.modal-header h2 {
+    font-family: Georgia, serif;
+    font-size: 24px;
+}
+
+.close-btn {
+    border: none;
+    background: #f0f3f7;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 18px;
+    color: #53637a;
+}
+
+.close-btn:hover {
+    background: #e4e9ef;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd6e2;
+    border-radius: 6px;
+    outline: none;
+    font-size: 13px;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #10aeb9;
+}
+
+.form-help {
+    color: #7b899c;
+    font-size: 10px;
+    margin-top: 5px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.cancel-btn {
+    border: none;
+    background: #eef2f7;
+    color: #10213b;
+    padding: 12px 18px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.save-btn {
+    border: none;
+    background: #09254c;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.save-btn:hover {
+    background: #10aeb9;
+}
+
+
+/* =========================
+   VIEW MODAL
+========================= */
+
+.detail-box {
+    background: #f8fafc;
+    border-radius: 7px;
+    padding: 15px;
+    margin-bottom: 12px;
+}
+
+.detail-box strong {
+    display: block;
+    color: #7b899c;
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+.detail-box span,
+.detail-box p {
+    font-size: 14px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+    color: #8a98aa;
+    font-size: 11px;
+    padding: 25px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1000px) {
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width:700px) {
+
+    .layout {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #dce3ed;
+        display: flex;
+        overflow-x: auto;
+        padding: 10px;
+    }
+
+    .sidebar-title {
+        display: none;
+    }
+
+    .sidebar a {
+        white-space: nowrap;
+        margin: 0 3px;
+    }
+
+    .main {
+        padding: 20px 15px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .header {
+        padding: 14px 4%;
+    }
+
+    .admin-label {
+        display: none;
+    }
+
+}
+
+@media(max-width:450px) {
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .page-title h1 {
+        font-size: 27px;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
+    .modal-content {
+        padding: 20px;
+        margin: 10px auto;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <span class="admin-label">
+            Administration
+        </span>
+
+        <a
+            href="index.html"
+            class="home-btn">
+
+            Home
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     LAYOUT
+========================= -->
+
+<div class="layout">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-title">
+            ADMINISTRATION
+        </div>
+
+
+        <a href="admin-dashboard.html">
+            📊 Dashboard
+        </a>
+
+
+        <a href="admin-manuscripts.html">
+            📝 Manuscripts
+        </a>
+
+
+        <a href="admin-journals.html"
+           class="active">
+
+            📚 Journals
+
+        </a>
+
+
+        <a href="admin-reviewers.html">
+            👨‍🔬 Reviewers
+        </a>
+
+
+        <a href="admin-editors.html">
+            ✏️ Editors
+        </a>
+
+
+        <a href="admin-payments.html">
+            💳 Payments
+        </a>
+
+
+        <a href="admin-users.html">
+            👥 Authors
+        </a>
+
+
+        <a href="admin-settings.html">
+            ⚙️ Settings
+        </a>
+
+    </aside>
+
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+
+        <!-- TITLE -->
+
+        <div class="page-title">
+
+            <h1>
+                Journal Management
+            </h1>
+
+            <p>
+                Create, edit and manage journals published
+                through Scopusixteen Publishing.
+            </p>
+
+        </div>
+
+
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <strong>
+                    TOTAL JOURNALS
+                </strong>
+
+                <div
+                    class="stat-number"
+                    id="totalJournals">
+
+                    0
+
+                </div>
+
+                <small>
+                    All registered journals
+                </small>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <strong>
+                    ACTIVE
+                </strong>
+
+                <div
+                    class="stat-number"
+                    id="activeJournals">
+
+                    0
+
+                </div>
+
+                <small>
+                    Currently accepting
+                </small>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <strong>
+                    APC
+                </strong>
+
+                <div
+                    class="stat-number"
+                    id="apcJournals">
+
+                    0
+
+                </div>
+
+                <small>
+                    APC journals
+                </small>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <strong>
+                    SUBSCRIPTION
+                </strong>
+
+                <div
+                    class="stat-number"
+                    id="subscriptionJournals">
+
+                    0
+
+                </div>
+
+                <small>
+                    Subscription journals
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TOOLBAR -->
+
+        <div class="toolbar">
+
+
+            <div class="search-box">
+
+                <input
+                    type="search"
+                    id="journalSearch"
+                    placeholder="Search journals, ISSN or subject..."
+                    oninput="renderJournals()">
+
+            </div>
+
+
+            <div class="filter">
+
+                <select
+                    id="modelFilter"
+                    onchange="renderJournals()">
+
+                    <option value="">
+                        All Models
+                    </option>
+
+                    <option value="APC">
+                        APC
+                    </option>
+
+                    <option value="Subscription">
+                        Subscription
+                    </option>
+
+                    <option value="Hybrid">
+                        Hybrid
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="filter">
+
+                <select
+                    id="statusFilter"
+                    onchange="renderJournals()">
+
+                    <option value="">
+                        All Status
+                    </option>
+
+                    <option value="Active">
+                        Active
+                    </option>
+
+                    <option value="Inactive">
+                        Inactive
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                class="add-btn"
+                onclick="openAddModal()">
+
+                + Add Journal
+
+            </button>
+
+        </div>
+
+
+
+        <!-- TABLE -->
+
+        <section class="table-card">
+
+
+            <div class="table-header">
+
+                <h2>
+                    Published Journals
+                </h2>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                JOURNAL
+                            </th>
+
+                            <th>
+                                SUBJECT
+                            </th>
+
+                            <th>
+                                MODEL
+                            </th>
+
+                            <th>
+                                STATUS
+                            </th>
+
+                            <th>
+                                LATEST ISSUE
+                            </th>
+
+                            <th>
+                                ACTIONS
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="journalTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <div class="footer">
+
+            © 2026 Scopusixteen Publishing Administration.
+
+        </div>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================
+     ADD / EDIT MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="journalModal">
+
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Add Journal
+            </h2>
+
+            <button
+                class="close-btn"
+                onclick="closeModal()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form id="journalForm">
+
+
+            <input
+                type="hidden"
+                id="journalId">
+
+
+            <div class="form-group">
+
+                <label>
+                    Journal Name *
+                </label>
+
+                <input
+                    type="text"
+                    id="journalName"
+                    placeholder="Enter journal name"
+                    required>
+
+            </div>
+
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label>
+                        ISSN
+                    </label>
+
+                    <input
+                        type="text"
+                        id="journalIssn"
+                        placeholder="0000-0000">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Subject / Discipline *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="journalSubject"
+                        placeholder="e.g. Engineering"
+                        required>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Publishing Model *
+                    </label>
+
+                    <select
+                        id="journalModel"
+                        required>
+
+                        <option value="">
+                            Select model
+                        </option>
+
+                        <option value="APC">
+                            APC
+                        </option>
+
+                        <option value="Subscription">
+                            Subscription
+                        </option>
+
+                        <option value="Hybrid">
+                            Hybrid
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Status *
+                    </label>
+
+                    <select
+                        id="journalStatus"
+                        required>
+
+                        <option value="Active">
+                            Active
+                        </option>
+
+                        <option value="Inactive">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Volume
+                    </label>
+
+                    <input
+                        type="text"
+                        id="journalVolume"
+                        placeholder="Vol. 8">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Issue
+                    </label>
+
+                    <input
+                        type="text"
+                        id="journalIssue"
+                        placeholder="No. 2">
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Journal Description
+                </label>
+
+                <textarea
+                    id="journalDescription"
+                    placeholder="Enter a short description of the journal"></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Journal Website
+                </label>
+
+                <input
+                    type="text"
+                    id="journalWebsite"
+                    placeholder="https://example.com">
+
+                <div class="form-help">
+    

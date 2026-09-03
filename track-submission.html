@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Track Submission | Scopusixteen Publishing</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #10213b;
+    line-height: 1.6;
+}
+
+/* HEADER */
+
+.header {
+    background: #061a3b;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-main span {
+    color: #10b8c3;
+}
+
+.logo-sub {
+    color: #65d7df;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.back-link {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.back-link:hover {
+    color: #65d7df;
+}
+
+/* MAIN */
+
+.main {
+    max-width: 900px;
+    margin: 45px auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.page-title h1 {
+    font-family: Georgia, serif;
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.page-title p {
+    color: #65748a;
+}
+
+/* SEARCH CARD */
+
+.search-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.05);
+    margin-bottom: 25px;
+}
+
+.search-card label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.search-row {
+    display: flex;
+    gap: 12px;
+}
+
+.search-row input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #cbd6e2;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-row input:focus {
+    border-color: #10aeb9;
+}
+
+.search-btn {
+    border: none;
+    background: #09254c;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background: #10aeb9;
+}
+
+/* RESULT */
+
+.result {
+    display: none;
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.05);
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.result-header h2 {
+    font-family: Georgia, serif;
+    font-size: 22px;
+}
+
+.result-header p {
+    color: #65748a;
+    font-size: 13px;
+}
+
+.status {
+    background: #eefafb;
+    color: #078b95;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* DETAILS */
+
+.details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.detail-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 7px;
+    padding: 15px;
+}
+
+.detail-box small {
+    display: block;
+    color: #65748a;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+.detail-box strong {
+    font-size: 14px;
+}
+
+/* TIMELINE */
+
+.timeline-title {
+    font-family: Georgia, serif;
+    font-size: 21px;
+    margin-bottom: 25px;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 35px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+    background: #dce3ed;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 28px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -31px;
+    top: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #dce3ed;
+    border: 4px solid white;
+    box-shadow: 0 0 0 1px #dce3ed;
+}
+
+.timeline-item.completed .timeline-dot {
+    background: #10aeb9;
+}
+
+.timeline-item.current .timeline-dot {
+    background: #09254c;
+}
+
+.timeline-item h3 {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.timeline-item p {
+    color: #65748a;
+    font-size: 12px;
+}
+
+.timeline-item.completed h3,
+.timeline-item.current h3 {
+    color: #078b95;
+}
+
+/* ERROR */
+
+.error {
+    display: none;
+    background: #fff4f4;
+    border: 1px solid #f0caca;
+    color: #a33a3a;
+    padding: 15px;
+    border-radius: 7px;
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    color: #8a98aa;
+    font-size: 11px;
+}
+
+/* MOBILE */
+
+@media(max-width:650px) {
+
+    .header {
+        padding: 15px 5%;
+    }
+
+    .main {
+        margin: 25px auto;
+    }
+
+    .page-title h1 {
+        font-size: 28px;
+    }
+
+    .search-card,
+    .result {
+        padding: 22px;
+    }
+
+    .search-row {
+        flex-direction: column;
+    }
+
+    .search-btn {
+        width: 100%;
+    }
+
+    .details {
+        grid-template-columns: 1fr;
+    }
+
+    .result-header {
+        flex-direction: column;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div>
+
+        <div class="logo-main">
+            SCOPUSI<span>XTEEN</span>
+        </div>
+
+        <div class="logo-sub">
+            PUBLISHING
+        </div>
+
+    </div>
+
+    <a
+        href="author-dashboard.html"
+        class="back-link">
+
+        ← Back to Dashboard
+
+    </a>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+    <div class="page-title">
+
+        <h1>
+            Track Your Submission
+        </h1>
+
+        <p>
+            Enter your manuscript ID to view the current status
+            of your submission.
+        </p>
+
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-card">
+
+        <label for="manuscriptIdInput">
+            Manuscript ID
+        </label>
+
+        <div class="search-row">
+
+            <input
+                type="text"
+                id="manuscriptIdInput"
+                placeholder="Example: SCP-2026-12345"
+            >
+
+            <button
+                class="search-btn"
+                onclick="trackSubmission()">
+
+                Track Submission
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="errorMessage"
+            class="error">
+
+            Manuscript not found. Please check your manuscript ID.
+
+        </div>
+
+    </div>
+
+
+    <!-- RESULT -->
+
+    <div
+        id="result"
+        class="result">
+
+        <div class="result-header">
+
+            <div>
+
+                <h2 id="articleTitle">
+                    Manuscript Title
+                </h2>
+
+                <p id="journal">
+                    Journal
+                </p>
+
+            </div>
+
+            <div
+                id="currentStatus"
+                class="status">
+
+                Submitted
+
+            </div>
+
+        </div>
+
+
+        <!-- DETAILS -->
+
+        <div class="details">
+
+            <div class="detail-box">
+
+                <small>
+                    Manuscript ID
+                </small>
+
+                <strong id="displayId">
+                </strong>
+
+            </div>
+
+
+            <div class="detail-box">
+
+                <small>
+                    Submission Date
+                </small>
+
+                <strong id="submissionDate">
+                </strong>
+
+            </div>
+
+
+            <div class="detail-box">
+
+                <small>
+                    Corresponding Author
+                </small>
+
+                <strong id="author">
+                </strong>
+
+            </div>
+
+
+            <div class="detail-box">
+
+                <small>
+                    Article Type
+                </small>
+
+                <strong id="articleType">
+                    Research Article
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- TIMELINE -->
+
+        <h2 class="timeline-title">
+            Submission Progress
+        </h2>
+
+
+        <div class="timeline">
+
+
+            <div
+                id="step1"
+                class="timeline-item completed">
+
+                <div class="timeline-dot">
+                </div>
+
+                <h3>
+                    Manuscript Submitted
+                </h3>
+
+                <p>
+                    Your manuscript has been successfully submitted.
+                </p>
+
+            </div>
+
+
+            <div
+                id="step2"
+                class="timeline-item">
+
+                <div class="timeline-dot">
+                </div>
+
+                <h3>
+                    Editorial Check
+                </h3>
+
+                <p>
+                    The editorial office will check your manuscript.
+                </p>
+
+            </div>
+
+
+            <div
+                id="step3"
+                class="timeline-item">
+
+                <div class="timeline-dot">
+                </div>
+
+                <h3>
+                    Peer Review
+                </h3>
+
+                <p>
+                    The manuscript is evaluated by reviewers.
+                </p>
+
+            </div>
+
+
+            <div
+                id="step4"
+                class="timeline-item">
+
+                <div class="timeline-dot">
+                </div>
+
+                <h3>
+                    Revision
+                </h3>
+
+                <p>
+                    Revisions may be requested from the authors.
+                </p>
+
+            </div>
+
+
+            <div
+                id="step5"
+                class="timeline-item">
+
+                <div class="timeline-dot">
+                </div>
+
+                <h3>
+                    Accepted
+                </h3>
+
+                <p>
+                    The manuscript has been accepted for publication.
+                </p>
+
+            </div>
+
+
+            <div
+                id="step6"
+                class="timeline-item">
+
+                <div class="timeline-dot">
+                </div>
+
+                <h3>
+                    Published
+                </h3>
+
+                <p>
+                    The article has been published.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer class="footer">
+
+    © 2026 Scopusixteen Publishing.
+    All rights reserved.
+
+</footer>
+
+
+<script>
+
+/* =========================
+   TRACK SUBMISSION
+========================= */
+
+function trackSubmission() {
+
+    const input =
+        document
+        .getElementById("manuscriptIdInput")
+        .value
+        .trim();
+
+    const error =
+        document
+        .getElementById("errorMessage");
+
+    const result =
+        document
+        .getElementById("result");
+
+
+    error.style.display = "none";
+    result.style.display = "none";
+
+
+    if (!input) {
+
+        error.textContent =
+            "Please enter your manuscript ID.";
+
+        error.style.display = "block";
+
+        return;
+
+    }
+
+
+    const manuscripts =
+        JSON.parse(
+            localStorage.getItem(
+                "scopusixteenManuscripts"
+            )
+        ) || [];
+
+
+    const manuscript =
+        manuscripts.find(
+            function(item) {
+
+                return (
+                    item.id.toLowerCase() ===
+                    input.toLowerCase()
+                );
+
+            }
+        );
+
+
+    if (!manuscript) {
+
+        error.textContent =
+            "Manuscript not found. Please check your manuscript ID.";
+
+        error.style.display = "block";
+
+        return;
+
+    }
+
+
+    /* DISPLAY DATA */
+
+    document
+    .getElementById("articleTitle")
+    .textContent =
+        manuscript.title;
+
+
+    document
+    .getElementById("journal")
+    .textContent =
+        manuscript.journal;
+
+
+    document
+    .getElementById("displayId")
+    .textContent =
+        manuscript.id;
+
+
+    document
+    .getElementById("submissionDate")
+    .textContent =
+        manuscript.date;
+
+
+    document
+    .getElementById("author")
+    .textContent =
+        manuscript.author;
+
+
+    document
+    .getElementById("currentStatus")
+    .textContent =
+        manuscript.status;
+
+
+    updateTimeline(
+        manuscript.status
+    );
+
+
+    result.style.display =
+        "block";
+
+}
+
+
+/* =========================
+   UPDATE TIMELINE
+========================= */
+
+function updateTimeline(status) {
+
+    const steps = [
+        "step1",
+        "step2",
+        "step3",
+        "step4",
+        "step5",
+        "step6"
+    ];
+
+
+    steps.forEach(
+        function(id) {
+
+            document
+            .getElementById(id)
+            .classList.remove(
+                "completed",
+                "current"
+            );
+
+        }
+    );
+
+
+    let currentStep = 1;
+
+
+    if (
+        status === "Editorial Check"
+    ) {
+        currentStep = 2;
+    }
+
+    else if (
+        status === "Under Review" ||
+        status === "Peer Review"
+    ) {
+        currentStep = 3;
+    }
+
+    else if (
+        status === "Revision Required"
+    ) {
+        currentStep = 4;
+    }
+
+    else if (
+        status === "Accepted"
+    ) {
+        currentStep = 5;
+    }
+
+    else if (
+        status === "Published"
+    ) {
+        currentStep = 6;
+    }
+
+
+    for (
+        let i = 1;
+        i <= currentStep;
+        i++
+    ) {
+
+        const element =
+            document.getElementById(
+                "step" + i
+            );
+
+
+        if (i < currentStep) {
+
+            element.classList.add(
+                "completed"
+            );
+
+        }
+
+        else {
+
+            element.classList.add(
+                "current"
+            );
+
+        }
+
+    }
+
+}
+
+
+/* ENTER KEY */
+
+document
+.getElementById("manuscriptIdInput")
+.addEventListener(
+    "keypress",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            trackSubmission();
+
+        }
+
+    }
+);
+  
+  <a href="payment.html">
+    💳 Payments
+</a>
+  <aside class="sidebar">
+
+    <h3>Author Portal</h3>
+
+    <a href="author-dashboard.html" class="active">
+        🏠 Dashboard
+    </a>
+
+    <a href="submit-manuscript.html">
+        📝 Submit Manuscript
+    </a>
+
+    <a href="my-manuscripts.html">
+        📚 My Manuscripts
+    </a>
+
+    <a href="track-submission.html">
+        📊 Track Submission
+    </a>
+
+    <a href="payment.html">
+        💳 Payments
+    </a>
+
+    <a href="#profile">
+        👤 My Profile
+    </a>
+
+    <a href="index.html">
+        🌐 Homepage
+    </a>
+
+</aside>
+
+</script>
+
+</body>
+
+</html>
